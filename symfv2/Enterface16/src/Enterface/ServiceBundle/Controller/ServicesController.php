@@ -663,7 +663,7 @@ public function TiffViewerAction() {
      $connection = ssh2_connect($ftp_host, 22);
      if (ssh2_auth_password($connection, $ftp_user_name, $ftp_user_pass))
      {       
-             $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\CLEO_V5.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\BMDvalues1.txt Downloads\ftp\Phantom1.txt');
+             $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\Combined-dist6.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\BMDvalues1.txt Downloads\ftp\Phantom1.txt');
                  stream_set_blocking($stream2, true);
                  stream_get_contents($stream2);
                  $s1=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\BMD.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
@@ -832,11 +832,11 @@ public function TiffViewerAction() {
 
                  * !!!!!!!!!!!!                 */
                         
-                //$DA="Decommenter les lignes 669 et 570 dans ServiceController.php apres l'integration de la new clio dans la MV";
-                //$tDA="Decommenter les lignes 619 et 620 dans ServiceController.php apres l'integration de la new clio dans la MV";
+                $DA="Decommenter les lignes 669 et 570 dans ServiceController.php apres l'integration de la new clio dans la MV";
+                $tDA="Decommenter les lignes 619 et 620 dans ServiceController.php apres l'integration de la new clio dans la MV";
               
-                $DA=fgets($Res,8);
-                $tDA=fgets($Res,7);
+                //$DA=fgets($Res,8);
+                //$tDA=fgets($Res,7);
                 $FDim=fgets($Res,7);
                 $R2=fgets($Res,8);         
                
