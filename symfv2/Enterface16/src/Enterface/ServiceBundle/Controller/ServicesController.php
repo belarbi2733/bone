@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 
+
+
 class ServicesController extends Controller {
 
     /* add by el adoui*/
