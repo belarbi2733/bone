@@ -1,0 +1,112 @@
+{% extends '::base.html.twig' %} 
+{% block body %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../app_dev.php#services">eNTERFACE'16</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Article link</a>
+                    </li>
+                    <li>
+                        <a href="#">Help</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><br>Keratoconus Detection
+                    <small>Bitmap images</small>
+                </h1>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-8 col-xs-8">
+              <h3>Application Description</h3>
+              <p>
+              This application focuses on developing artificial intelligence tool to diagnose Keratoconus.
+This tool can help manufactures in improving their devices to assist experts and improves the Keratoconus recognition phase either automatically or by expert. Our Artificial intelligence algorithm finds Keratoconus by employing features of topographical map of eye.
+
+              </p>
+              <ul>
+                  <li>Upload the prior image of the cornea</li>
+                  <li>Upload the posterior image of the cornea</li>
+                  <li>Upload the axes of the cornea image</li>
+                  <li>Get the Keratoconus detection</li>
+              </ul>
+          </div>
+            <br><br>
+          <form method="post" action="{{ url('enterface_service_keratotreatment') }}" enctype="multipart/form-data">
+            <div class="col-sm-12 col-xs-6"> 
+              <div class="col-sm-4 col-xs-6">
+                  <h3>Prior image</h3><br>
+          
+                <input type="file" name="antrior" class="btn btn-info"/>
+            </div>
+                <div class="col-sm-4 col-xs-6"><br>
+                <h3>Posterior image</h3>
+               
+                <input type="file" name="posterior" class="btn btn-info"/>
+            </div>
+                <div class="col-sm-4 col-xs-6"><br>
+                <h3>image Axes</h3>
+     
+                <input type="file" name="axes" class="btn btn-info"/>
+             
+            </div><br>
+                  
+            <center>
+               
+                <input type="submit" value="Get the Kerato Results " class="btn btn-success">
+            </center>
+            </div>
+             
+          </form>
+
+
+        </div>
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Authors : </p>
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="{{asset('design/js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{asset('design/js/bootstrap.min.js') }}"></script>
+{% endblock %}

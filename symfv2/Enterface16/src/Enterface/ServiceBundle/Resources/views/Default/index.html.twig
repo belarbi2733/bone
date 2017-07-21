@@ -1,0 +1,976 @@
+{% extends '::base.html.twig' %} 
+{% block body %}
+    {% block stylesheets %}
+        {#  <link href="{{asset('design/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">#}
+        <link href="{{asset('design/css/SnippedNavBar.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('design/css/Accueil.css')}}" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://dl.dropboxusercontent.com/u/86701580/mypersonalcdn/renda/renda-icon-font.css">
+
+        <!-- pricing css -->
+        <link href="{{asset('design/css/radiobutton.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('design/pricing/css/style.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('design/css/jquery-confirm.css')}}" rel="stylesheet" type="text/css"/>
+
+    {% endblock %}
+
+    {% block javascripts %}
+        <!-- pricing JS -->
+        <script src="{{asset('design/js/Backstretch.js') }}"></script>
+        <script src="{{asset('design/js/MOVACP.js') }}"></script>
+        <script src="{{asset('design/js/radiobutton.js') }}"></script>
+    
+        <script src="{{asset('design/js/jquery-confirm.js') }}"></script>
+    {% endblock %}
+    <div id="divHomeTitle" class="ecranFond parallax height-ecran-fond">
+        <div class="container-fluid background-opacity" >
+            <div class="row home-title">          
+                <div class="col-xs-12 col-md-12 col-lg-12 v-h-center">
+                    <img src="{{asset('design/img/Medical/MOVACP.gif') }}" alt="" class="img-accueil-logo"/>
+                </div>
+            </div>
+            <div class="row home-info-text home-text-size">
+                <div class="col-md-3"></div>
+                <div class="col-xs-12 col-md-6 col-lg-6">
+                    <p> Medical Bone Process (MBP) is the leading application for bone diagnosis. We offer efficient and robust computer-aided diagnosis (CAD) for scoliosis 
+                        and osteoporosis diseases in a safe and comfortable local or cloud environment. 
+                        Within MBP, the health of your patients is our main priority, 
+                        and we make sure to meet all your needs<div id="divNextText" onclick="AfficherTexte('divTextHidden')">...</div>
+                    <br>
+                    <div id="divTextHidden">
+                        Our aim is to provide efficient bone diagnosis related to scoliosis and osteoporosis diseases. To achieve that, we propose cloud-based softwares of computer-aided diagnosis (CAD) for the above-mentioned diseases. 
+                        Our softwares offer efficient and less harmful solutions since they are adapted with all medical image modalities: radiographs, 
+                        3D scans and MR images. We provide also a cloud-based toolbox of several medical imaging algorithms that are mainly used by doctors, 
+                        rheumatologists and radiologists.                   
+                    </div>
+                    </p>
+                </div>
+                <div class="col-md-3"></div>                  
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 button-try">
+                    <button onClick="scrollToblock('divServices');" type="button" class="btn btn-default btn-round-lg btn-lg">Try it For Free</button>
+                </div>
+                <div class="col-md-4"></div>               
+            </div>          
+        </div>
+        <div id="divAboutUs" class="container-fluid aboutus-container height-aboutus">
+            <div class="row aboutus-pannel">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 aboutus-title">
+                    <p>About us</p>
+                </div>
+            </div> 
+            <div class="row aboutus-text aboutus-text-size">
+                <div class="col-lg-2 col-sm-2 aboutus-pictures">
+                    <img src="{{asset('design/img/Medical/humanbody.jpg') }}" alt="" class="aboutus-img-size"/>
+                </div>
+                <div class="col-lg-10 col-sm-10">
+                    <p><u>Our mission:</u><br><br>
+                        Our mission is to raise awareness of the importance of early diagnostic detection in bones pathologies such as scoliosis and osteoporosis. 
+                        Medical Bone Process is an online solution for doctors, researchers and experts in assessing bones conditions for bones pathologies risk. 
+                        We provide an easy solution so that doctors, specialists and researchers can easily analyse medical bones pathologies over time.
+                        <br><br><u>Benefits:</u><br><br>
+                        Medical Bone Process is the leading cloud solution to monitor, track and understand the bones health.
+                        With Medical Bone <br><br><u>Process you:</u><br><br>
+
+                        have efficient software of computer-aided diagnosis of scoliosis and osteoporosis pathologies.
+                        have a bones health solution that is easy-to-use, cheap and always available
+                        become more knowledgeable about bones conditions
+                        are able to inform the patient, in time and properly
+                        have a cloud-base toolbox that offer several medical imaging algorithms, mainly used by doctors, rheumatologists and radiologists.
+
+                        <br><br><u>For who?</u><br><br>
+                        Our applications is suitable for doctors, specialists, researchers.
+                        In the future, we will offer personalized tips based on the patient diagnostic profile and allow you to print medical reports.
+                        <br><br><u>How does it work?</u><br><br>
+                        Medical Bone Process offers a unique and scientifically proven technology to detect early and potential signs of bones pathologies. Several algorithms have been developed and are actually tested for clinical validation with hospitals.
+                        The application is not a diagnostic device and does not replace a visit to the doctor. However, it offers for the specialist complementary and pertinent information about the 3D bone shape, density and microarchitecture.
+                        Today there are still millions of people suffering from different bone pathologies, without adequate treatments or due to bad diagnostics. At Medical Bone Process, we focus on this problem.
+                        As a healthcare startup, we take on some of the world’s biggest healthcare challenges.
+                        Help people do more, feel better, live longer.</p>
+                </div>                
+            </div> 
+        </div> 
+
+        <div id="divProducts" class="container-fluid products-container">
+            <div class="row">
+                <div class="col-lg-12 text-center title-products">
+                    <p>Products</p>
+                </div>
+            </div>
+            <div class="row text-products product-list">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
+                    <div class="products-panel">
+                        <header class="text-center products-header">
+                            <h1>CLEO</h1>
+                            <a onClick="infoProduitCLEO('close');">
+                                <img src="{{asset('design/img/Medical/info-bulle.ico') }}" alt="" data-toggle="tooltip" title="Click here to get more informations about the CLEO product!" class="info-products-img-size"/>      
+                            </a>
+                        </header>    
+                        <div class="products-description">
+                            <ul>
+                                <li>
+                                    Robust analysis of bones from 2D radiographs or 3D scans
+                                </li>
+                                <li>
+                                    Several parameters of bone density and microarchitecture
+                                </li>
+                                <li>
+                                    Reconstruction of the 3D bone density and microarchitecture from 2D radiographs
+                                </li>
+                                <li>
+                                    Efficient bone diagnosis related to osteoporosis diseases.
+                                </li>
+                            </ul>
+                        </div>
+                        <footer class="text-center">
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+                                <div>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-warning btn-lg button-products" role="button">Try for free</a>
+                                </div>
+                                <div>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-warning btn-lg button-products" role="button">Buy</a>  
+                                </div>
+                            {%else%}
+                                <div>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-warning btn-lg button-products" role="button">Try for free</a>
+                                </div>
+                                <div>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-warning btn-lg button-products" role="button">Buy</a>  
+                                </div>                              
+                            {%endif%}  
+                        </footer>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <div class="products-panel">
+                        <header class="text-center products-header">
+                            <h1>CLES</h1>
+                            <a onClick="infoProduitCLES('close');">
+                                <img src="{{asset('design/img/Medical/info-bulle.ico') }}" data-toggle="tooltip" title="Click here to get more informations about the CLES product!" alt="" class="info-products-img-size"/>   
+                            </a>
+                        </header>  
+                        <div class="products-description">
+                            <ul>
+                                <li>
+                                    Three-dimensional spine reconstruction from 2D radiographs
+                                </li>
+                                <li>
+                                    Fully automatic vertebra detection, segmentation and angular measurement from X-Ray images
+                                </li>
+                                <li>
+                                    3D vertebra detection and segmentation from MR images
+                                </li>                                                          
+                            </ul>
+                        </div>
+                        <footer class="text-center">
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+                                <div>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-warning btn-lg button-products" role="button">Try for free</a>
+                                </div>
+                                <div>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-warning btn-lg button-products" role="button">Buy</a>  
+                                </div>
+                            {%else%}
+                                <div>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-warning btn-lg button-products" role="button">Try for free</a>
+                                </div>
+                                <div>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-warning btn-lg button-products" role="button">Buy</a>  
+                                </div>                              
+                            {%endif%}  
+                        </footer>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                    <div class="products-panel">
+                        <header class="text-center products-header">
+                            <h1>MEDBOX</h1>
+                            <a onClick="infoProduitMEDBOX('close');">
+                                <img src="{{asset('design/img/Medical/info-bulle.ico') }}" alt="" data-toggle="tooltip" title="Click here to get more informations about the MEDBOX product!"  class="info-products-img-size"/>  
+                            </a>
+                        </header>  
+                        <div class="products-description">
+                            <ul >
+                                <li>
+                                    Set of cloud-based medical imaging algorithms
+                                </li>
+                                <li>
+                                    Mainly used by doctors, rheumatologists and radiologists
+                                </li>
+                                <li>
+                                    Examples : image registration, image denoising, image filtering, 3D visualization, etc.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <footer class="text-center">
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+                                <div>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-warning btn-lg button-products" role="button">Try for free</a>
+                                </div>
+                                <div>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-warning btn-lg button-products" role="button">Buy</a>  
+                                </div>
+                            {%else%}
+                                <div>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-warning btn-lg button-products" role="button">Try for free</a>
+                                </div>
+                                <div>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-warning btn-lg button-products" role="button">Buy</a>  
+                                </div>                              
+                            {%endif%}                      
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divServices" class="container-fluid back-color-pricing services-container height-services">
+            <div class="row ourServices-title ourService-text-size">
+                <div class="col-xs-4 col-sm-12 col-md-12  col-lg-12">
+                    <p>Services & Applications</p>
+                </div>
+            </div>
+            <div class="row margin-top">
+                <div class="col-xs-4 col-sm-12  col-md-12  col-lg-12 categorie">
+                    <div class="buying-selling-group" id="buying-selling-group" data-toggle="buttons">                       
+                        <li>
+                            <label class="btn btn-default buying-selling" onClick="displayBasic()">
+                                <input class="margin-left-basic" type="radio" name="options" id="rdBasic" autocomplete="off">
+                                <span class="radio-dot"></span>
+                                <span class="buying-selling-word">Basic</span>
+                            </label>
+                        </li>                            
+                        <li>
+                            <label class="btn btn-default buying-selling" onClick="displayAdvanced()">
+                                <input type="radio" name="options" id="rdAdvanced" autocomplete="off">
+                                <span class="radio-dot"></span>
+                                <span class="buying-selling-word">Advanced</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="btn btn-default buying-selling" onClick="displayPersonalized()">
+                                <input class="margin-left-Personalized" type="radio" name="options" id="rdPersonalized" autocomplete="off" >
+                                <span class="radio-dot"></span>
+                                <span class="buying-selling-word">Personalized</span>
+                            </label>
+                        </li>
+                        </ul>                          
+                    </div>
+                </div>
+            </div>  
+            <!-- Basic -->
+            <div id="divPriceBasic" class="row v-h-center margin-top">
+                <div class="col-xs-12 col-md-3 col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="basic-color">
+                            <h3 class="panel-title">
+                                Basic</h3>
+                        </div>
+                        <div class="panel-body product-title">
+                            <header>
+                                <P>CLEO<br/> CAD FOR OSTEOPOROSIS</P>
+                                
+                                    <img src="{{asset('design/img/Medical/scanner.jpg') }}" height="123"/>
+                                   <div align="left">
+                                    <ul class="list-group">
+                                        <a class="list-group-item">3D Bone Mineral Density (BMD) analysis</a>
+                                        <a class="list-group-item">3D trabecular bone analysis</a>  
+                                    </ul>
+                                     
+                                </div>
+                                <h1>
+                                    {% if basicCleoPrice == 0%}Free{%else%}{{basicCleoPrice}}{%endif%}€<span class="subscript">/unit</span></h1>
+                            </header> <!-- .cd-pricing-header -->
+                            <br>
+                            <footer class="panel-footer">                           
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+                                    <a href="{{ path('enterface_service_cleo') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a>
+                                {%else%}
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Buy</a>
+                                {%endif%}  
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-3 col-lg-3">                  
+                    <div class="panel panel-primary">
+                        <div class="basic-color">
+                            <h3 class="panel-title">
+                                Basic</h3>
+                        </div>
+                        <div class="panel-body product-title">
+                            <header>
+                                <P>CLES<br/>CAD FOR SCOLIOSIS</P>
+                                     
+                                <img src="{{asset('design/img/Medical/pad.jpg') }}"  height="123" width="185" >
+                                  
+                           
+                               
+                                
+                               
+                                <div align="left">
+                                    <ul class="list-group">
+                                        <a class="list-group-item">Vertebra detection in MR images & Mobility</a>
+                                        <a class="list-group-item">Spine curve detection in MR images & Mobility</a>  
+                                    </ul>
+                                </div>
+                                <h1>
+                                    {{basicClesPrice}}€<span class="subscript">/unit</span></h1>
+                            </header> <!-- .cd-pricing-header -->
+                            <br>
+                            <footer class="panel-footer">                           
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+                                    <a href="{{ path('enterface_service_cles') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a>
+                                {%else%}
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Buy</a>
+                                {%endif%}  
+                            </footer>
+                            <!-- .cd-pricing-footer -->
+                        </div>
+                    </div>                       
+                </div>
+                <div class="col-xs-12 col-md-3 col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="basic-color">
+                            <h3 class="panel-title">
+                                Basic</h3>
+                        </div>
+                        <div class="panel-body product-title">
+
+                            <header>
+                                <P>MEDICAL ALGORITHMS<br/>TOOLBOX</P>
+                              
+                                    <img src="{{asset('design/img/Medical/MOVACP2.png') }}" height="123" width="190"/>
+                                     <div align="left">
+                                    <ul class="list-group">
+                                        
+                                        <a class="list-group-item"> Toolbox 1</a>
+                                        <a class="list-group-item"> Toolbox 2</a>  
+                                       
+                                        
+                                        
+                                    </ul>
+                                
+                                </div>
+                                <h1>
+                                    {% if basicMedBoxPrice == 0%}Free{%else%}{{basicMedBoxPrice}}{%endif%}€<span class="subscript">/unit</span></h1>
+                            </header> <!-- .cd-pricing-header -->
+                            <br>
+                            <footer class="panel-footer">                           
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+                                    <a href="{{ path ('enterface_service_toolbox')}}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a>
+                                {%else%}
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Buy</a>
+                                {%endif%}  
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+                            
+                    <div class="col-xs-12 col-md-3 col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="basic-color">
+                            <h3 class="panel-title">
+                                Basic</h3>
+                        </div>
+                        <div class="panel-body product-title">
+
+                            <header>
+                                <P>MEDICAL IMAGE VIEWER (DICOM)</P>
+                               
+                                    <img src="{{asset('design/img/Medical/DicomIcon.jpg') }}"  alt="" height="123" width="140" alt=""/>
+                                 <div align="left">
+                                    <ul class="list-group">
+                                        <a class="list-group-item">Dicom viewer</a>
+                                        <a class="list-group-item">STL 3D volume viewer</a>  
+                  
+                                        
+                                    </ul>
+                                </div>
+                                <h1>
+                                    {% if basicMedBoxPrice == 0%}Free{%else%}{{basicMedBoxPrice}}{%endif%}€<span class="subscript">/unit</span></h1>
+                            </header> <!-- .cd-pricing-header -->
+                            <br>
+                            <footer class="panel-footer">                           
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+                                    <a href="{{ path('enterface_service_dicomviewer') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a>
+                                {%else%}
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Buy</a>
+                                {%endif%}  
+                            </footer>
+                        </div>
+                    </div>
+                </div>      
+                            
+            </div>
+            <!-- Advanced -->
+            <div id="divPriceAdvanced" class="row v-h-center margin-top">
+                <div class="col-xs-12 col-md-3 col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="advanced-color">
+                            <h3 class="panel-title">
+                                Advanced</h3>
+                        </div>
+                        <div class="panel-body product-title">
+                            <header>
+                                <P>CLEO<br/>CAD FOR OSTEOPOROSIS</P>
+                                
+                                    <img src="{{asset('design/img/Medical/scanner.jpg') }}" height="123"/>
+                                <div align="left">
+                                    <ul class="list-group">
+                                        <a class="list-group-item">3D Bone Mineral Density (BMD) analysis</a>
+                                        <a class="list-group-item">3D trabecular bone analysis</a>  
+                                        <a class="list-group-item">3D cortical bone analysis</a> 
+                                    </ul>
+                                </div>
+                                <h1>
+                                    {% if advancedCleoPrice == 0%}Free{%else%}{{advancedCleoPrice}}{%endif%}€<span class="subscript">/unit</span></h1>
+                            </header> <!-- .cd-pricing-header -->
+                            <br>
+                            <footer class="panel-footer">                           
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+                                    <a href="{{ path('enterface_service_cleo') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a>
+                                {%else%}
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Buy</a>
+                                {%endif%}  
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-3 col-lg-3">                  
+                    <div class="panel panel-primary">
+                        <div class="advanced-color">
+                            <h3 class="panel-title">
+                                Advanced</h3>
+                        </div>
+                        <div class="panel-body product-title">
+                            <header>
+                                <P>CLES<br/>CAD FOR SCOLIOSIS</P>
+                                  <img src="{{asset('design/img/Medical/pad.jpg') }}"  height="123" width="185" >
+                                  
+                                <div align="left">
+                                    <ul class="list-group">
+                                        <a class="list-group-item">Vertebra detection in MR images & Mobility </a>
+                                        <a class="list-group-item">Spine curve detection in MR images & Mobility</a>  
+                                        <a class="list-group-item">Web-parametrized and precise detection & Mobility</a> 
+                                        
+                                    </ul>
+                                </div>
+                                <h1>
+                                    {{advancedClesPrice}}€<span class="subscript">/unit</span></h1>
+                            </header> <!-- .cd-pricing-header -->
+                            <br>
+                            <footer class="panel-footer">                           
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+                                    <a href="{{ path('enterface_service_cles') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a>
+                                {%else%}
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Buy</a>
+                                {%endif%}  
+                            </footer>
+                        </div>
+                    </div>                       
+                </div>
+                <div class="col-xs-12 col-md-3 col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="advanced-color">
+                            <h3 class="panel-title">
+                                Advanced</h3>
+                        </div>
+                        <div class="panel-body product-title">
+                            <header>
+                                <P>MEDICAL ALGORITHMS<br/>TOOLBOX</P>
+                                
+                                    <img src="{{asset('design/img/Medical/MOVACP2.png') }}" height="123" width="190" alt="" />
+                                
+                                   <div align="left">
+                                    <ul class="list-group">
+                                        
+                                         <a class="list-group-item"> Toolbox 1</a>
+                                         <a class="list-group-item"> Toolbox 2</a> 
+                                         <a class="list-group-item"> Toolbox 3</a> 
+                                        
+                                        
+                                    </ul>
+                                </div>
+                                <h1>
+                                    {% if advancedMedBoxPrice == 0%}Free{%else%}{{advancedMedBoxPrice}}{%endif%}<span class="subscript">/unit</span></h1>
+                            </header> <!-- .cd-pricing-header -->
+                            <br>
+                            <footer class="panel-footer">                           
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+                                    <a href="{{ path('enterface_service_cardiotracking') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a>
+                                {%else%}
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Buy</a>
+                                {%endif%}  
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+                
+                            
+                    <div class="col-xs-12 col-md-3 col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="advanced-color">
+                            <h3 class="panel-title">
+                                Advanced</h3>
+                        </div>
+                        <div class="panel-body product-title">
+                            <header>
+                                <P>3D MEDICAL IMAGE VIEWER (STL)</P>
+                                
+                                    <img src="{{asset('design/img/Medical/DicomIcon.jpg') }}" alt="" height="123" width="140" alt=""/>
+                               
+                                <div align="left">
+                                    <ul class="list-group">
+                                        <a class="list-group-item">Stl viewer</a>
+                                        <a class="list-group-item">STL 3D volume viewer</a>  
+                                        <a class="list-group-item">DICOM treatment</a> 
+                                        
+                                    </ul>
+                                </div>
+                                <h1>
+                                    {% if advancedMedBoxPrice == 0%}Free{%else%}{{advancedMedBoxPrice}}{%endif%}<span class="subscript">/unit</span></h1>
+                            </header> <!-- .cd-pricing-header -->
+                            <br>
+                            <footer class="panel-footer">                           
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+                                    <a href="{{ path('enterface_service_StlViewer') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a>
+                                {%else%}
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Buy</a>
+                                {%endif%}  
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Personalized -->
+            <div id="divPricePersonalized" class="row v-h-center margin-top">
+                <div class="col-xs-12 col-md-3 col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="personalized-color">
+                            <h3 class="panel-title">
+                                Personalized</h3>
+                        </div>
+                        <div class="panel-body product-title">
+                            <header>
+                                <P>CLEO<br/>CAD FOR OSTEOPOROSIS</P>
+                               <img src="{{asset('design/img/Medical/scanner.jpg') }}" height="123"/>
+                                <div align="left">
+                                    
+                                 <ul class="list-group">
+                                        <a class="list-group-item"><input type="checkbox" name ="BMDPer[]" value="BMDAnalysis"> 3D Bone Mineral Density (BMD) analysis</a>
+                                        <a class="list-group-item"><input type="checkbox" name ="BMDPer[]" value="Trabecular"> 3D trabecular bone analysis</a>  
+                                        <a class="list-group-item"><input type="checkbox" name ="BMDPer[]" value="Cortical"> 3D cortical bone analysis</a> 
+                                        <a class="list-group-item"><input type="checkbox" name ="BMDPer[]" value="Region"> Region-based analysis of 3D bone</a> 
+                                        <a class="list-group-item"><input type="checkbox" name ="BMDPer[]" value="VisuAndRecon"> 3D visualization & reconstruction</a> 
+                                        <a class="list-group-item"><input type="checkbox" name ="BMDPer[]" value="ProgressionReport"> Progression report</a>
+                                    </ul>
+                                </div>
+                                <h1>
+                                    {% if personalizedCleoPrice == 0%}Free{%else%}{{personalizedCleoPrice}}{%endif%}€<span class="subscript">/unit</span></h1>
+                            </header> <!-- .cd-pricing-header -->
+                            <br>
+                            <footer class="panel-footer">                           
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+                                    <a href="{{ path('enterface_service_cleo') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a>
+                                {%else%}
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Buy</a>
+                                {%endif%}  
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-3 col-lg-3">                  
+                    <div class="panel panel-primary">
+                        <div class="personalized-color">
+                            <h3 class="panel-title">
+                                Personalized</h3>
+                        </div>
+                        <div class="panel-body product-title">
+                            <header>
+                                <P>CLES<br/>CAD FOR SCOLIOSIS</P>
+                               
+                                      <img src="{{asset('design/img/Medical/pad.jpg') }}"  height="123" width="185" >                           
+                                     
+                                         <div align="left">      
+                                    <ul class="list-group">
+                                        
+                                        <a class="list-group-item"><input type="checkbox" name ="VertebraPer1" value="Vdetection"> Vertebra detection & Mobility</a>
+                                        <a class="list-group-item"><input type="checkbox" name ="VertebraPer2" value="Cdetection"> Spine curve detection & Mobility</a>  
+                                        <a class="list-group-item"><input type="checkbox" name ="VertebraPer3" value="Vsegmentation"> Vertebra segmentation & Mobility</a> 
+                                        <a class="list-group-item"><input type="checkbox" name ="VertebraPer4" value="Interpretation"> Results analysis & interpretation</a> 
+                                        <a class="list-group-item"><input type="checkbox" name ="VertebraPer5" value="visualisation"> 3D analysis & visualization</a> 
+                                        <a class="list-group-item"><input type="checkbox" name ="VertebraPer6" value="precisedetection"> Web-parametrized and precise detection</a>
+                                        
+                                    </ul>
+                                </div>
+                                <h1>
+                                    {% if PersonalizedClesPrice == 0%}Free{%else%}{{PersonalizedClesPrice}}{%endif%}€<span class="subscript">/unit</span></h1>
+                            </header> <!-- .cd-pricing-header -->
+                            <br>
+                            <footer class="panel-footer">                           
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+                                    <a href="{{ path('enterface_service_cles') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a>
+                                {%else%}
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Buy</a>
+                                {%endif%}  
+                            </footer>
+                        </div>
+                    </div>                       
+                </div>
+                <div class="col-xs-12 col-md-3 col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="personalized-color">
+                            <h3 class="panel-title">
+                                Personalized</h3>
+                        </div>
+                        <div class="panel-body product-title">
+
+                            <header>
+                                <P>MEDICAL ALGORITHMS<br/>TOOLBOX</P>
+                                
+                                    <img src="{{asset('design/img/Medical/MOVACP2.png') }}" height="123" width="190"/>
+                                    <div align="left">
+                                    <ul class="list-group">
+                                        
+                                        <a class="list-group-item"><input type="checkbox" name ="Toolbox1" value="Toolbox1"> Toolbox 1</a>
+                                        <a class="list-group-item"><input type="checkbox" name ="Toolbox2" value="Toolbox2"> Toolbox 2</a> 
+                                        <a class="list-group-item"><input type="checkbox" name ="Toolbox3" value="Toolbox3"> Toolbox 3</a> 
+                                        <a class="list-group-item"><input type="checkbox" name ="Toolbox4" value="Toolbox4"> Toolbox 4</a>                                        
+                                        <a class="list-group-item"><input type="checkbox" name ="Toolbox5" value="Toolbox5"> Toolbox 5</a> 
+                                        <a class="list-group-item"><input type="checkbox" name ="Toolbox6" value="Toolbox6"> Toolbox 6</a> 
+                                    </ul>
+                                </div>
+                               
+                                <h1>
+                                    {% if PersonalizedMedBoxPrice == 0%}Free{%else%}{{PersonalizedMedBoxPrice}}{%endif%}<span class="subscript">/unit</span></h1>
+                            </header> <!-- .cd-pricing-header -->
+                            <br>
+                            <footer class="panel-footer">                           
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+                                    <a href="{{ path('enterface_service_cardiotracking') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a>
+                                {%else%}
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Buy</a>
+                                {%endif%}  
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+                            
+                            
+                       <div class="col-xs-12 col-md-3 col-lg-3">
+                    <div class="panel panel-primary">
+                        <div class="personalized-color">
+                            <h3 class="panel-title">
+                                Personalized</h3>
+                        </div>
+                        <div class="panel-body product-title">
+
+                            <header>
+                                <P>3D MEDICAL IMAGE VIEWER (Tiff)</P>
+                                
+                                    <img src="{{asset('design/img/Medical/DicomIcon.jpg') }}" height="123" width="140" alt="" />
+                                
+                                <div align="left">
+                                    <ul class="list-group">
+                     
+                                        <a class="list-group-item"><input type="checkbox" name ="Dicom1" value="Dicom1"> Dicom viewer</a>
+                                        <a class="list-group-item"><input type="checkbox" name ="STL1" value="STL1"> STL 3D volume viewer</a> 
+                                        <a class="list-group-item"><input type="checkbox" name ="DICOM2" value="DICOM2"> DICOM treatment 1</a> 
+                                        <a class="list-group-item"><input type="checkbox" name ="DICOM3" value="DICOM3"> DICOM treatment 2</a>                                        
+                                        <a class="list-group-item"><input type="checkbox" name ="DICOM4" value="DICOM4"> DICOM treatment 3</a> 
+                                        <a class="list-group-item"><input type="checkbox" name ="DICOM5" value="DICOM5"> DICOM treatment 4</a> 
+                                    </ul>
+                                
+                                
+                                </div>
+                                <h1>
+                                    {% if PersonalizedMedBoxPrice == 0%}Free{%else%}{{PersonalizedMedBoxPrice}}{%endif%}<span class="subscript">/unit</span></h1>
+                            </header> <!-- .cd-pricing-header -->
+                            <br>
+                            <footer class="panel-footer">                           
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
+                                    <a href="{{ path('enterface_service_TiffViewer') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a>
+                                {%else%}
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Buy</a>
+                                {%endif%}  
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divPublications" class="container-fluid publications-container">
+            <div class="row" >
+                <div class="col-lg-12 title-products v-h-center">
+                    <p>Publications</p>
+                </div>
+            </div>
+            <div class="row product-list publications-text"  >
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <ol>
+                        <li>
+                            S. A. Mahmoudi, M. Ammar, G. Luque Joris, A. Abbou, "Real Time GPU-Based Segmentation and Tracking of the Left Ventricle on 2D Echocardiography ", in 4th International Conference on Bioinformatics and Biomedical Engineering, IWBBIO’16, 978-3-319-31744-1, 2016
+                        </li>
+                        <li>
+                            S. A. Mahmoudi et al."Sensor-based Framework for Automatic Cough Detection and Classification" in ICT Innovations, 7, 2015, 2015
+                        </li>
+                        <li>
+                            M. A. Larhmam, S. A. Mahmoudi et al., "A Portable Multi-CPU/Multi-GPU based Vertebra Localization in Sagittal MR Images", International Conference on Image Analysis and Recognition, Portugal, 2014.
+                        </li>
+                        <li>
+                            M. A. Larhmam, M. Benjelloun, S. Mahmoudi, "Towards a computer aided diagnosis for spine metastasis detection in MRI" in International Journal of Computer Assisted Radiology and Surgery, 9(2014), Suppl 1, S239, 2014
+                        </li>
+                        <li>
+                            F. Lecron, J. Boisvert, S. Mahmoudi, H. Labelle, M. Benjelloun, "Three-Dimensional Spine Model Reconstruction Using One-Class SVM Regularization" in IEEE Transactions on Biomedical Engineering, 60, 11, 3256-3264. 2013
+                        </li>
+                        <li>
+                            M.A. Larhmam, M. Benjellou, S. Mahmoudi, "Vertebra identification using template matching model and K-means clustering" in International Journal of Computer Assisted Radiology and Surgery, 8, 1, pp. 1-11, 2013
+                        </li>
+                        <li>
+                            M. A. Larhmam, M. Benjelloun, S. Mahmoudi, "A model-based approach for cervical spine mobility analysis" in Computer Assisted Radiology and Surgery : 27th international congress and exhibition, Vol. 8(1), 2013
+                        </li>
+                        <li>
+                            S. A. Mahmoudi, F. Lecron, P. Manneback, M. Benjelloun,S. Mahmoudi, "Efficient Exploitation of Heterogeneous Platforms for Vertebra Detection in X-Ray Images" in "Biomedical Engineering International Conference" , Tlemcen, Algeria, 2012
+                        </li>
+                        <li>
+                            F. Lecron, M. Benjelloun, S. Mahmoudi, “Cervical spine mobility analysis on radiographs: A fully automatic approach”, Computerized Medical Imaging and Graphics, 36 (8), pp. 634-642. 2012
+                        </li>
+                        <li>
+                            F. Lecron, J. Boivert, S. Mahmoudi, H. Labelle, M. Benjelloun. ”Fast 3D spine reconstruction of postoperative patients using a multilevel statistical model”, International Conference on Medical Image Computing and Computer-Assisted Intervention, MICCAI, vol. 15, issue 2, pp. 446-453. 2012.
+                        </li>
+                        <li>
+                            F. Lecron, J. Boisvert, M. Benjelloun, H. Labelle, S. Mahmoudi, "Multilevel statistical shape models: A new framework for modeling hierarchical structures" in "IEEE International Symposium on Biomedical Imaging" , pp. 1284-1287, Barcelona, Spain, 2012
+                        </li>
+                        <li>
+                            M. Benjelloun, S. Mahmoudi, M. A. Larhmam, "Template Matching Approaches Applied to Vertebra Detection" in "Advances in Image Segmentation" , InTech, 978-953-51-0817-7, 2012
+                        </li>
+                        <li>
+                            M. A. Larhmam, S. Mahmoudi, M. Benjelloun, "Semi-Automatic Detection of Cervical Vertebrae in X-ray Images Using Generalized Hough Transform" in "3rd International Conference on Image Processing Theory, Tools and Applications.IPTA’12" , 1, 396-401, Istanbul, Tuekey, 2012
+                        </li>
+                        <li>
+                            F. Lecron, M. Benjelloun, S. Mahmoudi, "Fully automatic vertebra detection in x-ray images based on multi-class SVM" in "SPIE Medical Imaging: Image Processing" , 8314, San Diego, USA, 2012
+                        </li>
+                        <li>
+                            F. Lecron, S. A. Mahmoudi, M. Benjelloun, S. Mahmoudi, P. Manneback, "Heterogeneous Computing for Vertebra Detection and Segmentation in X-Ray Images" in International Journal of Biomedical Imaging, Vol. 2011, 2011
+                        </li>
+                        <li>
+                            F. Lecron, M. Benjelloun, S. Mahmoudi, "Vertebra segmentation for the computer-aided cervical mobility evaluation on radiographs" in International Journal of Computer Assisted Radiology and Surgery, 06, S1, S46-S52, 2011
+                        </li>
+                        <li>
+                            S. Mahmoudi, M. Benjelloun, F. Lecron Fabian, "Medical image retrieval applied to computer aided diagnosis" in International Journal of Computer Assisted Radiology and Surgery, 06, S1, S67-S73, 2011
+                        </li>
+                        <li>
+                            M. Benjelloun, S. Mahmoudi, F. Lecron, "A Framework of Vertebra Segmentation Using the Active Shape Model-Based Approach" in International Journal of Biomedical Imaging, ID 621905, 2011
+                        </li>
+                        <li>
+                            S. A. Mahmoudi, F. Lecron, P. Manneback, M. Benjelloun, S. Mahmoudi, "GPU-Based Segmentation of Cervical Vertebra in X-Ray Images",  in IEEE International Conference on Cluster Computing, Crete, Greece, 2010.
+                        </li>
+                        <li>
+                            F. Lecron, M. Benjelloun, S. Mahmoudi, "Points of Interest Detection in Cervical Spine Radiographs by Polygonal Approximation" in International conference on image processing theory, tools and applications" , 81-86, Paris, France, 2010
+                        </li>
+                        <li>
+                            M. Benjelloun, S. Mahmoudi, F. Lecron, "A New Semi-Automatic Approach for X-Ray Cervical Images Segmentation Using Active Shape Model" in International Conference on Bio-inspired Systems and Signal Processing" , 501-506, Valence, Spain, 2010
+                        </li>               
+                    </ol>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+        </div>  
+        <div id="divNews" class="container-fluid" style="background-color:white">
+            <div class="row">
+                <div class="col-md-12 info-news" >
+                    <p id="taTitleNews">Latest News</p>
+                </div>
+            </div>
+            <div class="row news-margin">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-6 news-padding">
+                            <div class="container-fluid">
+                                <div class="row news">
+                                    <div class="col-lg-6 news-title">
+                                        <P> Coming soon : Participation in the international Enterface Workshop that will take place in Porto (Portugal) for 3rd to 28 July.</P>
+                                       
+                                        <a href="http://artes.ucp.pt/enterface17">Enterface 17</a>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <img src="{{asset('design/img/Medical/Cloud.png') }}" alt="" class="img-float-left image-news"/>
+                                    </div> 
+                                </div> 
+                                <div class="row">
+                                    <div class="col-lg-12 news-text">
+                                        <p>Nowadays, images and videos have been present everywhere, they can come directly from camera, mobile devices or from other peoples that share their images and videos. The latter are used to present and illustrate different objects in a large number of situations (public areas, airports, hospitals, football games, etc.). This makes from image and video processing algorithms a very important tool used for various domains related to computer vision such as video surveillance, human behavior understanding, medical imaging and database (images and videos) indexation methods. The goal of this project is develop an extension of our cloud platform (MOVACP) developed in the previous edition of eNTERFACE’16 workshop. The latter integrated several image and video processing applications. The users of this platform can use these methods without having to download, install and configure the corresponding software. Each user can select the required application, load its data and retrieve results, with an environment similar to desktop. Within eNTERFAC’17 workshop, we would like to improve and develop four main tools for our platform: 1. Integration of the major image and video processing algorithms that could be used by guests to perform their own applications. 2. Integration of machine learning methods (used for images and videos indexation) that exploit the uploaded data of users (is they accept of course) in order to improve the results precision. 3. Fast treatment of data acquired from IOT systems. 4. Development of an online 3D viewer that could be used for the visualization of 3D reconstructed medical images. 4. Fast treatment of data acquired from distant IoT systems.</p>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+
+                        <div class="col-lg-6 news-padding">
+                            <div class="container-fluid">
+                                <div class="row news">
+                                    <div class="col-lg-6">
+                                        <img src="{{asset('design/img/Medical/News_Movacp.jpg') }}" alt="" class="img-float-left image-news"/>
+                                    </div> 
+                                    <div class="col-lg-6 news-title">
+                                        <p>Participation in the international Enterface’16 Workshop. 18th July to 12th August 2016.</p>
+                                        <a href="http://hmi.ewi.utwente.nl/enterface16/index.php/projects">Enterface 16</a>
+                                    </div>
+                                </div>  
+                                <div class="row">
+                                    <div class="col-lg-12 news-text">
+                                        <p>Actually, images and videos have been present everywhere, they can come directly from camera, mobile devices or from other peoples that share their images and videos. The latter are used to present and illustrate different objects in a large number of situations (public areas, airports, hospitals, football games, etc.). This makes from image and video processing algorithms a very important tool used for various domains related to computer vision such as video surveillance, human behavior understanding, medical imaging and database (images and videos) indexation methods. The goal of this project is to develop a cloud application that integrate the mentioned methods using similar image and video processing (OpenCV, OpenGL, ITK, VTK, etc.). The application takes into account the variety of OS and languages (Java, C++, Python, etc.). Experimentations will be conducted using different situations such as real time event detection and localization in crowd videos, motion tracking, medical image segmentation, 3D image reconstruction from 2D radiographs, 3D analysis of bones, etc.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id = "divTeam" class="container-fluid back-color-pricing team-container height-team" >
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 team-title">
+                    Meet The Team
+                </div>
+            </div>
+            <div class="row" class="team-top-border">
+                <div class="col-sm-3 col-md-3 col-lg-3  text-center team-bottom">
+                    <img class="img-circle img-responsive team-image" src="{{asset('design/team/sidi.jpg') }}" alt="" >      
+                    <br/>
+                    <h3>Dr Ir Sidi MAHMOUDI</h3>
+                    <a href="https://www.linkedin.com/in/sidi-ahmed-mahmoudi-95324534/" title="Click here to view the Linkedin account of Sidi Mahmoudi"><i class="fa fa-lg fa-linkedin"></i></a>
+                        {#<p>What does this team member to? Keep it short! This is also a great spot for social links!</p>#}
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3 text-center team-bottom team-bottom">
+                    <img class="img-circle img-responsive team-image" src="{{asset('design/team/fabian.jpg') }}" alt="" >
+                    <br/>
+                    <h3>Dr Ir Fabian LECRON</h3>    
+                    <a href="https://www.linkedin.com/in/fabian-lecron-44015158/" title="Click here to view the Linkedin account of Fabian Lecron"><i class="fa fa-lg fa-linkedin"></i></a>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3 text-center team-bottom">              
+                    <img class="img-circle img-responsive team-image2" src="{{asset('design/team/eladoui.jpg') }}" alt="">
+                    <br/>
+                    <h3>Ir Mohammed EL ADOUI</h3>     
+                    <a href="https://www.linkedin.com/in/mohammed-el-adoui-6582b9ba/" title="Click here to view the Linkedin account of Mohammed El Adoui"><i class="fa fa-lg fa-linkedin"></i></a>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3 text-center team-bottom">
+                    <img class="img-circle img-responsive team-image2" src="{{asset('design/team/belarbi.jpg') }}" alt="">
+                    <br/>
+                    <h3>Ir Mohammed Amin BELARBI</h3>   
+                    <a href="https://www.linkedin.com/in/mohammed-amin-belarbi-7000/" title="Click here to view the Linkedin account of Amin Belarbi"><i class="fa fa-lg fa-linkedin"></i></a>
+                </div>          
+            </div>
+        </div>
+        <div id="divContact" class="container-fluid contact-container" >
+            <form action="{{ path('enterface_contact_sendMail') }}" method="post">
+                <div class="row">
+                    <div class="col-md-12">
+                        <P id="titleContact">CONTACT US</P>
+                        <P id="textContact">We’re here for you when you need us! Call us to schedule an appointment, or send us<br/><br/>an email and we’ll get back to you as soon as possible.</P>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-xs-12 col-lg-6 contact-message">
+                        <div id="divContactMessage">                   
+                        </div>
+                    </div>
+                </div>     
+                <div class="row contact-row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3">
+                        <input type="text" id="txtName" name="txtName" class="input-contact" placeholder="Name" required="required"/>      
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" id="txtEmail" name="txtEmail" class="input-contact" placeholder="Email" required="required"/>                                 
+                    </div>
+                    <div class="col-md-3"></div>              
+                </div>
+                <div class="row contact-row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <input type="text" id="txtSubject" name="txtSubject" class="input-contact" placeholder="Subject" required="required"/>      
+                    </div>
+                    <div class="col-md-3"></div>              
+                </div>
+                <div class="row contact-row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <input type="text" id="txtPhone" name="txtPhone" class="input-contact" placeholder="Phone" />      
+                    </div>
+                    <div class="col-md-3"></div>              
+                </div>
+                <div class="row contact-row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <input type="text" id="txtAddress" name="txtAddress" class="input-contact" placeholder="Address"/>
+                        <input type="hidden" id="txtAddress2" name="txtAddress2"/>
+                    </div>
+                    <div class="col-md-3"></div>              
+                </div>
+                <div class="row contact-row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <textarea id="CommentContact" name="CommentContact" placeholder="Message" required="required"></textarea>   
+                    </div>
+                    <div class="col-md-3"></div>              
+                </div>
+                <div class="row contact-row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <input type="submit" onclick="checkInputRequiredField('formContact')" id="btnSendMailToContact" class="btn btn-primary btn-lg" name="btnSendMailToContact" value="Send" />
+                    </div>
+                    <div class="col-md-3"></div>              
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type = 'text/javascript'>
+
+        InitDisplayServicesBasic();
+        setBackgroundDefil("divHomeTitle");
+        scrollTo("lnkHome", "divHomeTitle");
+        scrollTo("lnkAboutUS", "divAboutUs");
+        scrollTo("lnkProducts", "divProducts");
+        scrollTo("lnkServices", "divServices");
+        scrollTo("lnkPublications", "divPublications");
+        scrollTo("lnkNews", "divNews");
+        scrollTo("lnkTeam", "divTeam");
+        scrollTo("lnkBlog", "divHomeTitle");
+        scrollTo("lnkFAQ", "divHomeTitle");
+        scrollTo("lnkContact", "divContact");
+        cacherTexte("divTextHidden");
+        setMessageMailSuccessful({{mail}}, "divContact");
+
+
+    </script>
+{% endblock %}

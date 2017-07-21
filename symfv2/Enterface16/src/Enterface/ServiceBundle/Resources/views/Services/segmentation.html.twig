@@ -1,0 +1,144 @@
+{% extends '::base_login.html.twig' %} 
+{% block body %}
+<script>
+     function fct() {
+     var a=document.getElementById('edge').value;
+     var b=document.getElementById('kernel').value;
+     var c=document.getElementById('low').value;
+     if(a=="-")
+        a=65;
+      if(b=="-")
+        b=7;
+      if(c=="-")
+        c=29;
+     //alert(a);
+     //alert(b);
+     //alert(c);
+     $.ajax({  
+                url:"{{path('enterface_service_vertebrachange')}}",  
+                method:"POST",  
+                data:{edge:a, kernel:b, low:c},  
+                dataType:"text",  
+                success:function(data)  
+                {  
+                     //alert(data);  
+                     $('#doss').html(data);
+                       
+                }  
+           })
+      //alert("ok");
+      }  
+</script>
+    
+        
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><br>Vertebra Segementation
+                    <small>MRI images</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+
+        <div class="row">
+          <div class="col-sm-8 col-xs-8">
+              <h3>Application Description</h3>
+              <p>
+                A web based framework for spine curve extraction and vertebra segmentation in T1-weighted MR images. This method is a fast parametrized algorithm based on three
+steps:
+              </p>
+
+              <ul>
+                  <li>Image enhancing</li>
+                  <li>Clustering</li>
+                  <li>Shape recognition techniques.</li>
+              </ul>
+          </div>
+           {% if works %}
+            <div class="col-sm-8 col-xs-8">
+       
+                <h3>Input file : </h3>  
+   
+                <img style="width:250px; height:460px;" class="img-responsive portfolio-item" src="/downloadresult/1.jpg?rnd={{ random() }}" alt="">
+            </div>
+
+           
+          <div class="col-sm-12 col-xs-12">
+          <center>
+                 <br>
+         
+          <FONT color="blue" size="5">Results :</FONT>
+          <a href="{{ path('enterface_service_saveResults', { 'name': 'Scoliosis' }) }}" class="btn btn-primary btn-lg"  role="button">Save your Results on MBP Server</a><br>
+
+          </center>
+              <div id="doss">
+           <div class="col-sm-4 col-xs-8">
+               <h3> <br>Vertebrae Detection : </h3><br>
+              <img style="width:250px; height:460px;" class="img-responsive portfolio-item" src="/vertebraimage/65/7/29/MRI_vertebrae_Curve.jpg?rnd={{ random() }}" alt=""><br>
+              <a href="/vertebraimage/65/7/29/MRI_vertebrae_Curve.jpg?rnd={{ random() }}" download="MRI_vertebrae_Detection" class="btn btn-primary btn-lg active" role="button">Download this result</a>
+           </div>
+           
+         
+           <div class="col-sm-4 col-xs-8">
+              <h3><br>Vertebrae Curve : </h3><br>
+              <img style="width:250px; height:460px;" class="img-responsive portfolio-item" src="/vertebraimage/65/7/29/MRI_vertebrae.jpg?rnd={{ random() }}" alt=""><br>
+           <a href="/vertebraimage/65/7/29/MRI_vertebrae.jpg?rnd={{ random() }}" download="MRI_vertebrae_Curve" class="btn btn-primary btn-lg active" role="button">Download this result</a>
+           </div>
+          
+           <div class="col-sm-4 col-xs-8">
+              <h3><br>Vertebrae Segmentation : </h3><br>
+           <img style="width:250px; height:460px;"class="img-responsive portfolio-item" src="/vertebraimage/65/7/29/MRI_segmented_vertebrae.jpg?rnd={{ random() }}" alt=""><br>
+           <a href="/vertebraimage/65/7/29/MRI_segmented_vertebrae.jpg?rnd={{ random() }}" download="MRI_segmented_vertebrae.jpg" class="btn btn-primary btn-lg active" role="button">Download this result</a>
+           </div>
+          
+              </div>
+              <section id="mydiv">
+                 <div class="col-sm-4 col-xs-8">  <h4>Edge Threshold</h4>
+                 <select id="edge" name="edge" onchange="return fct();"  class="btn btn-success">  
+                   <option value="-">Choose your threshold</option>
+                   <option value="50">50</option>
+                   <option value="55">55</option>
+                   <option value="60">60</option>
+                   <option value="65">65</option>
+                   <option value="70">70</option>
+                 </select></div>
+           <div class="col-sm-4 col-xs-8">
+                <h4>Kernel Threshold</h4>
+                <select id="kernel" name="kernel" onchange="return fct();"  class="btn btn-success">   
+                   <option value="-">Choose your threshold</option>
+                   <option value="5">5</option>
+                   <option value="6">6</option>
+                   <option value="7">7</option>
+                   <option value="8">8</option>
+                   <option value="9">9</option>
+                </select>
+           </div>
+           <div class="col-sm-4 col-xs-8">
+                  <h4>Low Threshold</h4>
+                <select id="low" name="low" onchange="return fct();"  class="btn btn-success">   
+                   <option value="-">Choose your threshold</option>
+                   <option value="25">25</option>
+                   <option value="27">27</option>
+                   <option value="29">29</option>
+                   <option value="31">31</option>
+                   <option value="33">33</option>
+                </select>
+                        </div>
+              </section>
+          </div>
+           
+          {%endif%}
+        </div>
+        <hr>
+
+    </div>
+      <script src="{{asset('design/js/jquery.js')}}"></script>
+
+{%endblock body%}

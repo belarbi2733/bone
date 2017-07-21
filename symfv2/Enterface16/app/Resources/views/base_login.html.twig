@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>{% block title %}Medical Bone Process{% endblock %}</title>
+        <!-- Bootstrap Core CSS -->
+        <link href="{{asset('design/vendor/bootstrap3.3.7/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{asset('design/css/base.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('design/css/session.css')}}" rel="stylesheet" type="text/css"/>
+        <!-- Custom Fonts -->
+    {% block stylesheets %}{% endblock %}
+
+</head>
+<body>
+     <!-- jQuery -->
+    <script src="{{asset('design/vendor/jquery/Jquery-3.2.0.min.js')}}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{asset('design/vendor/bootstrap3.3.7/js/bootstrap.min.js')}}"></script>
+
+{% block javascripts %}{% endblock %}
+
+{% block header %}
+    <header>
+        <div>
+            <div class="container-fluid navbar-accueil" id="divNavbarAccueil">
+                <div class="row vertical-middle">                   
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-12 vertical-middle">                               
+                        <nav>
+                            <ul class="nav navbar-nav">    
+                                <li> <img src="{{asset('design/img/Medical/MOVACP.gif')}}"  class="img-accueil-header"/></li>
+                                <li><a href="{{ path('enterface_service_homepage')}}" id="lnkHome">Home</a></li>
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <li>
+                                        <a href="{{ path('fos_user_security_logout') }}"> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }} </a>
+                                    </li>
+                                    <li>
+                                {% else %}  
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </header>
+{% endblock header %}
+{% block body %}{% endblock%}
+
+{% block footer %}
+    
+    <footer class="footer vertical-middle">
+        <div>
+            <P>©2017 BY MEDICAL BONE PROCESS</P>
+        </div> 
+    </footer>
+{% endblock footer %}
+</body>
+</html>
+

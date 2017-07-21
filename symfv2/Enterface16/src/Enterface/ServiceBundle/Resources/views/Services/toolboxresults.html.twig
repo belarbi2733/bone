@@ -1,0 +1,174 @@
+{% extends '::base_login.html.twig' %} 
+{% block body %}
+
+<script>
+     function fct1() {
+     var a=document.getElementById('p1').value;
+     var b=document.getElementById('algo').value;
+     $.ajax({  
+                url:"{{path('enterface_service_algotreatment2')}}",  
+                method:"POST",  
+                data:{aa:a, bb:b},  
+                dataType:"text",  
+                success:function(data)  
+                {  
+                   
+                     document.getElementById('doss').scrollIntoView();
+                     $('html, body').animate({scrollTop: $("#doss").offset().top}, 'slow');
+                     $('#doss').html(data);
+                       
+                }  
+           })
+     		
+     }
+     function fct2() {
+     var a=document.getElementById('p2').value;
+     var b=document.getElementById('algo').value;
+     $.ajax({  
+                url:"{{path('enterface_service_algotreatment2')}}",  
+                method:"POST",  
+                data:{aa:a, bb:b},  
+                dataType:"text",  
+                success:function(data)  
+                {  
+                   
+                     document.getElementById('doss').scrollIntoView();
+                     $('html, body').animate({scrollTop: $("#doss").offset().top}, 'slow');
+                     $('#doss').html(data);
+                       
+                }  
+           })
+        
+     }
+     function fct3() {
+     var a=document.getElementById('p3').value;
+     var b=document.getElementById('algo').value;
+     $.ajax({  
+                url:"{{path('enterface_service_algotreatment2')}}",  
+                method:"POST",  
+                data:{aa:a, bb:b},  
+                dataType:"text",  
+                success:function(data)  
+                {  
+                   
+                     document.getElementById('doss').scrollIntoView();
+                     $('html, body').animate({scrollTop: $("#doss").offset().top}, 'slow');
+                     $('#doss').html(data);
+                       
+                }  
+           })
+        
+     }
+     function fct4() {
+     var a=document.getElementById('p4').value;
+     var b=document.getElementById('algo').value;
+     $.ajax({  
+                url:"{{path('enterface_service_algotreatment2')}}",  
+                method:"POST",  
+                data:{aa:a, bb:b},  
+                dataType:"text",  
+                success:function(data)  
+                {  
+                   
+                     document.getElementById('doss').scrollIntoView();
+                     $('html, body').animate({scrollTop: $("#doss").offset().top}, 'slow');
+                     $('#doss').html(data);
+                       
+                }  
+           })
+        
+     }
+</script> 
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><br>ToolBox Media Process 
+                    <small>Multimedia Processing Algorithms</small>
+                </h1>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-8 col-xs-8">
+              <h3>Application Description</h3>
+              <p>
+Left ventricle segmentation and tracking in ultrasound images present necessary tasks for cardiac diagnostic. In this work, we propose an accurate and automatic method for left ventricle segmentation and tracking. The method is based on optical ow estimation for detecting the left ventricle center. Then, the contour is defined and tracked using convex hull and spline interpolation algorithms. Our experiments are conducted using a set of 11 normal and 17 disease hearts ultrasound video sequences. The related results achieved automatic and real-time left ventricle detection and tracking with a rate of 92 % of success.
+              </p>
+              <ul>
+                  <li>Choose your Algorithm</li>
+                  <li>Upload your File</li>
+                  <li>Get The results</li>
+              </ul>
+          </div>
+          {% if type ==2 %}
+            <div class="col-sm-8 col-xs-12 col-lg-6 col-md-6">
+               <h3>Parameters:</h3>
+                <form id="imageform" action="#" method="post" enctype="multipart/form-data">
+                Size (1 to 31): <input type="range" class="bar" name="in1" id="in" value="15" step="2" min="1" max="31" onclick="return fct1();" onchange="getvalor(this.value);" oninput="param1.value =in1.value"/>
+                 <center><input type="text" size="1" name="param1" id="p1" value="15"></input></center>
+                </form>
+            </div>
+          {% endif %}
+          {% if type ==3 %}
+            <div class="col-sm-8 col-xs-12 col-lg-6 col-md-6">
+               <h3>Parameters:</h3>
+                <form id="imageform" action="#" method="post" enctype="multipart/form-data">
+                Size (1 to 250): <input type="range" class="bar" name="in1" id="in" value="140" step="1" min="1" max="250" onclick="return fct2();" onchange="getvalor(this.value);" oninput="param1.value =in1.value"/>
+                 <center><input type="text" size="2" name="param1" id="p2" value="140"></input></center>
+                </form>
+            </div>
+          {% endif %}
+          {% if type ==4 %}
+            <div class="col-sm-8 col-xs-12 col-lg-6 col-md-6">
+               <h3>Parameters:</h3>
+                <form id="imageform" action="#" method="post" enctype="multipart/form-data">
+                Size (1 to 100): <input type="range" class="bar" name="in1" id="in" value="100" step="1" min="1" max="100" onclick="return fct3();" onchange="getvalor(this.value);" oninput="param1.value =in1.value"/>
+                 <center><input type="text" size="2" name="param1" id="p3" value="100"></input></center>
+                </form>
+            </div>
+          {% endif %}
+          {% if type ==5 %}
+            <div class="col-sm-8 col-xs-12 col-lg-6 col-md-6">
+               <h3>Parameters:</h3>
+                <form id="imageform" action="#" method="post" enctype="multipart/form-data">
+                Size (1 to 100): <input type="range" class="bar" name="in1" id="in" value="5" step="1" min="1" max="30" onclick="return fct4();" onchange="getvalor(this.value);" oninput="param1.value =in1.value"/>
+                 <center><input type="text" size="1" name="param1" id="p4" value="5"></input></center>
+                </form>
+            </div>
+          {% endif %}
+         <div class="col-sm-8 col-xs-16">
+            <h3>Result of the Algorithm {{ algo}}: </h3>
+           <input type="hidden" name="cache" id="algo" value="{{ algo }}" >         
+  <div class="col-sm-6 col-xs-8">
+  <h3> Input File : </h3>
+  <img style="width:460px; height:460px; -webkit-border-radius:5px;" class="img-responsive portfolio-item" src="{{ path('enterface_download_result', { 'file' : 'test.jpg'}) }}?rnd={{ random() }}" >  
+  <br>
+  <center><a href="{{ path('enterface_download_result', { 'file' : 'test.jpg'}) }}?rnd={{ random() }}" class="btn btn-primary btn-lg active" role="button" download="test.jpg">Download The Image</a></center>
+  </div>    
+  <div class="col-sm-6 col-xs-8" id="doss">
+  <h3> Output File : </h3>
+  <img style="width:460px; height:460px; -webkit-border-radius:5px;" class="img-responsive portfolio-item" src="{{ path('enterface_download_result', { 'file' : 'algo_resultat.jpg'}) }}?rnd={{ random() }}" >  
+  <br>
+  <center><a href="{{ path('enterface_download_result', { 'file' : 'algo_resultat.jpg'}) }}?rnd={{ random() }}" class="btn btn-primary btn-lg active" role="button" download="algo_resultat.jpg">Download The Image</a></center>
+  <br>
+  </div>       
+    <br>
+    <br>
+<center><a href="{{ path('enterface_service_saveResults', { 'name': 'Toolbox' }) }}" class="btn btn-primary btn-lg"  role="button">Save your Results on MBP Server</a></center>
+
+</div>
+  
+          
+        </div>
+        <hr>
+    </div>
+     <script src="{{asset('design/js/jquery.js')}}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{asset('design/js/bootstrap.min.js')}}"></script>
+    
+{%endblock body%}

@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: null
+    database_name: enterfacedb
+    database_user: root
+    database_password: null
+    mailer_transport: gmail
+    mailer_host: null
+    mailer_user: medicalboneprocess@gmail.com
+    mailer_password: enterface
+    locale: en
+    secret: 12abe814f67ee3f63a9ad79ec4c7af59

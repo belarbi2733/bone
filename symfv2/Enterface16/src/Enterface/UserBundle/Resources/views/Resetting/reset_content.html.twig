@@ -1,0 +1,20 @@
+<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">     
+    <table class="table table-responsive" align="center" >
+          <tr>
+            <td><font color="black" size="4">New Password :</font></td>
+            <td><font color="black" size="4"> {{ form_widget(form.new.first) }}</font></td>
+        </tr>
+          <tr>
+            <td> <font color="black" size="4">Repeat new password :</font></td>
+            <td> <font color="black" size="4">{{ form_widget(form.new.second) }} </font></td>
+        </tr>
+
+            <td></td>
+            <td><br><input type="submit" class="btn btn-primary btn-lg" value="{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}" /><td>
+        </tr>
+    
+    </table>
+    <div>
+        {{ form_row(form._token) }}
+    </div>
+</form>

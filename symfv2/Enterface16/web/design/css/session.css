@@ -1,0 +1,123 @@
+.register-margin{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right:10px;
+}
+
+.register-margin input[type=text] 
+{
+    width: 100%;
+    height:70%
+}
+
+.register-button{
+  display:flex; 
+  justify-content:flex-end;
+  margin-top: 2%;
+}
+
+
+.layout-Session{
+    font-family:corbel;
+    height:58%
+}
+
+.center-h-v{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.center-left{
+    display:flex;
+    align-items:center;
+    padding-left:25px;
+}
+
+
+@media screen and (max-width:400px) {
+    .login-height{
+       height: 1100px;
+    }
+}
+
+@media screen and (min-width:400px) {
+    .login-height{
+       height: 900px;
+    }
+}
+
+.login-logo{
+    width:200px;
+    height:100px;
+}
+
+.button_login{
+    width:100px;  
+    border:1px solid #427b89 ; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:14px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+    background-color: #2C7FA3; background-image: -webkit-gradient(linear, left top, left bottom, from(#2C7FA3), to(#76bdd1));
+    background-image: -webkit-linear-gradient(top, #2C7FA3, #76bdd1);
+    background-image: -moz-linear-gradient(top, #2C7FA3, #76bdd1);
+    background-image: -ms-linear-gradient(top, #2C7FA3, #76bdd1);
+    background-image: -o-linear-gradient(top, #2C7FA3, #76bdd1);
+    background-image: linear-gradient(to bottom, #2C7FA3, #76bdd1);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#2C7FA3, endColorstr=#76bdd1);
+}
+
+.button_login:hover{
+    border:1px solid #164053;
+    background-color: #21607b; background-image: -webkit-gradient(linear, left top, left bottom, from(#21607b), to(#0F5D85));
+    background-image: -webkit-linear-gradient(top, #21607b, #0F5D85);
+    background-image: -moz-linear-gradient(top, #21607b, #0F5D85);
+    background-image: -ms-linear-gradient(top, #21607b, #0F5D85);
+    background-image: -o-linear-gradient(top, #21607b, #0F5D85);
+    background-image: linear-gradient(to bottom, #21607b, #0F5D85);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#21607b, endColorstr=#0F5D85);
+}
+
+.login{
+    padding-top: 50px;
+
+}
+
+.login-background{
+    background : url(../img/Medical/Computer-background.jpg) no-repeat center center fixed; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-repeat:no-repeat;
+    height:100%;
+    width:100%;
+}
+
+.border{
+    border:1px solid red;
+}
+
+.login-window{
+    background-image: linear-gradient(#ddf0f1,#59a5b8);  
+    border-radius:15px;
+    padding:20px;
+    border:1px solid #30C4DB;
+}
+
+@media screen and (max-width:640px) {
+    .login-width{
+        width:260px;
+    }
+
+}
+
+@media screen and (min-width:640px) {
+    .login-width{
+        width:500px;
+    }
+
+}
+.text-pwd-register a:link{
+    color:#003333;
+    font-weight: bold;
+}
+
+.text-pwd-register a:hover{
+    color:#009999;
+    font-weight: bold;
+}

@@ -1,0 +1,3 @@
+#!/bin/bash
+echo n'oubliez pas de mettre un fichier .cpp dans ce répertoire avant d'exécuter
+sudo docker run -it --rm -v /home/students/docker/builder-fedora24/:/home builder-fedora24:0.1

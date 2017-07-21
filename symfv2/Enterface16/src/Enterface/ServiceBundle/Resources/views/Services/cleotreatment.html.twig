@@ -1,0 +1,208 @@
+{% extends '::base_login.html.twig' %} 
+{% block body %}
+     
+    
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><br>Bone analysis :
+                    <small>DICOM scanner</small>
+                </h1>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12 col-xs-12 col-lg-12 col-md-12">
+              <h3>Application Description</h3>
+              <p>
+                An Extracting and calculating different density and microarchitecture metrics (bone mineral density (BMD), volume fraction, trabecular thickness, trabecular separation, etc). The BMD
+value was calculated within a Phatom that we know in advance its density values (of several points within the
+Phantom). A calibration is applied in order to estimate the density of each point within the 3D volume. As
+result, we obtained a value representing the bone mineral density of the whole 3D volume.
+              </p>
+              
+             
+              <center><font color="blue"><h2> Results: </h2></font></center>
+          </div>
+        {% if works %}  
+           
+    <div class="col-sm-4 col-xs-4 col-lg-4 col-md-4">
+        
+        <font color="green"><h3>Input Values</h3></font>
+    <table class="table table-striped table-inverse">
+        <tr>
+            <td>Bone ADU</td>
+            <td>{{BADU}}</td>
+        </tr>
+          <tr>
+            <td>Mean BMD</td>
+            <td>{{MBMD}}</td>
+        </tr>
+          <tr>
+            <td>SD</td>
+            <td>{{SD}}</td>
+        </tr>
+        </table>
+  <a href="{{ path('enterface_download_result', { 'file' : 'Input_values.txt'}) }}" class="btn btn-success" download="Input_values.txt" role="button">Download Inputs values File</a><br>
+        
+  <h3>Phantom values</h3>
+<table class="table table-striped table-inverse">
+   
+<tr>
+<td> HU </td>
+<td> HA </td>
+</tr>
+<tr>
+<td>{{HU1}} </td>
+<td>{{HA1}} </td>
+</tr>
+<tr>
+<td>{{HU2}} </td>
+<td>{{HA2}} </td>
+</tr>
+<tr>
+<td>{{HU3}} </td>
+<td>{{HA3}} </td>
+</tr>
+<tr>
+<td>{{HU4}} </td>
+<td>{{HA4}} </td>
+</tr>
+<tr>
+<td>{{HU5}} </td>
+<td>{{HA5}} </td>
+</tr>
+<tr>
+<td>{{HU6}} </td>
+<td>{{HA6}} </td>
+</tr>
+</table>
+<a href="{{ path('enterface_download_result', { 'file' : 'Phantom1.txt'}) }}" class="btn btn-success" download="Phantom1.txt" role="button">Download your phantom file</a><br>
+<br>
+<a href="{{ path('enterface_download_result', { 'file' : 'Microarchitecture.tif'}) }}" class="btn btn-success" download="Microarchitecture.tif" role="button">Download your 3D microarchitecture volume</a><br>
+</div>
+<div class="col-sm-6 col-xs-6 col-lg-4 col-md-4">
+    <font color="green"><h3>Density (BMD) results</h3></font>
+ <font color="blue">Volume Fraction</font>
+<table class="table table-striped table-inverse">
+<tr>
+<td> Bone Volume </td>
+<td>{{BVolum}} </td>
+</tr>
+<tr>
+<td> Total Volume </td>
+<td>{{TVolum}} </td>
+</tr>
+<tr>
+ 
+<td> Volume Fraction </td>
+<td>{{VFraction}} </td>
+</tr>
+</table>
+<font color="blue">Density values</font>
+<table class="table table-striped table-inverse">
+<tr>
+<td> BMC </td>
+<td>{{BMC}} </td>
+</tr>
+<tr>
+<td> BMD </td>
+<td>{{BMD}} </td>
+</tr>
+<tr>
+<td> T-Score </td>
+<td>{{TScor}} </td>
+</tr>
+</table>
+<font color="blue">Fractal Dimension</font>
+<table class="table table-striped table-inverse">
+<tr>
+<td> Fractal Dim </td>
+<td>{{FDim}} </td>
+</tr>
+<tr>
+<td> R2 </td>
+<td>{{R2}} </td>
+</tr>
+</table>
+</div>
+           
+<div class="col-sm-6 col-xs-6 col-lg-4 col-md-4">   
+    <font color="green"><h3>Microarchitecture results</h3></font>
+<font color="blue">Connectiviy</font>
+<table class="table table-striped table-inverse">
+<tr>
+<td> Connectivity </td>
+<td>{{Conn}} </td>
+</tr>
+<tr>
+<td> Trabecular. N </td>
+<td>{{TN}} </td>
+</tr>
+</table>
+<font color="blue">Trabecular Thickness</font>
+<table class="table table-striped table-inverse">
+<tr>
+<td> Trabecular. Th Mean </td>
+<td>{{TthM}} </td>
+</tr>
+<tr>
+<td> Trabecular. Th Std Dev </td>
+<td>{{TthDev}} </td>
+</tr>
+<tr>
+<td> Trabecular. Th Max </td>
+<td>{{TthMax}}</td>
+</tr>
+</table>
+<font color="blue">Trabecular separation</font>
+<table class="table table-striped table-inverse">
+<tr>
+<td> Trabecular. Sp Mean </td>
+<td>{{TspM}} </td>
+</tr>
+<tr>
+<td> Trabecular. Sp Std Dev </td>
+<td>{{TspDev}} </td>
+</tr>
+<tr>
+<td> Trabecular. Sp Max </td>
+<td>{{TspMax}} </td>
+</tr>
+</table>
+
+<font color="blue">Anisotropy</font>
+<table class="table table-striped table-inverse">
+<tr>
+<td> DA : </td>
+<td>{{DA}} </td>
+</tr>
+<tr>
+<td> tDA: </td>
+<td>{{tDA}} </td>
+</tr>
+
+</table>
+
+            <center>
+            
+<a href="{{ path('enterface_download_result', { 'file' : 'Results.txt'}) }}" class="btn btn-success" download="Results.txt" role="button">Download your Measures</a><br>
+<br>
+<a href="{{ path('enterface_service_saveResults', { 'name': 'Osteoporosis' }) }}" class="btn btn-success"  role="button">Save your Results on MBP Server</a><br>
+     </center>
+</div>
+{%endif%}
+        </div>
+        <hr>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="{{asset('design/js/jquery.js')}}"></script>
+
+{% endblock %}
