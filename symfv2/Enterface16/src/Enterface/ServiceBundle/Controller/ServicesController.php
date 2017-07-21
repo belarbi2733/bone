@@ -461,6 +461,9 @@ public function TiffViewerAction() {
        
         exec("sudo docker_vertebrae_adv $outputdir",$output); 
         
+        
+        
+        
         //Payement
         $credit=$user->getCredit();
         $credit=$credit-2;
