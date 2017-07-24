@@ -60,7 +60,6 @@ public function algotreatment1Action()
         $entree_fichier = $target_dir ."/test.jpg";
         $typealgo=1;
         $myfile = fopen($target_dir ."/filtre.txt", "w");
-        
         if($_POST["algo"]=="SIFT")
         {
             $target_file = $target_dir ."/sift.jpg";
@@ -154,7 +153,38 @@ public function algotreatment1Action()
             $a=1; 
         }
         shell_exec("cp $target_file $entree_fichier");
-        exec("sudo /usr/local/bin/docker_algo $target_dir");
+        if($_POST["mode"]=="CPU")
+        {
+            exec("sudo /usr/local/bin/docker_algo $target_dir");
+        }
+        else
+        {
+            //shell_exec(" scp -i ~/.ssh/gpu $target_file amine@10.138.0.4:/home/amine/results/");
+            $methods = array(
+            'kex' => 'diffie-hellman-group1-sha1',
+            'hostkey' => 'ssh-dss',
+            'client_to_server' => array(
+            'crypt' => '3des-cbc',
+            'mac' => 'hmac-md5',
+            'comp' => 'none'),
+            'server_to_client' => array(
+            'crypt' => '3des-cbc',
+            'mac' => 'hmac-md5',
+            'comp' => 'none'));
+            $connection = ssh2_connect('10.138.0.4', 22, $methods);
+            if (ssh2_auth_pubkey_file($connection, 'amine','~/.ssh/gpu-dsa.pub','~/.ssh/gpu-dsa'))
+            {
+                  echo "Identification réussie en utilisant une clé publique\n";
+                  ssh2_scp_send($connection, $target_file, '/home/amine/results/canny.jpg');
+                  die('sa marche');
+                  
+            } 
+            else 
+            {
+                die('Echec de l\'identification en utilisant une clé publique');
+            }
+            
+        }
         //return new RedirectResponse($this->container->get('router')->generate('enterface_service_showtracking'));
         return $this->render('EnterfaceServiceBundle:Services:toolboxresults.html.twig', array('works' => true,'algo'=>$algorithm,'type'=>$typealgo));
     }
