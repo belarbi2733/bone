@@ -7,6 +7,14 @@ enterface_service_homepage:
 #    defaults: { _controller: EnterfaceServiceBundle:Default:to }
 
 # add by eladoui----------------------------------------------------------------------------
+enterface_service_showCleoadv:
+    path:     /showCleoadv
+    defaults: { _controller: EnterfaceServiceBundle:Services:showCleoadv }
+    
+enterface_service_cleotreatmentadv:
+    path:     /cleotreatmentadv
+    defaults: { _controller: EnterfaceServiceBundle:Services:cleotreatmentadv }
+
 enterface_service_toolbox:
     path:     /toolbox
     defaults: { _controller: EnterfaceServiceBundle:Services:toolbox }
@@ -60,7 +68,10 @@ enterface_service_dicomviewer:
       defaults: { _controller: EnterfaceServiceBundle:Services:dicomviewer }
 
 #-------------------------------------------------------------------------------------------
-
+enterface_service_cleoadv:
+    path:     /cleoadv
+    defaults: { _controller: EnterfaceServiceBundle:Services:cleoadv }
+    
 enterface_service_cleo:
     path:     /cleo
     defaults: { _controller: EnterfaceServiceBundle:Services:cleo }

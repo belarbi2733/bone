@@ -573,7 +573,25 @@ public function TiffViewerAction() {
         return $this->render('EnterfaceServiceBundle:Services:cleo.html.twig', array());
         }
     }
-
+    /* cleo advanced input values */
+    
+    public function cleoadvAction() {
+        
+        //Get current User and Check the access
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        if($user->getCredit()<4){
+            
+            $this->get('session')->getFlashBag()->add('info', 'Please buy credits'); 
+            return $this->container->get('router')->generate('fos_user_profile_show');
+        }
+        else{
+        return $this->render('EnterfaceServiceBundle:Services:cleoadv.html.twig', array());
+        }
+    }
+    /* */
 
     
     public function cleotreatmentAction() {
@@ -663,7 +681,7 @@ public function TiffViewerAction() {
      $connection = ssh2_connect($ftp_host, 22);
      if (ssh2_auth_password($connection, $ftp_user_name, $ftp_user_pass))
      {       
-             $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\Combined-dist6.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\BMDvalues1.txt Downloads\ftp\Phantom1.txt');
+             $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\BASIC_CLEO_V5A.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\BMDvalues1.txt Downloads\ftp\Phantom1.txt');
                  stream_set_blocking($stream2, true);
                  stream_get_contents($stream2);
                  $s1=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\BMD.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
@@ -672,7 +690,7 @@ public function TiffViewerAction() {
                  $s2=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Input_values.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
                  stream_set_blocking($s2, true);
                  stream_get_contents($s2);
-                 $s3=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Results.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 $s3=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\CLEO_Results.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
                  stream_set_blocking($s3, true);
                  stream_get_contents($s3);
                  $s4=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Microarchitecture.tif C:\Users\mohamedamine_belarbi\Downloads\ftp');
@@ -691,7 +709,7 @@ public function TiffViewerAction() {
      $bmd4="$outputdir/Microarchitecture.tif";
      ftp_get($connect_it, $bmd1, "BMD.txt", FTP_BINARY);
      ftp_get($connect_it, $bmd2, "Input_values.txt", FTP_BINARY);
-     ftp_get($connect_it, $bmd3, "Results.txt", FTP_BINARY);
+     ftp_get($connect_it, $bmd3, "CLEO_Results.txt", FTP_BINARY);
      ftp_get($connect_it, $bmd4, "Microarchitecture.tif", FTP_BINARY);
      ftp_close($connect_it);
      
@@ -706,6 +724,138 @@ public function TiffViewerAction() {
      return new RedirectResponse($this->container->get('router')->generate('enterface_service_showcleo'));
     }
     
+    /* CLEO ADVANCED -------------------------------------------------------------------------  */
+    public function cleotreatmentadvAction() {
+        /*commented by El Adoui*/
+        
+        //Get current User and Check the access
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+     $ftp_user_name=$this->container->getParameter('windows_user');
+     $ftp_user_pass=$this->container->getParameter('windows_password');
+     $ftp_host=$this->container->getParameter('windows_host');
+
+     //ftp puts
+     if(!is_dir('/var/www/symfv2/Enterface16/UserResults/')){
+        mkdir('/var/www/symfv2/Enterface16/UserResults/');
+     }
+     if(!is_dir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId())){
+        mkdir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId());
+     }
+     if(!is_dir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current')){
+        mkdir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current');
+     }if(!is_dir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/Results')){
+         mkdir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/Results');
+     }
+
+     if(!is_dir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/Results/dicom')){
+         mkdir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/Results/dicom');
+     }
+     $target_dir='/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/';
+     $outputdir=$target_dir."/Results/";
+     $dicomdir=$outputdir."/dicom/";
+
+     $files = glob($target_dir.'/*'); // get all file names
+     foreach($files as $file){ // iterate files
+           if(is_file($file))
+                unlink($file); // delete file
+     }
+     $files = glob($outputdir.'/*'); // get all file names
+     foreach($files as $file){ // iterate files
+           if(is_file($file))
+                unlink($file); // delete file
+     }
+
+     $connect_it = ftp_connect( $ftp_host );
+     $login_result = ftp_login( $connect_it, $ftp_user_name, $ftp_user_pass );
+     
+     //vider le dossier
+      $connection = ssh2_connect($ftp_host, 22);
+     if (ssh2_auth_password($connection, $ftp_user_name, $ftp_user_pass))
+     {
+                 $stream2 = ssh2_exec($connection, 'cmd /C rmdir /Q /S C:\Users\mohamedamine_belarbi\Downloads\ftp\dicom');
+                 stream_set_blocking($stream2, true);
+                 stream_get_contents($stream2);
+                 $stream2 = ssh2_exec($connection, 'cmd /C mkdir C:\Users\mohamedamine_belarbi\Downloads\ftp\dicom');
+                 stream_set_blocking($stream2, true);
+                 stream_get_contents($stream2);
+     }
+     $i=0;
+     //ftp_put( $connect_it, $ser,$nom_fichier , FTP_BINARY ) ) 
+     foreach ($_FILES["fichier"]["error"] as $key => $error) 
+     {
+         if ($error == UPLOAD_ERR_OK) 
+         {
+                 $tmp_name = $_FILES["fichier"]["tmp_name"][$key];
+                 //$name = $_FILES["fichier"]["name"][$key];
+                 $name="fichier".$i++.".dcm";
+                 move_uploaded_file($tmp_name, $target_dir . "/$name");
+		 //move_uploaded_file($tmp_name, $dicomdir . "$name");
+                 $ser = "dicom/" . $name;
+                 ftp_put( $connect_it, $ser,$target_dir . "/$name", FTP_BINARY );                 
+         }  
+     }
+     
+     $nom_bmd = $_FILES['bmd']['tmp_name'];
+     $nom_phantom = $_FILES['phantom']['tmp_name'];
+     $target_bmd = $outputdir ."BMDvalues1.txt";
+     $target_phantom = $outputdir ."Phantom1.txt";
+     move_uploaded_file( $nom_bmd, $target_bmd );
+     move_uploaded_file( $nom_phantom, $target_phantom );
+     
+     ftp_put( $connect_it,"BMDvalues1.txt",$target_bmd, FTP_BINARY );
+     ftp_put( $connect_it, "Phantom1.txt",$target_phantom, FTP_BINARY );
+     
+     //ssh connect
+     $connection = ssh2_connect($ftp_host, 22);
+     if (ssh2_auth_password($connection, $ftp_user_name, $ftp_user_pass))
+     {       
+             $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\BASIC_CLEO_V5A.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\BMDvalues1.txt Downloads\ftp\Phantom1.txt');
+                 stream_set_blocking($stream2, true);
+                 stream_get_contents($stream2);
+                 $s1=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\BMD.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 stream_set_blocking($s1, true);
+                 stream_get_contents($s1);
+                 $s2=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Input_values.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 stream_set_blocking($s2, true);
+                 stream_get_contents($s2);
+                 $s3=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\CLEO_Results.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 stream_set_blocking($s3, true);
+                 stream_get_contents($s3);
+                 $s4=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Microarchitecture.tif C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 stream_set_blocking($s4, true);
+                 stream_get_contents($s4);
+     }
+     else
+     {
+         echo "error";
+     }
+    
+     // ftp get     
+     $bmd1="$outputdir/BMD.txt";
+     $bmd2="$outputdir/Input_values.txt";
+     $bmd3="$outputdir/Results.txt";
+     $bmd4="$outputdir/Microarchitecture.tif";
+     ftp_get($connect_it, $bmd1, "BMD.txt", FTP_BINARY);
+     ftp_get($connect_it, $bmd2, "Input_values.txt", FTP_BINARY);
+     ftp_get($connect_it, $bmd3, "CLEO_Results.txt", FTP_BINARY);
+     ftp_get($connect_it, $bmd4, "Microarchitecture.tif", FTP_BINARY);
+     ftp_close($connect_it);
+     
+     //exec("sudo /usr/local/bin/docker_cleo $outputdir"); 
+     //Payement
+     $credit=$user->getCredit();
+     $credit=$credit-4;
+     $user->setCredit($credit);
+     $em=$this->getDoctrine()->getManager();
+     $em->persist($user);
+     $em->flush();
+     return new RedirectResponse($this->container->get('router')->generate('enterface_service_showCleoadv'));
+    }
+    
+    /*----------------------------------------------------------------------------------------- */
     public function downloadResultAction($file){
         //Get current User and Check the access
         $user = $this->container->get('security.context')->getToken()->getUser();
@@ -737,6 +887,84 @@ public function TiffViewerAction() {
     }
     
     public function showCleoAction() {
+        //Get current User and Check the access
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        $target_dir='/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current';
+        $outputdir=$target_dir."/Results";
+
+               // Open the text file
+        	     // Input Values :
+               $bmd = fopen("$outputdir/Input_values.txt", "r");
+               $BADU= fgets($bmd);
+               $MBMD= fgets($bmd);
+               $SD=fgets($bmd);
+               fclose($bmd);
+          
+                 // Phantom Values :
+                $phan = fopen("$outputdir/Phantom1.txt", "r");
+                $HU1=fgets($phan,5);
+                $HA1=fgets($phan,8);
+                
+                $HU2=fgets($phan,7);
+                $HA2=fgets($phan,10);
+                
+                fgets($phan);
+              
+                $HU3=fgets($phan,10);
+                $HA3=fgets($phan,13);
+                
+              
+                $HU4=fgets($phan,10);
+                $HA4=fgets($phan,13);
+                
+                $HU5=fgets($phan,10);
+                $HA5=fgets($phan,14);
+                
+                $HU6=fgets($phan,10);
+                $HA6=fgets($phan,14);
+                fclose($phan);
+                
+                 //BMD2.txt
+                $bmd2=fopen("$outputdir/BMD.txt","r");
+                $BMC=fgets($bmd2);
+                $BMD=fgets($bmd2);
+                $TScor=fgets($bmd2);
+                fclose($bmd2);
+                // Results.txt
+                $Res = fopen("$outputdir/Results.txt", "r");
+                $BVolum=fgets($Res);
+                $TVolum=fgets($Res);
+                $VFraction=fgets($Res);
+                $Conn=fgets($Res);
+                $TN=fgets($Res);
+                $TthM=fgets($Res);
+                $TthDev=fgets($Res);
+                $TthMax=fgets($Res);
+                
+                $TspM=fgets($Res);
+                $TspDev=fgets($Res);
+                $TspMax=fgets($Res);       
+                $DA="Decommenter les lignes 669 et 570 dans ServiceController.php apres l'integration de la new clio dans la MV";
+                $tDA="Decommenter les lignes 619 et 620 dans ServiceController.php apres l'integration de la new clio dans la MV";
+              
+                //$DA=fgets($Res,8);
+                //$tDA=fgets($Res,7);
+                $FDim=fgets($Res);
+                $R2=fgets($Res);         
+               
+                fclose($Res);
+
+               
+    return $this->render('EnterfaceServiceBundle:Services:cleotreatment.html.twig', array('works' =>true,'BADU'=>$BADU, 'MBMD'=> $MBMD,
+    'SD'=> $SD,'HU1'=> $HU1,'HA1'=> $HA1,'HU2'=> $HU2,'HA2'=> $HA2,'HU3'=> $HU3,'HA3'=> $HA3,'HU4'=> $HU4,'HA4'=> $HA4,'HU5'=> $HU5,'HA5'=> $HA5,'HU6'=> $HU6,'HA6'=> $HA6, 'BVolum'=> $BVolum,'TVolum'=> $TVolum, 'VFraction'=>$VFraction,'BMC'=>$BMC,'BMD'=>$BMD,'TScor'=>$TScor,'FDim'=>$FDim,
+    'R2'=>$R2, 'Conn'=>$Conn,'TN'=>$TN, 'TthM'=>$TthM, 'TthDev'=>$TthDev, 'TthMax'=> $TthMax, 'TspM'=> $TspM, 'TspDev'=> $TspDev, 'TspMax'=>$TspMax,'DA'=>$DA,'tDA'=>$tDA));
+         }
+        
+   /* SHOW CLEO ADVANCED */
+       public function showCleoadvAction() {
         //Get current User and Check the access
         $user = $this->container->get('security.context')->getToken()->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
@@ -786,73 +1014,35 @@ public function TiffViewerAction() {
                 
                 fclose($bmd2);
                 
-// Results.txt
+                // Results.txt
                 
                 $Res = fopen("$outputdir/Results.txt", "r");
-                 
-                fgets($Res,50);
-                fgets($Res,50);
-                fgets($Res,150);
-                fgets($Res,5);
-                fgets($Res,3);
-                fgets($Res,5);
-              
-                $BVolum=fgets($Res,8);
-                $TVolum=fgets($Res,7);
-                $VFraction=fgets($Res,7);
+                $BVolum=fgets($Res);
+                $TVolum=fgets($Res);
+                $VFraction=fgets($Res);
+                $Conn=fgets($Res);
+                $TN=fgets($Res);
+                $TthM=fgets($Res);
+                $TthDev=fgets($Res);
+                $TthMax=fgets($Res);
                 
-              
-                
-                
-                 
-                $Conn=fgets($Res,5);
-                $TN=fgets($Res,9);
-               
-              
-              
-                $TthM=fgets($Res,7);
-                $TthDev=fgets($Res,7);
-                $TthMax=fgets($Res,7);
-                
-                $TspM=fgets($Res,7);
-                $TspDev=fgets($Res,7);
-                $TspMax=fgets($Res,7);
-               
-               
-                fgets($Res,13);
-              
-                
-                
-                /*!!!!!! 
-                 * El Adoui : la dernier version de clio contien deux valeur suppulimentaires avans fractal dim et R2 dans le fichier Results.txt, 
-               * puisque cette version de Clio n'est pas encore integré,  j'ai teste le nouveau fichier txt envoyé par sidi et la lecture est correct. merci de lire les deux valeur de cette facon :
-                $DA=fgets($Res,8);
-                $tDA=fgets($Res,7);
-                  en attendant l'integration de la nouvelle clio basic ; je laisse des étoiles 
-
-                 * !!!!!!!!!!!!                 */
-                        
+                $TspM=fgets($Res);
+                $TspDev=fgets($Res);
+                $TspMax=fgets($Res); 
                 $DA="Decommenter les lignes 669 et 570 dans ServiceController.php apres l'integration de la new clio dans la MV";
                 $tDA="Decommenter les lignes 619 et 620 dans ServiceController.php apres l'integration de la new clio dans la MV";
-              
                 //$DA=fgets($Res,8);
                 //$tDA=fgets($Res,7);
-                $FDim=fgets($Res,7);
-                $R2=fgets($Res,8);         
-               
+                $FDim=fgets($Res);
+                $R2=fgets($Res);         
                 fclose($Res);
-
-               
-    return $this->render('EnterfaceServiceBundle:Services:cleotreatment.html.twig', array('works' =>true,'BADU'=>$BADU, 'MBMD'=> $MBMD,
+                return $this->render('EnterfaceServiceBundle:Services:affichecleoadv.html.twig', array('works' =>true,'BADU'=>$BADU, 'MBMD'=> $MBMD,
     'SD'=> $SD,'HU1'=> $HU1,'HA1'=> $HA1,'HU2'=> $HU2,'HA2'=> $HA2,'HU3'=> $HU3,'HA3'=> $HA3,'HU4'=> $HU4,'HA4'=> $HA4,'HU5'=> $HU5,'HA5'=> $HA5,'HU6'=> $HU6,'HA6'=> $HA6, 'BVolum'=> $BVolum,'TVolum'=> $TVolum, 'VFraction'=>$VFraction,'BMC'=>$BMC,'BMD'=>$BMD,'TScor'=>$TScor,'FDim'=>$FDim,
     'R2'=>$R2, 'Conn'=>$Conn,'TN'=>$TN, 'TthM'=>$TthM, 'TthDev'=>$TthDev, 'TthMax'=> $TthMax, 'TspM'=> $TspM, 'TspDev'=> $TspDev, 'TspMax'=>$TspMax,'DA'=>$DA,'tDA'=>$tDA));
-   
-        
-    
-       
          }
-        
-         
+   
+   
+   /* */      
 
 
 
