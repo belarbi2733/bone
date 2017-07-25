@@ -160,24 +160,20 @@ public function algotreatment1Action()
         else
         {
             //shell_exec(" scp -i ~/.ssh/gpu $target_file amine@10.138.0.4:/home/amine/results/");
-            $methods = array(
-            'kex' => 'diffie-hellman-group1-sha1',
-            'hostkey' => 'ssh-dss',
-            'client_to_server' => array(
-            'crypt' => '3des-cbc',
-            'mac' => 'hmac-md5',
-            'comp' => 'none'),
-            'server_to_client' => array(
-            'crypt' => '3des-cbc',
-            'mac' => 'hmac-md5',
-            'comp' => 'none'));
-            $connection = ssh2_connect('10.138.0.4', 22, $methods);
-            if (ssh2_auth_pubkey_file($connection, 'amine','~/.ssh/gpu-dsa.pub','~/.ssh/gpu-dsa'))
+            $user1=$this->container->getParameter('gpu_user');
+            $pass1=$this->container->getParameter('gpu_password');
+            $host1=$this->container->getParameter('gpu_host');
+            $destination=basename($target_file);
+            $connection = ssh2_connect($host1, 22);
+            if (ssh2_auth_password($connection, $user1,$pass1))
             {
-                  echo "Identification réussie en utilisant une clé publique\n";
-                  ssh2_scp_send($connection, $target_file, '/home/amine/results/canny.jpg');
-                  die('sa marche');
-                  
+                  ssh2_scp_send($connection, $target_file, "/home/test/results/".$destination);
+                  ssh2_scp_send($connection, $target_dir ."/filtre.txt", "/home/test/results/filtre.txt");
+                  $stream = ssh2_exec($connection, 'docker_algo /home/test/results/');
+                  stream_set_blocking($stream, true);
+                  stream_get_contents($stream);
+                  ssh2_scp_recv($connection, '/home/test/results/algo_resultat.jpg', $target_dir.'/algo_resultat.jpg');
+                  exec ("rm $target_file");
             } 
             else 
             {
@@ -185,8 +181,9 @@ public function algotreatment1Action()
             }
             
         }
+        $mode=$_POST["mode"];
         //return new RedirectResponse($this->container->get('router')->generate('enterface_service_showtracking'));
-        return $this->render('EnterfaceServiceBundle:Services:toolboxresults.html.twig', array('works' => true,'algo'=>$algorithm,'type'=>$typealgo));
+        return $this->render('EnterfaceServiceBundle:Services:toolboxresults.html.twig', array('works' => true,'algo'=>$algorithm,'type'=>$typealgo,'mode'=>$mode));
     }
     public function algotreatment2Action()
     {
@@ -264,7 +261,34 @@ public function algotreatment1Action()
         }
         $algorithm=$_POST["bb"];
         shell_exec("cp  $entree_fichier $target_file");
-        exec("sudo /usr/local/bin/docker_algo $target_dir");
+        if($_POST["cc"]=="CPU")
+        {
+            exec("sudo /usr/local/bin/docker_algo $target_dir");
+        }
+        else
+        {
+            //shell_exec(" scp -i ~/.ssh/gpu $target_file amine@10.138.0.4:/home/amine/results/");
+            $user1=$this->container->getParameter('gpu_user');
+            $pass1=$this->container->getParameter('gpu_password');
+            $host1=$this->container->getParameter('gpu_host');
+            $destination=basename($target_file);
+            $connection = ssh2_connect($host1, 22);
+            if (ssh2_auth_password($connection, $user1,$pass1))
+            {
+                  ssh2_scp_send($connection, $target_file, "/home/test/results/".$destination);
+                  ssh2_scp_send($connection, $target_dir ."/filtre.txt", "/home/test/results/filtre.txt");
+                  $stream = ssh2_exec($connection, 'docker_algo /home/test/results/');
+                  stream_set_blocking($stream, true);
+                  stream_get_contents($stream);
+                  ssh2_scp_recv($connection, '/home/test/results/algo_resultat.jpg', $target_dir.'/algo_resultat.jpg');
+                  exec ("rm $target_file");
+            } 
+            else 
+            {
+                die('Echec de l\'identification en utilisant une clé publique');
+            }
+            
+        }
         //return new RedirectResponse($this->container->get('router')->generate('enterface_service_showtracking'));
         return $this->render('EnterfaceServiceBundle:Services:affichealgo.html.twig', array('works' => true));
     }
@@ -635,7 +659,7 @@ public function TiffViewerAction() {
      $ftp_user_name=$this->container->getParameter('windows_user');
      $ftp_user_pass=$this->container->getParameter('windows_password');
      $ftp_host=$this->container->getParameter('windows_host');
-
+     //$ftp_host="10.138.0.3";
      //ftp puts
      if(!is_dir('/var/www/symfv2/Enterface16/UserResults/')){
         mkdir('/var/www/symfv2/Enterface16/UserResults/');
@@ -766,7 +790,7 @@ public function TiffViewerAction() {
      $ftp_user_name=$this->container->getParameter('windows_user');
      $ftp_user_pass=$this->container->getParameter('windows_password');
      $ftp_host=$this->container->getParameter('windows_host');
-
+     //$ftp_host="10.138.0.3";
      //ftp puts
      if(!is_dir('/var/www/symfv2/Enterface16/UserResults/')){
         mkdir('/var/www/symfv2/Enterface16/UserResults/');
@@ -842,21 +866,28 @@ public function TiffViewerAction() {
      $connection = ssh2_connect($ftp_host, 22);
      if (ssh2_auth_password($connection, $ftp_user_name, $ftp_user_pass))
      {       
-             $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\BASIC_CLEO_V5A.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\BMDvalues1.txt Downloads\ftp\Phantom1.txt');
+             $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\ADVANCED_CLEO_V5.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\BMDvalues1.txt Downloads\ftp\Phantom1.txt');
                  stream_set_blocking($stream2, true);
                  stream_get_contents($stream2);
                  $s1=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\BMD.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
                  stream_set_blocking($s1, true);
                  stream_get_contents($s1);
+                 
                  $s2=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Input_values.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
                  stream_set_blocking($s2, true);
                  stream_get_contents($s2);
-                 $s3=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\CLEO_Results.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 
+                 $s3=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\CLEO_Results_Advanced.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
                  stream_set_blocking($s3, true);
                  stream_get_contents($s3);
-                 $s4=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Microarchitecture.tif C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 
+                 $s4=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\CLEO_Results2_Advanced.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
                  stream_set_blocking($s4, true);
                  stream_get_contents($s4);
+                 
+                 $s54=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\CLEO_Results3_Advanced.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 stream_set_blocking($s5, true);
+                 stream_get_contents($s5);
      }
      else
      {
@@ -866,12 +897,16 @@ public function TiffViewerAction() {
      // ftp get     
      $bmd1="$outputdir/BMD.txt";
      $bmd2="$outputdir/Input_values.txt";
-     $bmd3="$outputdir/Results.txt";
-     $bmd4="$outputdir/Microarchitecture.tif";
+     $bmd3="$outputdir/Results1.txt";
+     $bmd4="$outputdir/Results2.txt";
+     $bmd5="$outputdir/Results3.txt";
+     //$bmd4="$outputdir/Microarchitecture.tif";
      ftp_get($connect_it, $bmd1, "BMD.txt", FTP_BINARY);
      ftp_get($connect_it, $bmd2, "Input_values.txt", FTP_BINARY);
-     ftp_get($connect_it, $bmd3, "CLEO_Results.txt", FTP_BINARY);
-     ftp_get($connect_it, $bmd4, "Microarchitecture.tif", FTP_BINARY);
+     ftp_get($connect_it, $bmd3, "CLEO_Results_Advanced.txt", FTP_BINARY);
+     ftp_get($connect_it, $bmd4, "CLEO_Results2_Advanced.txt", FTP_BINARY);
+     ftp_get($connect_it, $bmd5, "CLEO_Results3_Advanced.txt", FTP_BINARY);
+     //ftp_get($connect_it, $bmd4, "Microarchitecture.tif", FTP_BINARY);
      ftp_close($connect_it);
      
      //exec("sudo /usr/local/bin/docker_cleo $outputdir"); 
@@ -1044,9 +1079,9 @@ public function TiffViewerAction() {
                 
                 fclose($bmd2);
                 
-                // Results.txt
+                // Results1.txt
                 
-                $Res = fopen("$outputdir/Results.txt", "r");
+                $Res = fopen("$outputdir/Results1.txt", "r");
                 $BVolum=fgets($Res);
                 $TVolum=fgets($Res);
                 $VFraction=fgets($Res);
@@ -1066,9 +1101,41 @@ public function TiffViewerAction() {
                 $FDim=fgets($Res);
                 $R2=fgets($Res);         
                 fclose($Res);
+                 
+                 // Results2.txt
+                 $Res2=fopen("$outputdir/Results2.txt", "r");
+                 $BCODE=fgets($Res2);
+                 $CSA=fgets($Res2);
+                 $XCENT=fgets($Res2);
+                 $YCENT=fgets($Res2);
+                 $DENS=fgets($Res2);
+                 $THETA=fgets($Res2);
+                 $FMIN=fgets($Res2);
+                 $FMAX=fgets($Res2);
+                 $FANGLE=fgets($Res2);
+                 $PERI=fgets($Res2);
+                 $MEANTH=fgets($Res2);
+                 fclose($Res3);
+                 
+                 // Results3.txt
+                 $Res3=fopen("$outputdir/Results3.txt", "r");
+                 $XC=fgets($Res3);
+                 $YC=fgets($Res3);
+                 $ZC=fgets($Res3);
+                 $VOLL=fgets($Res3);
+                 $MASS=fgets($Res3);
+                 $ICXX=fgets($Res3);
+                 $ICYY=fgets($Res3);
+                 $ICZZ=fgets($Res3);
+                 $I1=fgets($Res3);
+                 $I2=fgets($Res3);
+                 $I3=fgets($Res3);
+                 fclose($Res3);
+
+                
                 return $this->render('EnterfaceServiceBundle:Services:affichecleoadv.html.twig', array('works' =>true,'BADU'=>$BADU, 'MBMD'=> $MBMD,
     'SD'=> $SD,'HU1'=> $HU1,'HA1'=> $HA1,'HU2'=> $HU2,'HA2'=> $HA2,'HU3'=> $HU3,'HA3'=> $HA3,'HU4'=> $HU4,'HA4'=> $HA4,'HU5'=> $HU5,'HA5'=> $HA5,'HU6'=> $HU6,'HA6'=> $HA6, 'BVolum'=> $BVolum,'TVolum'=> $TVolum, 'VFraction'=>$VFraction,'BMC'=>$BMC,'BMD'=>$BMD,'TScor'=>$TScor,'FDim'=>$FDim,
-    'R2'=>$R2, 'Conn'=>$Conn,'TN'=>$TN, 'TthM'=>$TthM, 'TthDev'=>$TthDev, 'TthMax'=> $TthMax, 'TspM'=> $TspM, 'TspDev'=> $TspDev, 'TspMax'=>$TspMax,'DA'=>$DA,'tDA'=>$tDA));
+    'R2'=>$R2, 'Conn'=>$Conn,'TN'=>$TN, 'TthM'=>$TthM, 'TthDev'=>$TthDev, 'TthMax'=> $TthMax, 'TspM'=> $TspM, 'TspDev'=> $TspDev, 'TspMax'=>$TspMax,'DA'=>$DA,'tDA'=>$tDA, 'BCODE'=>$BCODE,'CSA'=>$CSA,'XCENT'=>$XCENT,'YCENT'=>$YCENT,'DENS'=>$DENS,'THETA'=>$THETA,'FMIN'=>$FMIN,'FMAX'=>$FMAX,'FANGLE'=>$FANGLE,'PERI'=>$PERI,'MEANTH'=>$MEANTH,'XC'=>$XC,'YC'=>$YC,'ZC'=>$ZC,'VOLL'=>$VOLL,'MASS'=>$MASS,'ICXX'=>$ICXX,'ICYY'=>$ICYY,'ICZZ'=>$ICZZ,'I1'=>$I1,'I2'=>$I2,'I3'=>$I3));
          }
    
    

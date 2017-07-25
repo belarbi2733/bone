@@ -17,4 +17,7 @@ parameters:
     signature_paypal: AFcWxV21C7fd0v3bYYYRCpSSRl31A4uQncwLgYGEia0bA2Ou.A5ckSRY  
     windows_user: 'mohamedamine_belarbi'
     windows_password: 'yl%Ho(5gB)p2[+;'
-    windows_host: '104.196.227.53'
+    windows_host: '10.138.0.3'
+    gpu_user: 'test'
+    gpu_password: 'liverpool2015++'
+    gpu_host: '10.138.0.4'
