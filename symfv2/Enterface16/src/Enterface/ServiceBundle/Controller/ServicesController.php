@@ -981,7 +981,7 @@ public function TiffViewerAction() {
      $var1=$_POST['test1'];
      $var2=$_POST['test2'];
      $var3=$_POST['test3'];
-     $myfile = fopen($outputdir."parameters.txt", "w");
+     $myfile = fopen($outputdir."/parameters.txt", "w");
      fwrite($myfile,$var1."\n");
      fwrite($myfile,$var2."\n");
      fwrite($myfile,$var3);
