@@ -1042,14 +1042,14 @@ public function TiffViewerAction() {
      $connection = ssh2_connect($ftp_host, 22);
      if (ssh2_auth_password($connection, $ftp_user_name, $ftp_user_pass))
      {       
-             $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\ADVANCED_CLEO_V5.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\BMDvalues1.txt Downloads\ftp\Phantom1.txt');
+             $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\PERSONALIZED_CLEO_V5A.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\BMDvalues1.txt Downloads\ftp\Phantom1.txt Downloads\ftp\parameters.txt');
                  stream_set_blocking($stream2, true);
                  stream_get_contents($stream2);
-                 $s1=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\BMD.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 $s1=ssh2_exec($connection, 'cmd /C move -r C:\Users\mohamedamine_belarbi\Results C:\Users\mohamedamine_belarbi\Downloads\ftp');
                  stream_set_blocking($s1, true);
                  stream_get_contents($s1);
                  
-                 $s2=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Input_values.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 /*$s2=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Input_values.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
                  stream_set_blocking($s2, true);
                  stream_get_contents($s2);
                  
@@ -1063,7 +1063,7 @@ public function TiffViewerAction() {
                  
                  $s5=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\CLEO_Results3_Advanced.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
                  stream_set_blocking($s5, true);
-                 stream_get_contents($s5);
+                 stream_get_contents($s5);*/
      }
      else
      {
@@ -1076,12 +1076,14 @@ public function TiffViewerAction() {
      $bmd3="$outputdir/Results1.txt";
      $bmd4="$outputdir/Results2.txt";
      $bmd5="$outputdir/Results3.txt";
+     $bmd6="$outputdir/Results4.txt";
      //$bmd4="$outputdir/Microarchitecture.tif";
-     ftp_get($connect_it, $bmd1, "BMD.txt", FTP_BINARY);
-     ftp_get($connect_it, $bmd2, "Input_values.txt", FTP_BINARY);
-     ftp_get($connect_it, $bmd3, "CLEO_Results_Advanced.txt", FTP_BINARY);
-     ftp_get($connect_it, $bmd4, "CLEO_Results2_Advanced.txt", FTP_BINARY);
-     ftp_get($connect_it, $bmd5, "CLEO_Results3_Advanced.txt", FTP_BINARY);
+     ftp_get($connect_it, $bmd1, "Results/BMD.txt", FTP_BINARY);
+     ftp_get($connect_it, $bmd2, "Results/Input_values.txt", FTP_BINARY);
+     ftp_get($connect_it, $bmd3, "Results/CLEO_Results_Personalized.txt", FTP_BINARY);
+     ftp_get($connect_it, $bmd4, "Results/CLEO_Results2_Personalized.txt", FTP_BINARY);
+     ftp_get($connect_it, $bmd5, "Results/CLEO_Results3_Personalized.txt", FTP_BINARY);
+     ftp_get($connect_it, $bmd6, "Results/CLEO_Results4_Personalized.txt", FTP_BINARY);
      //ftp_get($connect_it, $bmd4, "Microarchitecture.tif", FTP_BINARY);
      ftp_close($connect_it);
      
