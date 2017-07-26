@@ -656,7 +656,7 @@ public function TiffViewerAction() {
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
         }
-        if($user->getCredit()<4){
+        if($user->getCredit()<6){
             
             $this->get('session')->getFlashBag()->add('info', 'Please buy credits'); 
             return $this->container->get('router')->generate('fos_user_profile_show');
