@@ -1008,7 +1008,13 @@ public function TiffViewerAction() {
                  $stream2 = ssh2_exec($connection, 'cmd /C rmdir /Q /S C:\Users\mohamedamine_belarbi\Downloads\ftp\dicom');
                  stream_set_blocking($stream2, true);
                  stream_get_contents($stream2);
+                 $stream2 = ssh2_exec($connection, 'cmd /C rmdir /Q /S C:\Users\mohamedamine_belarbi\Downloads\ftp\Results');
+                 stream_set_blocking($stream2, true);
+                 stream_get_contents($stream2);
                  $stream2 = ssh2_exec($connection, 'cmd /C mkdir C:\Users\mohamedamine_belarbi\Downloads\ftp\dicom');
+                 stream_set_blocking($stream2, true);
+                 stream_get_contents($stream2);
+                 $stream2 = ssh2_exec($connection, 'cmd /C mkdir C:\Users\mohamedamine_belarbi\Downloads\ftp\Results');
                  stream_set_blocking($stream2, true);
                  stream_get_contents($stream2);
      }
@@ -1047,25 +1053,29 @@ public function TiffViewerAction() {
              $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\PERSONALIZED_CLEO_V5A.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\BMDvalues1.txt Downloads\ftp\Phantom1.txt Downloads\ftp\parameters.txt');
                  stream_set_blocking($stream2, true);
                  stream_get_contents($stream2);
-                 $s1=ssh2_exec($connection, 'cmd /C move -r C:\Users\mohamedamine_belarbi\Results C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 $s1=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Results\BMD.txt C:\Users\mohamedamine_belarbi\Downloads\ftp\Results');
                  stream_set_blocking($s1, true);
                  stream_get_contents($s1);
                  
-                 /*$s2=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Input_values.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 $s2=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Results\CLEO_Results_Personalized.txt C:\Users\mohamedamine_belarbi\Downloads\ftp\Results');
                  stream_set_blocking($s2, true);
                  stream_get_contents($s2);
                  
-                 $s3=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\CLEO_Results_Advanced.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 $s3=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Results\CLEO_Results2_Personalized.txt C:\Users\mohamedamine_belarbi\Downloads\ftp\Results');
                  stream_set_blocking($s3, true);
                  stream_get_contents($s3);
                  
-                 $s4=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\CLEO_Results2_Advanced.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 $s4=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Results\CLEO_Results3_Personalized.txt C:\Users\mohamedamine_belarbi\Downloads\ftp\Results');
                  stream_set_blocking($s4, true);
                  stream_get_contents($s4);
                  
-                 $s5=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\CLEO_Results3_Advanced.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 $s5=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Results\CLEO_Results4_Personalized.txt C:\Users\mohamedamine_belarbi\Downloads\ftp\Results');
                  stream_set_blocking($s5, true);
-                 stream_get_contents($s5);*/
+                 stream_get_contents($s5);
+                 
+                 $s56=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Results\Input_Values.txt C:\Users\mohamedamine_belarbi\Downloads\ftp\Results');
+                 stream_set_blocking($s6, true);
+                 stream_get_contents($s6);
      }
      else
      {
