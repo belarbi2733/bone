@@ -177,7 +177,7 @@ public function algotreatment1Action()
             } 
             else 
             {
-                die('Echec de l\'identification en utilisant une clé publique');
+                throw new AccessDeniedException('The GPU Machine is OFF.');
             }
             
         }
