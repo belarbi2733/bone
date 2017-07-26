@@ -57,7 +57,9 @@ result, we obtained a value representing the bone mineral density of the whole 3
                 <img src="{{asset('design/img/Medical/scanner.jpg') }}" width="250" height="250" alt="" class="image-product"/>
                </div>
             <form id="imageform" action="{{ url('enterface_service_cleotreatmentperso') }}" method="post" enctype="multipart/form-data">
-             
+             <input type="hidden" name="test1"  value="{{ test1 }}" >
+			 <input type="hidden" name="test2"  value="{{ test2 }}" >
+			 <input type="hidden" name="test3"  value="{{ test3 }}" >
 			 <div class="col-sm-6 col-xs-8">
               <h3>Input Dicom :</h3><input id="videoUploadFile1" type="file" name="fichier[]" class="btn btn-info" multiple><br>
               <h3>Bmd VALUES (.txt) :</h3><input id= "videoUploadFile1" type="file" name="bmd" class="btn btn-info"><br> 
