@@ -610,7 +610,7 @@
                             <br>
                             <footer class="panel-footer">                           
                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
-                                    <a href="{{ path('enterface_service_cleoperso') }}" class="btn btn-success" role="button">Try for free</a>
+                                    <a href="" class="btn btn-success" role="button" onClick="return fun();">Try for free</a>
                                     <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a>
                                 {%else%}
                                     <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Try for free</a>
