@@ -11,7 +11,9 @@ enterface_service_cleoperso:
     path:     /cleoperso
     defaults: { _controller: EnterfaceServiceBundle:Services:cleoperso }
   
-
+enterface_service_cleotreatmentperso:
+    path:     /cleotreatmentperso
+    defaults: { _controller: EnterfaceServiceBundle:Services:cleotreatmentperso }
 
 enterface_service_showCleoadv:
     path:     /showCleoadv
