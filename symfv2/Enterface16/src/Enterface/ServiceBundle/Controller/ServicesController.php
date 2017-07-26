@@ -1115,7 +1115,7 @@ public function TiffViewerAction() {
                  $FANGLE=fgets($Res2);
                  $PERI=fgets($Res2);
                  $MEANTH=fgets($Res2);
-                 fclose($Res3);
+                 fclose($Res2);
                  
                  // Results3.txt
                  $Res3=fopen("$outputdir/Results3.txt", "r");
