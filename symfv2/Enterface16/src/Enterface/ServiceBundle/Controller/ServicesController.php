@@ -1074,16 +1074,29 @@ public function TiffViewerAction() {
      $bmd1="$outputdir/BMD.txt";
      $bmd2="$outputdir/Input_values.txt";
      $bmd3="$outputdir/Results1.txt";
-     $bmd4="$outputdir/Results2.txt";
-     $bmd5="$outputdir/Results3.txt";
-     $bmd6="$outputdir/Results4.txt";
+     
+     
      //$bmd4="$outputdir/Microarchitecture.tif";
      ftp_get($connect_it, $bmd1, "Results/BMD.txt", FTP_BINARY);
      ftp_get($connect_it, $bmd2, "Results/Input_values.txt", FTP_BINARY);
      ftp_get($connect_it, $bmd3, "Results/CLEO_Results_Personalized.txt", FTP_BINARY);
-     ftp_get($connect_it, $bmd4, "Results/CLEO_Results2_Personalized.txt", FTP_BINARY);
-     ftp_get($connect_it, $bmd5, "Results/CLEO_Results3_Personalized.txt", FTP_BINARY);
-     ftp_get($connect_it, $bmd6, "Results/CLEO_Results4_Personalized.txt", FTP_BINARY);
+     /*-------------------------------------------------------------------------------- */
+     if($var1==1)
+     {
+       $bmd4="$outputdir/Results2.txt";
+       ftp_get($connect_it, $bmd4, "Results/CLEO_Results2_Personalized.txt", FTP_BINARY);
+     }
+     if($var2==1)
+     {
+       $bmd5="$outputdir/Results3.txt";
+       ftp_get($connect_it, $bmd5, "Results/CLEO_Results3_Personalized.txt", FTP_BINARY);
+     }
+     if($var3==1)
+     {
+       $bmd6="$outputdir/Results4.txt";
+       ftp_get($connect_it, $bmd6, "Results/CLEO_Results4_Personalized.txt", FTP_BINARY);
+     }
+     /*----------------------------------------------------------------------------------*/
      //ftp_get($connect_it, $bmd4, "Microarchitecture.tif", FTP_BINARY);
      ftp_close($connect_it);
      
