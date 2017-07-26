@@ -661,8 +661,10 @@ public function TiffViewerAction() {
             $this->get('session')->getFlashBag()->add('info', 'Please buy credits'); 
             return $this->container->get('router')->generate('fos_user_profile_show');
         }
-        else{
-        return $this->render('EnterfaceServiceBundle:Services:cleoperso.html.twig', array());
+        else
+        {
+          $test=$_GET['name'];
+          return $this->render('EnterfaceServiceBundle:Services:cleoperso.html.twig', array('name'=>$name));
         }
     }
     /* */
