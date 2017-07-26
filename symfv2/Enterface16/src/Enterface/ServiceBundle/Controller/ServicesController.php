@@ -982,7 +982,7 @@ public function TiffViewerAction() {
      $var2=$_POST['test2'];
      $var3=$_POST['test3'];
      $param=$outputdir."parameters.txt";
-     $fichier = fopen($param=, "w");
+     $fichier = fopen($param, "w");
      fwrite($fichier,$var1."\n");
      fwrite($fichier,$var2."\n");
      fwrite($fichier,$var3);
