@@ -1194,9 +1194,6 @@ public function TiffViewerAction() {
        $PERI=fgets($Res2);
        $MEANTH=fgets($Res2);
        fclose($Res2);
-     }
-     if($var2==1)
-     {
        // Results3.txt
        $Res3=fopen("$outputdir/Results3.txt", "r");
        $XC=fgets($Res3);
@@ -1212,10 +1209,15 @@ public function TiffViewerAction() {
        $I3=fgets($Res3);
        fclose($Res3);
      }
-                
+     if($var3==1)
+     {
+       $Res4=fopen("$outputdir/Results4.txt", "r");
+       $DA=fgets($Res);
+       $tDA=fgets($Res);
+     }         
       return $this->render('EnterfaceServiceBundle:Services:affichecleoperso.html.twig', array('works' =>true,'BADU'=>$BADU, 'MBMD'=> $MBMD,
     'SD'=> $SD,'HU1'=> $HU1,'HA1'=> $HA1,'HU2'=> $HU2,'HA2'=> $HA2,'HU3'=> $HU3,'HA3'=> $HA3,'HU4'=> $HU4,'HA4'=> $HA4,'HU5'=> $HU5,'HA5'=> $HA5,'HU6'=> $HU6,'HA6'=> $HA6, 'BVolum'=> $BVolum,'TVolum'=> $TVolum, 'VFraction'=>$VFraction,'BMC'=>$BMC,'BMD'=>$BMD,'TScor'=>$TScor,'FDim'=>$FDim,
-    'R2'=>$R2, 'Conn'=>$Conn,'TN'=>$TN, 'TthM'=>$TthM, 'TthDev'=>$TthDev, 'TthMax'=> $TthMax, 'TspM'=> $TspM, 'TspDev'=> $TspDev, 'TspMax'=>$TspMax,'DA'=>$DA,'tDA'=>$tDA, 'BCODE'=>$BCODE,'CSA'=>$CSA,'XCENT'=>$XCENT,'YCENT'=>$YCENT,'DENS'=>$DENS,'THETA'=>$THETA,'FMIN'=>$FMIN,'FMAX'=>$FMAX,'FANGLE'=>$FANGLE,'PERI'=>$PERI,'MEANTH'=>$MEANTH,'XC'=>$XC,'YC'=>$YC,'ZC'=>$ZC,'VOLL'=>$VOLL,'MASS'=>$MASS,'ICXX'=>$ICXX,'ICYY'=>$ICYY,'ICZZ'=>$ICZZ,'I1'=>$I1,'I2'=>$I2,'I3'=>$I3));
+    'R2'=>$R2, 'Conn'=>$Conn,'TN'=>$TN, 'TthM'=>$TthM, 'TthDev'=>$TthDev, 'TthMax'=> $TthMax, 'TspM'=> $TspM, 'TspDev'=> $TspDev, 'TspMax'=>$TspMax,'DA'=>$DA,'tDA'=>$tDA, 'BCODE'=>$BCODE,'CSA'=>$CSA,'XCENT'=>$XCENT,'YCENT'=>$YCENT,'DENS'=>$DENS,'THETA'=>$THETA,'FMIN'=>$FMIN,'FMAX'=>$FMAX,'FANGLE'=>$FANGLE,'PERI'=>$PERI,'MEANTH'=>$MEANTH,'XC'=>$XC,'YC'=>$YC,'ZC'=>$ZC,'VOLL'=>$VOLL,'MASS'=>$MASS,'ICXX'=>$ICXX,'ICYY'=>$ICYY,'ICZZ'=>$ICZZ,'I1'=>$I1,'I2'=>$I2,'I3'=>$I3,'DA'=>$DA,'tDA'=>$tDA,'var1'=>$var1,'var2'=>$var2,'var3'=>$var3));
      
      //return new RedirectResponse($this->container->get('router')->generate('enterface_service_showCleoperso')->setParameter($var1,$var2,$var3));
     }
