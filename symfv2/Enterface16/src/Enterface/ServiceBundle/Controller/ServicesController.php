@@ -1108,7 +1108,7 @@ public function TiffViewerAction() {
      $em=$this->getDoctrine()->getManager();
      $em->persist($user);
      $em->flush();
-     return new RedirectResponse($this->container->get('router')->generate('enterface_service_showCleoperso',array('test1'=>$tvar1,'test2'=>$var2,'test3'=>$var3)));
+     return new RedirectResponse($this->container->get('router')->generate('enterface_service_showCleoperso($var1,$var2,$var3)'));
     }
     
     /*----------------------------------------------------------------------------------------- */
