@@ -2,18 +2,18 @@
 {% block body %}
 	<link href="css/stlviewer.css" rel="stylesheet">
 
-	<script src="js/jquery.js"></script>
-	<script src="js/modernizr.js"></script>
-	<script src="js/jscolor/jscolor.js"></script>
-	<script src="js/thingiview/Three.js"></script>
-    <script src="js/thingiview/plane.js"></script>
-    <script src="js/thingiview/thingiview.js"></script>
+	<script src="{{asset('design/stl/js/jquery.js')}}"></script>
+	<script src="{{asset('design/stl/js/modernizr.js')}}"></script>
+	<script src="{{asset('design/stl/js/jscolor/jscolor.js')}}"></script>
+	<script src="{{asset('design/stl/js/thingiview/Three.js')}}"></script>
+    <script src="{{asset('design/stl/js/thingiview/plane.js')}}"></script>
+    <script src="{{asset('design/stl/js/thingiview/thingiview.js')}}"></script>
 
 
 	<script>
 	$(document).ready(function() {
 
-		thingiurlbase = "js/thingiview";
+		thingiurlbase = "{{asset('design/stl/js/thingiview')}}";
         thingiview = new Thingiview("stlviewer");
         thingiview.setObjectColor('#C0D8F0');
         thingiview.setBackgroundColor('#000');
@@ -89,7 +89,7 @@
 </head>
 <body>
 
-	<div id="stlviewer"></div>
+	<div id="stlviewer" style="width:600px;"></div>
 	<div id="message"></div>
 	<div class="settings">
 		Background: <input class="color" id="backround_colour" value="000000"> &nbsp; 	Model: <input class="color" id="model_colour" value="C0D8F0">
