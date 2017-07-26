@@ -649,7 +649,7 @@ public function TiffViewerAction() {
 
      /* cleo personalised input values */
     
-    public function cleoadvAction() {
+    public function cleopersoAction() {
         
         //Get current User and Check the access
         $user = $this->container->get('security.context')->getToken()->getUser();
@@ -662,7 +662,7 @@ public function TiffViewerAction() {
             return $this->container->get('router')->generate('fos_user_profile_show');
         }
         else{
-        return $this->render('EnterfaceServiceBundle:Services:cleopersp.html.twig', array());
+        return $this->render('EnterfaceServiceBundle:Services:cleoperso.html.twig', array());
         }
     }
     /* */
