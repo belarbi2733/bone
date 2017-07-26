@@ -449,7 +449,7 @@ public function TiffViewerAction() {
     }
 
     public function showvertebraAdvancedAction() {
-//Get current User and Check the access
+        //Get current User and Check the access
         $user = $this->container->get('security.context')->getToken()->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
             throw new AccessDeniedException('This user does not have access to this section.');
@@ -978,11 +978,13 @@ public function TiffViewerAction() {
      $target_dir='/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/';
      $outputdir=$target_dir."/Results/";
      $dicomdir=$outputdir."/dicom/";
-     $fichier=$outputdir."/parameters.txt"
      $var1=$_POST['test1'];
      $var2=$_POST['test2'];
      $var3=$_POST['test3'];
-     
+     $myfile = fopen($outputdir."/parameters.txt", "w");
+     fwrite($myfile,$var1."\n");
+     fwrite($myfile,$var2."\n");
+     fwrite($myfile,$var3);
      $files = glob($target_dir.'/*'); // get all file names
      foreach($files as $file){ // iterate files
            if(is_file($file))
