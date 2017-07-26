@@ -885,7 +885,7 @@ public function TiffViewerAction() {
                  stream_set_blocking($s4, true);
                  stream_get_contents($s4);
                  
-                 $s54=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\CLEO_Results3_Advanced.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 $s5=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\CLEO_Results3_Advanced.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
                  stream_set_blocking($s5, true);
                  stream_get_contents($s5);
      }
