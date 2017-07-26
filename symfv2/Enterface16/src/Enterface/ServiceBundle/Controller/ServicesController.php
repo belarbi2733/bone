@@ -664,7 +664,7 @@ public function TiffViewerAction() {
         else
         {
           $test=$_GET['name'];
-          return $this->render('EnterfaceServiceBundle:Services:cleoperso.html.twig', array('name'=>$name));
+          return $this->render('EnterfaceServiceBundle:Services:cleoperso.html.twig', array('name'=>$test));
         }
     }
     /* */
