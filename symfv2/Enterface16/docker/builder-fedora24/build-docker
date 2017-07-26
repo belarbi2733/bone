@@ -1,0 +1,2 @@
+#!/bin/bash
+docker build -t builder-fedora24:0.1 .

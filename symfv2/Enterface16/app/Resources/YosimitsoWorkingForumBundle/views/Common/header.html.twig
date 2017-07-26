@@ -1,0 +1,29 @@
+<link href="{{asset('design/vendor/bootstrap3.3.7/css/bootstrap.min.css')}}" rel="stylesheet">
+<link href="{{asset('design/css/base.css')}}" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" media="all" href="{{ asset('bundles/yosimitsoworkingforum/css/forum.css') }}" /> 
+<link rel="stylesheet" media="all" href="{{ asset('bundles/yosimitsoworkingforum/css/theme_'~getWFParam('theme_color')~'.css') }}" />"    <header>
+        <div>
+            <div class="container-fluid navbar-accueil" id="divNavbarAccueil">
+                <div class="row vertical-middle">                   
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-12 vertical-middle">                               
+                        <nav>
+                            <ul class="nav navbar-nav">    
+                                 <title>{% block title %}Medical Bone Process{% endblock %}</title>
+        
+    {% block stylesheets %}{% endblock %}
+                                <li> <img src="{{asset('design/img/Medical/MOVACP.gif')}}"  class="img-accueil-header"/></li>
+                                <li><a href="{{ path('enterface_service_homepage') }}" id="lnkHome">Home</a></li>
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <li>
+                                        <a href="{{ path('fos_user_security_logout') }}"> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }} </a>
+                                    </li>
+                                    <li>
+                                {% else %}  
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </header>

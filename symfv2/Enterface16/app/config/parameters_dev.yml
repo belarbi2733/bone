@@ -1,0 +1,23 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: null
+    database_name: enterfacedb
+    database_user: root
+    database_password: liverpool
+    mailer_transport: gmail
+    mailer_host: null
+    mailer_user: medicalboneprocess@gmail.com
+    mailer_password: enterface
+    locale: en
+    secret: 12abe814f67ee3f63a9ad79ec4c7af59
+    userpaypal : medicalboneprocess-facilitator_api1.gmail.com  
+    password_paypal : LQLNETCDJ965QYF2 
+    signature_paypal: AFcWxV21C7fd0v3bYYYRCpSSRl31A4uQncwLgYGEia0bA2Ou.A5ckSRY  
+    windows_user: 'mohamedamine_belarbi'
+    windows_password: 'yl%Ho(5gB)p2[+;'
+    windows_host: '10.138.0.3'
+    gpu_user: 'test'
+    gpu_password: 'liverpool2015++'
+    gpu_host: '10.138.0.4'

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>{% block title %}Medical Bone Process{% endblock %}</title>
+        <!-- Bootstrap Core CSS -->
+        <link href="{{asset('design/vendor/bootstrap3.3.7/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{asset('design/css/base.css')}}" rel="stylesheet" type="text/css"/>
+        <!-- Custom Fonts -->
+    {% block stylesheets %}{% endblock %}
+
+</head>
+<body>
+    <!-- jQuery -->
+    <script src="{{asset('design/vendor/jquery/Jquery-3.2.0.min.js')}}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{asset('design/vendor/bootstrap3.3.7/js/bootstrap.min.js')}}"></script>
+
+{% block javascripts %}{% endblock %}
+
+{% block header %}
+    <header>
+        <div class="scrollbar layout-index">
+            <div class="container-fluid navbar-accueil" id="divNavbarAccueil">
+                <div class="row vertical-middle">                  
+                    <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 vertical-middle">
+
+                        <nav class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav"> 
+                                <li> <img src="{{asset('design/img/Medical/MOVACP.gif')}}"  class="img-accueil-header"/></li>
+                                <li><a href="#" id="lnkHome">Home</a></li>
+                                <li><a href="#" id="lnkAboutUS">About us</a></li>  
+                                <li><a href="#" id="lnkProducts">Products</a></li>                                                                           
+                                <li><a href="#" id="lnkServices">Services & Applications</a></li>
+                                <li><a href="#" id="lnkPublications">Publications</a></li>
+                                <li><a href="#" id="lnkTeam">Team</a></li>
+                                <li><a href="#" id="lnkNews">News</a></li>
+                                <li><a href="#"id="lnkContact">Contact</a></li> 
+                                <li><a href="{{ path('workingforum_forum') }}" id="lnkForum">Forum</a></li>
+                                <li> 
+                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                        <a href="{{ path('fos_user_profile_show') }}"> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('fos_user_security_logout') }}"> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }} </a>
+                                    </li>
+                                    <li>
+                                    {% else %}
+                                        <a href="{{ path('enterface_user_login') }}">Login</a>
+                                    {% endif %}    
+                                </li>
+                                <li><a href="https://www.facebook.com/sidiahmed.mahmoudi8" title="Click here to view the Facebook account of Sidi Mahmoudi"><i class="fa fa-lg fa-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/sidi_sarah" title="Click here to view the Twitter account of Sidi Mahmoudi"><i class="fa fa-lg fa-twitter"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/sidi-ahmed-mahmoudi-95324534/" title="Click here to view the Linkedin account of Sidi Mahmoudi"><i class="fa fa-lg fa-linkedin"></i></a></li>
+                            </ul>
+
+
+                        </nav>
+                    </div>                                  
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+
+
+
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</header>
+{% endblock header %}
+{% block body %}{% endblock%}
+
+{% block footer %}
+
+    <footer class="footer vertical-middle layout-index">
+        <div>
+            <P>©2017 BY MEDICAL BONE PROCESS</P>
+        </div> 
+    </footer>
+{% endblock footer %}
+</body>
+/<script type = 'text/javascript'>
+    $(function () {
+        $(document).click(function () {
+            $('.navbar-collapse').collapse('hide');
+        });
+    });
+</script>
+</html>
+
