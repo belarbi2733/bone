@@ -1,0 +1,228 @@
+{% extends '::base_login.html.twig' %} 
+{% block body %}
+     
+    
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 >CLEO <font color="red">(Advanced Version)</font> :
+                    
+                </h2>
+            </div>
+        </div>
+
+        <div class="row">
+
+        {% if works %}  
+           
+    <div class="col-sm-4 col-xs-4 col-lg-4 col-md-4" >
+        
+        <center><font color="green"><h4><b>Input Values</b></h4></font></center>
+    <table class="table table-striped table-inverse" style="border: 2px solid green;overflow:auto; border-radius: 25px; ">
+		<tr>
+			<td colspan=3><center><font color="blue"><b>BMD Values</font></center></td>
+		</tr>
+        <tr>
+            <td><b>Bone ADU</td>
+			<td><b>Mean BMD</td>
+			<td><b>SD</td>
+            
+        </tr>
+        <tr>
+            <td>{{BADU}}</td>
+            <td>{{MBMD}}</td>
+			<td>{{SD}}</td>
+        </tr>
+    </table>
+  
+
+<table class="table table-striped table-inverse" style="border: 2px solid green;overflow:auto; border-radius: 25px; ">
+ <tr>
+			<td colspan=2><center><font color="blue"><b>Phantom values</font></center></td>
+ </tr>  
+<tr>
+<td> <b>HU </td>
+<td> <b>HA </td>
+</tr>
+<tr>
+<td>{{HU1}} </td>
+<td>{{HA1}} </td>
+</tr>
+<tr>
+<td>{{HU2}} </td>
+<td>{{HA2}} </td>
+</tr>
+<tr>
+<td>{{HU3}} </td>
+<td>{{HA3}} </td>
+</tr>
+<tr>
+<td>{{HU4}} </td>
+<td>{{HA4}} </td>
+</tr>
+<tr>
+<td>{{HU5}} </td>
+<td>{{HA5}} </td>
+</tr>
+<tr>
+<td>{{HU6}} </td>
+<td>{{HA6}} </td>
+</tr>
+</table>
+<center><a href="{{ path('enterface_download_result', { 'file' : 'Input_values.txt'}) }}" class="btn btn-success" download="Input_values.txt" role="button" style="width:300px;background-color: green;">Download Input values </a><br></center><br>
+<center><a href="{{ path('enterface_download_result', { 'file' : 'Phantom1.txt'}) }}"     class="btn btn-success" download="Phantom1.txt"     role="button" style="width:300px;background-color: green;">Download Phantom values</a><br></center>
+
+
+</div>
+
+<div class="col-sm-10 col-xs-10 col-lg-8 col-md-8">
+ <center><font color="steelblue"><h4><b>Density (BMD) Analysis</b></h4></font></center>
+<table class="table table-striped table-inverse" style="border: 2px solid steelblue;overflow:auto; border-radius: 25px; ">
+<tr>
+<td colspan="3"><center><font color="blue"><b>Volume Fraction</font></center></td>
+<td colspan="2"><center><font color="blue"><b>Fractal Dimension</font></center></td>
+<td colspan="3"><center><font color="blue"><b>Density values</font></center></td>
+</tr>
+<tr>
+<td><b> Bone Volume </td>
+<td><b> Total Volume </td>
+<td><b> Volume Fraction </td>
+<td><b> Fractal Dim </td>
+<td><b> R2 </td>
+<td><b> BMC </td>
+<td><b> BMD </td>
+<td><b> T-Score </b></td>
+</tr>
+<tr>
+<td>{{BVolum}} </td>
+<td>{{TVolum}} </td>
+<td>{{VFraction}} </td>
+<td>{{FDim}} </td>
+<td>{{R2}} </td>
+<td>{{BMC}} </td>
+<td>{{BMD}} </td>
+<td>{{TScor}} </td>
+</tr>
+</table>
+<center><font color="steelblue"><h4><b>Microarchitecture (Trabecular) Analysis</b></h4></font></center>
+<table class="table table-striped table-inverse" style="border: 2px solid steelblue;overflow:auto; border-radius: 25px; ">
+<tr>
+<td colspan="3"><center><font color="blue"><b>Trabecular Thickness</font></center></td>
+<td colspan="2"><center><font color="blue"><b>Connectiviy</font></center></td>
+<td colspan="3"><center><font color="blue"><b>Trabecular Thickness Separation</font></center></td>
+</tr>
+<tr>
+<td><b> Mean </td>
+<td><b> Std Dev </td>
+<td><b> Max </td>
+<td><b> Connectivity </td>
+<td><b> Trabecular. N </td>
+<td><b> Mean </td>
+<td><b> Std Dev </td>
+<td><b> Max </td>
+</tr>
+<tr>
+<td>{{TthM}} </td>
+<td>{{TthDev}} </td>
+<td>{{TthMax}}</td>
+<td>{{Conn}} </td>
+<td>{{TN}} </td>
+<td>{{TspM}} </td>
+<td>{{TspDev}} </td>
+<td>{{TspMax}} </td>
+</tr>
+</table>
+
+<!-- mommoent d'inercie -->
+<center><font color="steelblue"><h4><b>Microarchitecture (Cortical) Analysis</b></h4></font></center>
+<table class="table table-striped table-inverse" style="border: 2px solid steelblue;overflow:auto; border-radius: 25px; ">
+<!-- <tr> -->
+<!-- <!-- <td colspan="11"><center><font color="steelblue"><h4><b>Microarchitecture (Cortical) Analysis</h4></font></center></td> --> 
+<!-- <!-- <td colspan="8"><center><font color="steelblue"><h4><b>Inertia Moments</h4></font></center></td> -->
+<!-- </tr> -->
+<tr>
+<td colspan="11"><center><font color="blue"><b>Inertia Moments</font></center></td> 
+</tr>
+<tr>
+<td><b> Bone code</b> </td>
+<td><b> CSA (mm<sup>2</sup>) </b></td>
+<td><b> Xcent (mm) </b></td>
+<td><b> Ycent </b></td>
+<td><b> Density </b></td>
+<td><b> Theta </b></td>
+<td><b> Feret Min </b></td>
+<td><b> Feret Max </b></td>
+<td><b> Feret Angle </b></td>
+<td><b> Peremiter </b></td>
+<td><b> Mean Thick </b></td>
+</tr>
+<tr>
+<td>{{BCODE}} </td>
+<td>{{CSA}} </td>
+<td>{{XCENT}}</td>
+<td>{{YCENT}} </td>
+<td>{{DENS}} </td>
+<td>{{THETA}} </td>
+<td>{{FMIN}} </td>
+<td>{{FMAX}} </td>
+<td>{{FANGLE}} </td>
+<td>{{PERI}} </td>
+<td>{{MEANTH}} </td>
+</tr>
+<tr>
+<td colspan="11"><center><font color="blue"><b>Slice Geometry</font></center></td>
+</tr>
+<tr>
+<td><b> Xc (mm) </td>
+<td><b> Yc (mm) </td>
+<td><b> Zc (mm)</td>
+<td><b> Mass (g) </td>
+<td><b> Vol (mm<sup>3</sup>) </td>
+<td><b> Icxx (Kg.m<sup>2</sup>) </td>
+<td><b> Icyy </td>
+<td><b> Iczz </td>
+<td><b> I1 (Kg.m<sup>2</sup>)</td>
+<td><b> I2 </td>
+<td><b> I3 </td>
+</tr>
+<tr>
+<td>{{XC}} </td>
+<td>{{YC}} </td>
+<td>{{ZC}}</td>
+<td>{{VOLL}} </td>
+<td>{{MASS}} </td>
+<td>{{ICXX}} </td>
+<td>{{ICYY}} </td>
+<td>{{ICZZ}} </td>
+<td>{{I1}} </td>
+<td>{{I2}} </td>
+<td>{{I3}} </td>
+</tr>
+</table>
+  
+  
+<!-- geometry -->
+ 
+<center>
+        
+				<a href="{{ path('enterface_download_result', { 'file' : 'Results.txt'}) }}" class="btn btn-success" download="Results.txt" role="button" style="width:300px;background-color: steelblue;">Download the report</a><br>
+				<br>
+				<a href="{{ path('enterface_service_saveResults', { 'name': 'Cleo_Perso' }) }}" class="btn btn-success"  role="button" style="width:300px;background-color: steelblue;">Save results on your MBP server</a><br>
+			</center> 
+</div>
+          
+{%endif%}
+        </div>
+        <hr>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="{{asset('design/js/jquery.js')}}"></script>
+
+{% endblock %}
