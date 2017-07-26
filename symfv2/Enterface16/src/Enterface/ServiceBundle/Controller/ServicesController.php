@@ -941,6 +941,150 @@ public function TiffViewerAction() {
     }
     
     /*----------------------------------------------------------------------------------------- */
+    
+    /* CLEO Personalized -------------------------------------------------------------------------  */
+    public function cleotreatmentpersoAction() {
+        /*commented by El Adoui*/
+        
+        //Get current User and Check the access
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+     $ftp_user_name=$this->container->getParameter('windows_user');
+     $ftp_user_pass=$this->container->getParameter('windows_password');
+     $ftp_host=$this->container->getParameter('windows_host');
+     //$ftp_host="10.138.0.3";
+     //ftp puts
+     if(!is_dir('/var/www/symfv2/Enterface16/UserResults/')){
+        mkdir('/var/www/symfv2/Enterface16/UserResults/');
+     }
+     if(!is_dir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId())){
+        mkdir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId());
+     }
+     if(!is_dir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current')){
+        mkdir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current');
+     }if(!is_dir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/Results')){
+         mkdir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/Results');
+     }
+
+     if(!is_dir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/Results/dicom')){
+         mkdir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/Results/dicom');
+     }
+     $target_dir='/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/';
+     $outputdir=$target_dir."/Results/";
+     $dicomdir=$outputdir."/dicom/";
+
+     $files = glob($target_dir.'/*'); // get all file names
+     foreach($files as $file){ // iterate files
+           if(is_file($file))
+                unlink($file); // delete file
+     }
+     $files = glob($outputdir.'/*'); // get all file names
+     foreach($files as $file){ // iterate files
+           if(is_file($file))
+                unlink($file); // delete file
+     }
+
+     $connect_it = ftp_connect( $ftp_host );
+     $login_result = ftp_login( $connect_it, $ftp_user_name, $ftp_user_pass );
+     
+     //vider le dossier
+      $connection = ssh2_connect($ftp_host, 22);
+     if (ssh2_auth_password($connection, $ftp_user_name, $ftp_user_pass))
+     {
+                 $stream2 = ssh2_exec($connection, 'cmd /C rmdir /Q /S C:\Users\mohamedamine_belarbi\Downloads\ftp\dicom');
+                 stream_set_blocking($stream2, true);
+                 stream_get_contents($stream2);
+                 $stream2 = ssh2_exec($connection, 'cmd /C mkdir C:\Users\mohamedamine_belarbi\Downloads\ftp\dicom');
+                 stream_set_blocking($stream2, true);
+                 stream_get_contents($stream2);
+     }
+     $i=0;
+     //ftp_put( $connect_it, $ser,$nom_fichier , FTP_BINARY ) ) 
+     foreach ($_FILES["fichier"]["error"] as $key => $error) 
+     {
+         if ($error == UPLOAD_ERR_OK) 
+         {
+                 $tmp_name = $_FILES["fichier"]["tmp_name"][$key];
+                 //$name = $_FILES["fichier"]["name"][$key];
+                 $name="fichier".$i++.".dcm";
+                 move_uploaded_file($tmp_name, $target_dir . "/$name");
+		 //move_uploaded_file($tmp_name, $dicomdir . "$name");
+                 $ser = "dicom/" . $name;
+                 ftp_put( $connect_it, $ser,$target_dir . "/$name", FTP_BINARY );                 
+         }  
+     }
+     
+     $nom_bmd = $_FILES['bmd']['tmp_name'];
+     $nom_phantom = $_FILES['phantom']['tmp_name'];
+     $target_bmd = $outputdir ."BMDvalues1.txt";
+     $target_phantom = $outputdir ."Phantom1.txt";
+     move_uploaded_file( $nom_bmd, $target_bmd );
+     move_uploaded_file( $nom_phantom, $target_phantom );
+     
+     ftp_put( $connect_it,"BMDvalues1.txt",$target_bmd, FTP_BINARY );
+     ftp_put( $connect_it, "Phantom1.txt",$target_phantom, FTP_BINARY );
+     
+     //ssh connect
+     $connection = ssh2_connect($ftp_host, 22);
+     if (ssh2_auth_password($connection, $ftp_user_name, $ftp_user_pass))
+     {       
+             $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\ADVANCED_CLEO_V5.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\BMDvalues1.txt Downloads\ftp\Phantom1.txt');
+                 stream_set_blocking($stream2, true);
+                 stream_get_contents($stream2);
+                 $s1=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\BMD.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 stream_set_blocking($s1, true);
+                 stream_get_contents($s1);
+                 
+                 $s2=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Input_values.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 stream_set_blocking($s2, true);
+                 stream_get_contents($s2);
+                 
+                 $s3=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\CLEO_Results_Advanced.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 stream_set_blocking($s3, true);
+                 stream_get_contents($s3);
+                 
+                 $s4=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\CLEO_Results2_Advanced.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 stream_set_blocking($s4, true);
+                 stream_get_contents($s4);
+                 
+                 $s5=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\CLEO_Results3_Advanced.txt C:\Users\mohamedamine_belarbi\Downloads\ftp');
+                 stream_set_blocking($s5, true);
+                 stream_get_contents($s5);
+     }
+     else
+     {
+         echo "error";
+     }
+    
+     // ftp get     
+     $bmd1="$outputdir/BMD.txt";
+     $bmd2="$outputdir/Input_values.txt";
+     $bmd3="$outputdir/Results1.txt";
+     $bmd4="$outputdir/Results2.txt";
+     $bmd5="$outputdir/Results3.txt";
+     //$bmd4="$outputdir/Microarchitecture.tif";
+     ftp_get($connect_it, $bmd1, "BMD.txt", FTP_BINARY);
+     ftp_get($connect_it, $bmd2, "Input_values.txt", FTP_BINARY);
+     ftp_get($connect_it, $bmd3, "CLEO_Results_Advanced.txt", FTP_BINARY);
+     ftp_get($connect_it, $bmd4, "CLEO_Results2_Advanced.txt", FTP_BINARY);
+     ftp_get($connect_it, $bmd5, "CLEO_Results3_Advanced.txt", FTP_BINARY);
+     //ftp_get($connect_it, $bmd4, "Microarchitecture.tif", FTP_BINARY);
+     ftp_close($connect_it);
+     
+     //exec("sudo /usr/local/bin/docker_cleo $outputdir"); 
+     //Payement
+     $credit=$user->getCredit();
+     $credit=$credit-4;
+     $user->setCredit($credit);
+     $em=$this->getDoctrine()->getManager();
+     $em->persist($user);
+     $em->flush();
+     return new RedirectResponse($this->container->get('router')->generate('enterface_service_showCleoperso'));
+    }
+    
+    /*----------------------------------------------------------------------------------------- */
     public function downloadResultAction($file){
         //Get current User and Check the access
         $user = $this->container->get('security.context')->getToken()->getUser();
