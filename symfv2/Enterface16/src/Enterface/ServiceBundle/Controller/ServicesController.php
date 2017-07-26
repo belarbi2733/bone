@@ -1147,12 +1147,50 @@ public function TiffViewerAction() {
       
       //BMD2.txt
       $bmd2=fopen("$outputdir/BMD.txt","r");
-     
       $BMC=fgets($bmd2);
       $BMD=fgets($bmd2);
       $TScor=fgets($bmd2);
-      
       fclose($bmd2);
+      
+      /* */
+      $BVolum="";
+      $TVolum="";
+      $VFraction="";
+      $Conn="");
+      $TN="";
+      $TthM="");
+      $TthDev="";
+      $TthMax="";
+      $TspM="";
+      $TspDev="");
+      $TspMax=""; 
+      $FDim="");
+      $R2="";
+      $BCODE="";
+      $CSA="");
+      $XCENT="");
+      $YCENT="";
+      $DENS="";
+      $THETA="";
+      $FMIN="";
+      $FMAX="";
+      $FANGLE="";
+      $PERI="";
+      $MEANTH="";
+      $XC="";
+      $YC="";
+      $ZC="";
+      $VOLL="";
+      $MASS="";
+      $ICXX="";
+      $ICYY="";
+      $ICZZ="";
+      $I1="";
+      $I2="";
+      $I3="";
+      $DA="";
+      $tDA="";
+      /* */
       /*------------------------------------------------------*/
       if($var1==1)
       {
@@ -1169,10 +1207,6 @@ public function TiffViewerAction() {
         $TspM=fgets($Res);
         $TspDev=fgets($Res);
         $TspMax=fgets($Res); 
-        $DA="Decommenter les lignes 669 et 570 dans ServiceController.php apres l'integration de la new clio dans la MV";
-        $tDA="Decommenter les lignes 619 et 620 dans ServiceController.php apres l'integration de la new clio dans la MV";
-        //$DA=fgets($Res,8);
-        //$tDA=fgets($Res,7);
         $FDim=fgets($Res);
         $R2=fgets($Res);         
         fclose($Res);
