@@ -1246,8 +1246,9 @@ public function TiffViewerAction() {
      if($var3==1)
      {
        $Res4=fopen("$outputdir/Results4.txt", "r");
-       $DA=fgets($Res);
-       $tDA=fgets($Res);
+       $DA=fgets($Res4);
+       $tDA=fgets($Res4);
+       fclose($Res4);
      }         
       return $this->render('EnterfaceServiceBundle:Services:affichecleoperso.html.twig', array('works' =>true,'BADU'=>$BADU, 'MBMD'=> $MBMD,
     'SD'=> $SD,'HU1'=> $HU1,'HA1'=> $HA1,'HU2'=> $HU2,'HA2'=> $HA2,'HU3'=> $HU3,'HA3'=> $HA3,'HU4'=> $HU4,'HA4'=> $HA4,'HU5'=> $HU5,'HA5'=> $HA5,'HU6'=> $HU6,'HA6'=> $HA6, 'BVolum'=> $BVolum,'TVolum'=> $TVolum, 'VFraction'=>$VFraction,'BMC'=>$BMC,'BMD'=>$BMD,'TScor'=>$TScor,'FDim'=>$FDim,
