@@ -1079,15 +1079,17 @@ public function TiffViewerAction() {
      //$bmd4="$outputdir/Microarchitecture.tif";
      ftp_get($connect_it, $bmd1, "Results/BMD.txt", FTP_BINARY);
      ftp_get($connect_it, $bmd2, "Results/Input_values.txt", FTP_BINARY);
-     ftp_get($connect_it, $bmd3, "Results/CLEO_Results_Personalized.txt", FTP_BINARY);
+     //ftp_get($connect_it, $bmd3, "Results/CLEO_Results_Personalized.txt", FTP_BINARY);
      /*-------------------------------------------------------------------------------- */
      if($var1==1)
      {
-       $bmd4="$outputdir/Results2.txt";
-       ftp_get($connect_it, $bmd4, "Results/CLEO_Results2_Personalized.txt", FTP_BINARY);
+       $bmd3="$outputdir/Results1.txt";
+       ftp_get($connect_it, $bmd3, "Results/CLEO_Results_Personalized.txt", FTP_BINARY);
      }
      if($var2==1)
      {
+       $bmd4="$outputdir/Results2.txt";
+       ftp_get($connect_it, $bmd4, "Results/CLEO_Results2_Personalized.txt", FTP_BINARY);
        $bmd5="$outputdir/Results3.txt";
        ftp_get($connect_it, $bmd5, "Results/CLEO_Results3_Personalized.txt", FTP_BINARY);
      }
