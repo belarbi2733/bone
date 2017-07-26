@@ -647,6 +647,26 @@ public function TiffViewerAction() {
     }
     /* */
 
+     /* cleo personalised input values */
+    
+    public function cleoadvAction() {
+        
+        //Get current User and Check the access
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        if (!is_object($user) || !$user instanceof UserInterface) {
+            throw new AccessDeniedException('This user does not have access to this section.');
+        }
+        if($user->getCredit()<4){
+            
+            $this->get('session')->getFlashBag()->add('info', 'Please buy credits'); 
+            return $this->container->get('router')->generate('fos_user_profile_show');
+        }
+        else{
+        return $this->render('EnterfaceServiceBundle:Services:cleopersp.html.twig', array());
+        }
+    }
+    /* */
+    
     
     public function cleotreatmentAction() {
         /*commented by El Adoui*/
