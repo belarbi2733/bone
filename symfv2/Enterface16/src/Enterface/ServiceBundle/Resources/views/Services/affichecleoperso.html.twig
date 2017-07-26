@@ -198,7 +198,7 @@
 	</table>
 {% endif %}
 {%if var1==1 and var2==0 and var3==0 %}
- <center><font color="steelblue"><h4><b>Density (BMD) Analysis</b></h4></font></center>
+<center><font color="steelblue"><h4><b>Density (BMD) Analysis</b></h4></font></center>
 <table class="table table-striped table-inverse" style="border: 2px solid steelblue;overflow:auto; border-radius: 25px; ">
 <tr>
 <td colspan="3"><center><font color="blue"><b>Volume Fraction</font></center></td>
@@ -254,6 +254,130 @@
 <td>{{TspMax}} </td>
 </tr>
 </table>	
+{% endif %}
+{%if var1==1 and var2==1 and var3==0 %}
+<center><font color="steelblue"><h4><b>Density (BMD) Analysis</b></h4></font></center>
+<table class="table table-striped table-inverse" style="border: 2px solid steelblue;overflow:auto; border-radius: 25px; ">
+<tr>
+<td colspan="3"><center><font color="blue"><b>Volume Fraction</font></center></td>
+<td colspan="2"><center><font color="blue"><b>Fractal Dimension</font></center></td>
+<td colspan="3"><center><font color="blue"><b>Density values</font></center></td>
+</tr>
+<tr>
+<td><b> Bone Volume </td>
+<td><b> Total Volume </td>
+<td><b> Volume Fraction </td>
+<td><b> Fractal Dim </td>
+<td><b> R2 </td>
+<td><b> BMC </td>
+<td><b> BMD </td>
+<td><b> T-Score </b></td>
+</tr>
+<tr>
+<td>{{BVolum}} </td>
+<td>{{TVolum}} </td>
+<td>{{VFraction}} </td>
+<td>{{FDim}} </td>
+<td>{{R2}} </td>
+<td>{{BMC}} </td>
+<td>{{BMD}} </td>
+<td>{{TScor}} </td>
+</tr>
+</table>
+<center><font color="steelblue"><h4><b>Microarchitecture (Trabecular) Analysis</b></h4></font></center>
+<table class="table table-striped table-inverse" style="border: 2px solid steelblue;overflow:auto; border-radius: 25px; ">
+<tr>
+<td colspan="3"><center><font color="blue"><b>Trabecular Thickness</font></center></td>
+<td colspan="2"><center><font color="blue"><b>Connectiviy</font></center></td>
+<td colspan="3"><center><font color="blue"><b>Trabecular Thickness Separation</font></center></td>
+</tr>
+<tr>
+<td><b> Mean </td>
+<td><b> Std Dev </td>
+<td><b> Max </td>
+<td><b> Connectivity </td>
+<td><b> Trabecular. N </td>
+<td><b> Mean </td>
+<td><b> Std Dev </td>
+<td><b> Max </td>
+</tr>
+<tr>
+<td>{{TthM}} </td>
+<td>{{TthDev}} </td>
+<td>{{TthMax}}</td>
+<td>{{Conn}} </td>
+<td>{{TN}} </td>
+<td>{{TspM}} </td>
+<td>{{TspDev}} </td>
+<td>{{TspMax}} </td>
+</tr>
+</table>
+<!-- mommoent d'inercie -->
+<center><font color="steelblue"><h4><b>Microarchitecture (Cortical) Analysis</b></h4></font></center>
+<table class="table table-striped table-inverse" style="border: 2px solid steelblue;overflow:auto; border-radius: 25px; ">
+<!-- <tr> -->
+<!-- <!-- <td colspan="11"><center><font color="steelblue"><h4><b>Microarchitecture (Cortical) Analysis</h4></font></center></td> --> 
+<!-- <!-- <td colspan="8"><center><font color="steelblue"><h4><b>Inertia Moments</h4></font></center></td> -->
+<!-- </tr> -->
+<tr>
+<td colspan="11"><center><font color="blue"><b>Inertia Moments</font></center></td> 
+</tr>
+<tr>
+<td><b> Bone code</b> </td>
+<td><b> CSA (mm<sup>2</sup>) </b></td>
+<td><b> Xcent (mm) </b></td>
+<td><b> Ycent </b></td>
+<td><b> Density </b></td>
+<td><b> Theta </b></td>
+<td><b> Feret Min </b></td>
+<td><b> Feret Max </b></td>
+<td><b> Feret Angle </b></td>
+<td><b> Peremiter </b></td>
+<td><b> Mean Thick </b></td>
+</tr>
+<tr>
+<td>{{BCODE}} </td>
+<td>{{CSA}} </td>
+<td>{{XCENT}}</td>
+<td>{{YCENT}} </td>
+<td>{{DENS}} </td>
+<td>{{THETA}} </td>
+<td>{{FMIN}} </td>
+<td>{{FMAX}} </td>
+<td>{{FANGLE}} </td>
+<td>{{PERI}} </td>
+<td>{{MEANTH}} </td>
+</tr>
+<tr>
+<td colspan="11"><center><font color="blue"><b>Slice Geometry</font></center></td>
+</tr>
+<tr>
+<td><b> Xc (mm) </td>
+<td><b> Yc (mm) </td>
+<td><b> Zc (mm)</td>
+<td><b> Mass (g) </td>
+<td><b> Vol (mm<sup>3</sup>) </td>
+<td><b> Icxx (Kg.m<sup>2</sup>) </td>
+<td><b> Icyy </td>
+<td><b> Iczz </td>
+<td><b> I1 (Kg.m<sup>2</sup>)</td>
+<td><b> I2 </td>
+<td><b> I3 </td>
+</tr>
+<tr>
+<td>{{XC}} </td>
+<td>{{YC}} </td>
+<td>{{ZC}}</td>
+<td>{{VOLL}} </td>
+<td>{{MASS}} </td>
+<td>{{ICXX}} </td>
+<td>{{ICYY}} </td>
+<td>{{ICZZ}} </td>
+<td>{{I1}} </td>
+<td>{{I2}} </td>
+<td>{{I3}} </td>
+</tr>
+</table>
 {% endif %}
 {%if var1==1 and var2==1 and var3==1 %}
  <center><font color="steelblue"><h4><b>Density (BMD) Analysis</b></h4></font></center>
