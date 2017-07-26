@@ -40,7 +40,8 @@
 						{
 							c=1;
 						} 
-						window.location.href = "{{ path('enterface_service_cleoperso') }}?name=" + c; 
+						$.post("{{ path('enterface_service_cleoperso') }}", {aa: a,bb:b,cc:c});
+						
 						
 					}
 		</script>
