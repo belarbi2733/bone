@@ -997,6 +997,7 @@ public function TiffViewerAction() {
      fwrite($fichier,$var1."\n");
      fwrite($fichier,$var2."\n");
      fwrite($fichier,$var3);
+     fclose($fichier);
      $connect_it = ftp_connect( $ftp_host );
      $login_result = ftp_login( $connect_it, $ftp_user_name, $ftp_user_pass );
      
