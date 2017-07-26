@@ -978,7 +978,11 @@ public function TiffViewerAction() {
      $target_dir='/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/';
      $outputdir=$target_dir."/Results/";
      $dicomdir=$outputdir."/dicom/";
-
+     $fichier=$outputdir."/parameters.txt"
+     $var1=$_POST['test1'];
+     $var2=$_POST['test2'];
+     $var3=$_POST['test3'];
+     
      $files = glob($target_dir.'/*'); // get all file names
      foreach($files as $file){ // iterate files
            if(is_file($file))
