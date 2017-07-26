@@ -136,30 +136,63 @@
 	</tr>
 	</table>
 	<table class="table table-striped table-inverse" style="border: 2px solid steelblue;overflow:auto; border-radius: 25px; ">
-	<td><b> Bone code</b> </td>
-	<td><b> CSA (mm<sup>2</sup>) </b></td>
-	<td><b> Xcent (mm) </b></td>
-	<td><b> Ycent </b></td>
-	<td><b> Density </b></td>
-	<td><b> Theta </b></td>
-	<td><b> Feret Min </b></td>
-	<td><b> Feret Max </b></td>
-	<td><b> Feret Angle </b></td>
-	<td><b> Peremiter </b></td>
-	<td><b> Mean Thick </b></td>
+	<tr>
+		<td colspan="11"><center><font color="blue"><b>Inertia Moments</font></center></td> 
 	</tr>
 	<tr>
-	<td>{{BCODE}} </td>
-	<td>{{CSA}} </td>
-	<td>{{XCENT}}</td>
-	<td>{{YCENT}} </td>
-	<td>{{DENS}} </td>
-	<td>{{THETA}} </td>
-	<td>{{FMIN}} </td>
-	<td>{{FMAX}} </td>
-	<td>{{FANGLE}} </td>
-	<td>{{PERI}} </td>
-	<td>{{MEANTH}} </td>
+		<td><b> Bone code</b> </td>
+		<td><b> CSA (mm<sup>2</sup>) </b></td>
+		<td><b> Xcent (mm) </b></td>
+		<td><b> Ycent </b></td>
+		<td><b> Density </b></td>
+		<td><b> Theta </b></td>
+		<td><b> Feret Min </b></td>
+		<td><b> Feret Max </b></td>
+		<td><b> Feret Angle </b></td>
+		<td><b> Peremiter </b></td>
+		<td><b> Mean Thick </b></td>
+	</tr>
+	<tr>
+		<td colspan="11"><center><font color="blue"><b>Slice Geometry</font></center></td>
+	</tr>
+	<tr>
+		<td>{{BCODE}} </td>
+		<td>{{CSA}} </td>
+		<td>{{XCENT}}</td>
+		<td>{{YCENT}} </td>
+		<td>{{DENS}} </td>
+		<td>{{THETA}} </td>
+		<td>{{FMIN}} </td>
+		<td>{{FMAX}} </td>
+		<td>{{FANGLE}} </td>
+		<td>{{PERI}} </td>
+		<td>{{MEANTH}} </td>
+	</tr>
+	<tr>
+		<td><b> Xc (mm) </td>
+		<td><b> Yc (mm) </td>
+		<td><b> Zc (mm)</td>
+		<td><b> Mass (g) </td>
+		<td><b> Vol (mm<sup>3</sup>) </td>
+		<td><b> Icxx (Kg.m<sup>2</sup>) </td>
+		<td><b> Icyy </td>
+		<td><b> Iczz </td>
+		<td><b> I1 (Kg.m<sup>2</sup>)</td>
+		<td><b> I2 </td>
+		<td><b> I3 </td>
+	</tr>
+	<tr>
+	<td>{{XC}} </td>
+	<td>{{YC}} </td>
+	<td>{{ZC}}</td>
+	<td>{{VOLL}} </td>
+	<td>{{MASS}} </td>
+	<td>{{ICXX}} </td>
+	<td>{{ICYY}} </td>
+	<td>{{ICZZ}} </td>
+	<td>{{I1}} </td>
+	<td>{{I2}} </td>
+	<td>{{I3}} </td>
 	</tr>
 	</table>
 {% endif %}
