@@ -16,7 +16,7 @@ enterface_service_cleotreatmentperso:
     defaults: { _controller: EnterfaceServiceBundle:Services:cleotreatmentperso }
 
 enterface_service_showCleoperso:
-    path:     /showCleoperso
+    path:     /showCleoperso {var1}/{var2}/{var3}
     defaults: { _controller: EnterfaceServiceBundle:Services:showCleoperso }
 
 enterface_service_showCleoadv:
