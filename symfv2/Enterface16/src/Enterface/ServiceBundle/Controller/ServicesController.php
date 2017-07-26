@@ -1088,6 +1088,8 @@ public function TiffViewerAction() {
      $bmd3="$outputdir/Results1.txt";
      
      
+     
+     
      //$bmd4="$outputdir/Microarchitecture.tif";
      ftp_get($connect_it, $bmd1, "Results/BMD.txt", FTP_BINARY);
      ftp_get($connect_it, $bmd2, "Results/Input_values.txt", FTP_BINARY);
