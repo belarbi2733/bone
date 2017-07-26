@@ -976,16 +976,12 @@ public function TiffViewerAction() {
          mkdir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/Results/dicom');
      }
      $target_dir='/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/';
-     $outputdir=$target_dir."Results/";
+     $outputdir=$target_dir."/Results/";
      $dicomdir=$outputdir."/dicom/";
      $var1=$_POST['test1'];
      $var2=$_POST['test2'];
      $var3=$_POST['test3'];
-     $param=$outputdir."parameters.txt";
-     $fichier = fopen($param, "w");
-     fwrite($fichier,$var1."\n");
-     fwrite($fichier,$var2."\n");
-     fwrite($fichier,$var3);
+     $
      $files = glob($target_dir.'/*'); // get all file names
      foreach($files as $file){ // iterate files
            if(is_file($file))
@@ -996,7 +992,11 @@ public function TiffViewerAction() {
            if(is_file($file))
                 unlink($file); // delete file
      }
-
+     param=$outputdir."parameters.txt";
+     $fichier = fopen($param, "w");
+     fwrite($fichier,$var1."\n");
+     fwrite($fichier,$var2."\n");
+     fwrite($fichier,$var3);
      $connect_it = ftp_connect( $ftp_host );
      $login_result = ftp_login( $connect_it, $ftp_user_name, $ftp_user_pass );
      
