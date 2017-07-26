@@ -663,8 +663,10 @@ public function TiffViewerAction() {
         }
         else
         {
-          $test=$_POST['aa'];
-          return $this->render('EnterfaceServiceBundle:Services:cleoperso.html.twig', array('name'=>$test));
+          $test1=$_GET['a'];
+          $test2=$_GET['b'];
+          $test3=$_GET['c'];
+          return $this->render('EnterfaceServiceBundle:Services:cleoperso.html.twig', array('test1'=>$test1,'test2'=>$test2,'test3'=>$test3));
         }
     }
     /* */
