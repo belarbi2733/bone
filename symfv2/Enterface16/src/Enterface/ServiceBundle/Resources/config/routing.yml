@@ -7,6 +7,12 @@ enterface_service_homepage:
 #    defaults: { _controller: EnterfaceServiceBundle:Default:to }
 
 # add by eladoui----------------------------------------------------------------------------
+enterface_service_cleoperso:
+    path:     /cleoperso
+    defaults: { _controller: EnterfaceServiceBundle:Services:cleoperso }
+  
+
+
 enterface_service_showCleoadv:
     path:     /showCleoadv
     defaults: { _controller: EnterfaceServiceBundle:Services:showCleoadv }
