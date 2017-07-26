@@ -22,6 +22,25 @@
         <script src="{{asset('design/js/radiobutton.js') }}"></script>
     
         <script src="{{asset('design/js/jquery-confirm.js') }}"></script>
+		 <script type="text/javascript">
+					function fun() {
+						var a=0;
+						var b=0;
+						var c=0;
+						if (document.getElementById('a').checked) 
+						{
+							a=1;
+						}
+						if (document.getElementById('b').checked) 
+						{
+							b=1;
+						} 
+						if (document.getElementById('c').checked) 
+						{
+							c=1;
+						} 
+					}
+		</script>
     {% endblock %}
     <div id="divHomeTitle" class="ecranFond parallax height-ecran-fond">
         <div class="container-fluid background-opacity" >
