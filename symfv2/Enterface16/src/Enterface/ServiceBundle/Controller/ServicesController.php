@@ -981,10 +981,10 @@ public function TiffViewerAction() {
      $var1=$_POST['test1'];
      $var2=$_POST['test2'];
      $var3=$_POST['test3'];
-     $myfile = fopen($outputdir."parameters.txt", "w");
-     fwrite($myfile,$var1."\n");
-     fwrite($myfile,$var2."\n");
-     fwrite($myfile,$var3);
+     $fichier = fopen($outputdir."parameters.txt", "w");
+     fwrite($fichier,$var1."\n");
+     fwrite($fichier,$var2."\n");
+     fwrite($fichier,$var3);
      $files = glob($target_dir.'/*'); // get all file names
      foreach($files as $file){ // iterate files
            if(is_file($file))
