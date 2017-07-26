@@ -32,7 +32,7 @@
         <!-- Portfolio Item Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header"><br>Cleo {{test1}} <font color="red">(Personalized)</font> {{test2}}:
+                <h1 class="page-header"><br>Cleo <font color="red">(Personalized)</font>:
                     <small>DICOM scanner</small>
                 </h1>
             </div>
@@ -57,7 +57,8 @@ result, we obtained a value representing the bone mineral density of the whole 3
                 <img src="{{asset('design/img/Medical/scanner.jpg') }}" width="250" height="250" alt="" class="image-product"/>
                </div>
             <form id="imageform" action="{{ url('enterface_service_cleotreatmentperso') }}" method="post" enctype="multipart/form-data">
-             <div class="col-sm-6 col-xs-8">
+             
+			 <div class="col-sm-6 col-xs-8">
               <h3>Input Dicom :</h3><input id="videoUploadFile1" type="file" name="fichier[]" class="btn btn-info" multiple><br>
               <h3>Bmd VALUES (.txt) :</h3><input id= "videoUploadFile1" type="file" name="bmd" class="btn btn-info"><br> 
               <h3>Phantom VALUES (.txt) :</h3><input id="videoUploadFile1" type="file" name="phantom" class="btn btn-info"><br>
