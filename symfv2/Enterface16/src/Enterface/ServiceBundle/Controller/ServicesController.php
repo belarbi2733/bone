@@ -981,7 +981,7 @@ public function TiffViewerAction() {
      $var1=$_POST['test1'];
      $var2=$_POST['test2'];
      $var3=$_POST['test3'];
-     $myfile = fopen($outputdir."/parameters.txt", "w");
+     $myfile = fopen($outputdir."parameters.txt", "w");
      fwrite($myfile,$var1."\n");
      fwrite($myfile,$var2."\n");
      fwrite($myfile,$var3);
@@ -1020,7 +1020,7 @@ public function TiffViewerAction() {
                  //$name = $_FILES["fichier"]["name"][$key];
                  $name="fichier".$i++.".dcm";
                  move_uploaded_file($tmp_name, $target_dir . "/$name");
-		 //move_uploaded_file($tmp_name, $dicomdir . "$name");
+		             //move_uploaded_file($tmp_name, $dicomdir . "$name");
                  $ser = "dicom/" . $name;
                  ftp_put( $connect_it, $ser,$target_dir . "/$name", FTP_BINARY );                 
          }  
@@ -1030,11 +1030,13 @@ public function TiffViewerAction() {
      $nom_phantom = $_FILES['phantom']['tmp_name'];
      $target_bmd = $outputdir ."BMDvalues1.txt";
      $target_phantom = $outputdir ."Phantom1.txt";
+     $target_parameters=$outputdir."parameters.txt";
      move_uploaded_file( $nom_bmd, $target_bmd );
      move_uploaded_file( $nom_phantom, $target_phantom );
      
      ftp_put( $connect_it,"BMDvalues1.txt",$target_bmd, FTP_BINARY );
      ftp_put( $connect_it, "Phantom1.txt",$target_phantom, FTP_BINARY );
+     ftp_put( $connect_it, "parameters.txt",$target_parameters, FTP_BINARY );
      
      //ssh connect
      $connection = ssh2_connect($ftp_host, 22);
