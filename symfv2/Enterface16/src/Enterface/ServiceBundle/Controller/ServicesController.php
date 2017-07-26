@@ -1112,7 +1112,107 @@ public function TiffViewerAction() {
      $em=$this->getDoctrine()->getManager();
      $em->persist($user);
      $em->flush();
-     return new RedirectResponse($this->container->get('router')->generate('enterface_service_showCleoperso')->setParameter($var1,$var2,$var3));
+     
+     // Open the text file
+      // Input Values :
+      $bmd = fopen("$outputdir/Input_values.txt", "r");
+      $BADU= fgets($bmd);
+      $MBMD= fgets($bmd);
+      $SD=fgets($bmd);
+      fclose($bmd);
+
+      // Phantom Values :
+      $phan = fopen("$outputdir/Phantom1.txt", "r");
+      $HU1=fgets($phan,5);
+      $HA1=fgets($phan,8);
+      
+      $HU2=fgets($phan,7);
+      $HA2=fgets($phan,10);
+      
+      fgets($phan);
+    
+      $HU3=fgets($phan,10);
+      $HA3=fgets($phan,13);
+      
+    
+      $HU4=fgets($phan,10);
+      $HA4=fgets($phan,13);
+      
+      $HU5=fgets($phan,10);
+      $HA5=fgets($phan,14);
+      
+      $HU6=fgets($phan,10);
+      $HA6=fgets($phan,14);
+      fclose($phan);
+      
+      //BMD2.txt
+      $bmd2=fopen("$outputdir/BMD.txt","r");
+     
+      $BMC=fgets($bmd2);
+      $BMD=fgets($bmd2);
+      $TScor=fgets($bmd2);
+      
+      fclose($bmd2);
+      
+      // Results1.txt
+      
+      $Res = fopen("$outputdir/Results1.txt", "r");
+      $BVolum=fgets($Res);
+      $TVolum=fgets($Res);
+      $VFraction=fgets($Res);
+      $Conn=fgets($Res);
+      $TN=fgets($Res);
+      $TthM=fgets($Res);
+      $TthDev=fgets($Res);
+      $TthMax=fgets($Res);
+      
+      $TspM=fgets($Res);
+      $TspDev=fgets($Res);
+      $TspMax=fgets($Res); 
+      $DA="Decommenter les lignes 669 et 570 dans ServiceController.php apres l'integration de la new clio dans la MV";
+      $tDA="Decommenter les lignes 619 et 620 dans ServiceController.php apres l'integration de la new clio dans la MV";
+      //$DA=fgets($Res,8);
+      //$tDA=fgets($Res,7);
+      $FDim=fgets($Res);
+      $R2=fgets($Res);         
+      fclose($Res);
+     
+     // Results2.txt
+     $Res2=fopen("$outputdir/Results2.txt", "r");
+     $BCODE=fgets($Res2);
+     $CSA=fgets($Res2);
+     $XCENT=fgets($Res2);
+     $YCENT=fgets($Res2);
+     $DENS=fgets($Res2);
+     $THETA=fgets($Res2);
+     $FMIN=fgets($Res2);
+     $FMAX=fgets($Res2);
+     $FANGLE=fgets($Res2);
+     $PERI=fgets($Res2);
+     $MEANTH=fgets($Res2);
+     fclose($Res2);
+     
+     // Results3.txt
+     $Res3=fopen("$outputdir/Results3.txt", "r");
+     $XC=fgets($Res3);
+     $YC=fgets($Res3);
+     $ZC=fgets($Res3);
+     $VOLL=fgets($Res3);
+     $MASS=fgets($Res3);
+     $ICXX=fgets($Res3);
+     $ICYY=fgets($Res3);
+     $ICZZ=fgets($Res3);
+     $I1=fgets($Res3);
+     $I2=fgets($Res3);
+     $I3=fgets($Res3);
+     fclose($Res3);
+
+                
+      return $this->render('EnterfaceServiceBundle:Services:affichecleoperso.html.twig', array('works' =>true,'BADU'=>$BADU, 'MBMD'=> $MBMD,
+    'SD'=> $SD,'HU1'=> $HU1,'HA1'=> $HA1,'HU2'=> $HU2,'HA2'=> $HA2,'HU3'=> $HU3,'HA3'=> $HA3,'HU4'=> $HU4,'HA4'=> $HA4,'HU5'=> $HU5,'HA5'=> $HA5,'HU6'=> $HU6,'HA6'=> $HA6, 'BVolum'=> $BVolum,'TVolum'=> $TVolum, 'VFraction'=>$VFraction,'BMC'=>$BMC,'BMD'=>$BMD,'TScor'=>$TScor,'FDim'=>$FDim,
+    'R2'=>$R2, 'Conn'=>$Conn,'TN'=>$TN, 'TthM'=>$TthM, 'TthDev'=>$TthDev, 'TthMax'=> $TthMax, 'TspM'=> $TspM, 'TspDev'=> $TspDev, 'TspMax'=>$TspMax,'DA'=>$DA,'tDA'=>$tDA, 'BCODE'=>$BCODE,'CSA'=>$CSA,'XCENT'=>$XCENT,'YCENT'=>$YCENT,'DENS'=>$DENS,'THETA'=>$THETA,'FMIN'=>$FMIN,'FMAX'=>$FMAX,'FANGLE'=>$FANGLE,'PERI'=>$PERI,'MEANTH'=>$MEANTH,'XC'=>$XC,'YC'=>$YC,'ZC'=>$ZC,'VOLL'=>$VOLL,'MASS'=>$MASS,'ICXX'=>$ICXX,'ICYY'=>$ICYY,'ICZZ'=>$ICZZ,'I1'=>$I1,'I2'=>$I2,'I3'=>$I3));
+     
+     //return new RedirectResponse($this->container->get('router')->generate('enterface_service_showCleoperso')->setParameter($var1,$var2,$var3));
     }
     
     /*----------------------------------------------------------------------------------------- */
