@@ -976,12 +976,12 @@ public function TiffViewerAction() {
          mkdir('/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/Results/dicom');
      }
      $target_dir='/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/';
-     $outputdir=$target_dir."/Results/";
+     $outputdir=$target_dir."Results/";
      $dicomdir=$outputdir."/dicom/";
      $var1=$_POST['test1'];
      $var2=$_POST['test2'];
      $var3=$_POST['test3'];
-     $param=$outputdir."/parameters.txt";
+     $param=$outputdir."parameters.txt";
      $fichier = fopen($param, "w");
      fwrite($fichier,$var1."\n");
      fwrite($fichier,$var2."\n");
