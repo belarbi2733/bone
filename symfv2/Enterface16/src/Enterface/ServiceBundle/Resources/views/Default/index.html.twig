@@ -23,7 +23,8 @@
     
         <script src="{{asset('design/js/jquery-confirm.js') }}"></script>
 		 <script type="text/javascript">
-					function fun() {
+					function fun() 
+					{
 						var a=0;
 						var b=0;
 						var c=0;
@@ -39,6 +40,20 @@
 						{
 							c=1;
 						} 
+						$.ajax({  
+							url:"{{ path('enterface_service_cleoperso') }}",  
+							method:"POST",  
+							data:{aa:a, bb:b,cc:c},  
+							dataType:"text",  
+							success:function(data)  
+							{  
+							   
+								 document.getElementById('doss').scrollIntoView();
+								 $('html, body').animate({scrollTop: $("#doss").offset().top}, 'slow');
+								 $('#doss').html(data);
+								   
+							}  
+					   })
 					}
 		</script>
     {% endblock %}
