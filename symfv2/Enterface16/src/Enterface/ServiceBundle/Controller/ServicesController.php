@@ -1103,12 +1103,12 @@ public function TiffViewerAction() {
      //exec("sudo /usr/local/bin/docker_cleo $outputdir"); 
      //Payement
      $credit=$user->getCredit();
-     $credit=$credit-4;
+     $credit=$credit-6;
      $user->setCredit($credit);
      $em=$this->getDoctrine()->getManager();
      $em->persist($user);
      $em->flush();
-     return new RedirectResponse($this->container->get('router')->generate('enterface_service_showCleoperso'));
+     return new RedirectResponse($this->container->get('router')->generate('enterface_service_showCleoperso',array('test1'=>$tvar1,'test2'=>$var2,'test3'=>$var3)));
     }
     
     /*----------------------------------------------------------------------------------------- */
