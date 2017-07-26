@@ -1112,7 +1112,7 @@ public function TiffViewerAction() {
      $em=$this->getDoctrine()->getManager();
      $em->persist($user);
      $em->flush();
-     return new RedirectResponse($this->container->get('router')->generate('enterface_service_showCleoperso')->setParameter());
+     return new RedirectResponse($this->container->get('router')->generate('enterface_service_showCleoperso')->setParameter($var1,$var2,$var3));
     }
     
     /*----------------------------------------------------------------------------------------- */
@@ -1337,7 +1337,7 @@ public function TiffViewerAction() {
    /*------------------------------------------------------------------------------------------------------------- */      
 
     /* SHOW CLEO personalized */
-       public function showCleopersoAction() {
+       public function showCleopersoAction($var1,$var2,$var3) {
         //Get current User and Check the access
         $user = $this->container->get('security.context')->getToken()->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
