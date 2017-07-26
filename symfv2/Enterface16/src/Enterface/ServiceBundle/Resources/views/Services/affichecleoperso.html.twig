@@ -95,7 +95,74 @@
 	</tr>
 	</table>
 {% endif %}
-
+{%if var1==0 and var2==0 and var3==1 %}
+	<center><font color="steelblue"><h4><b>Density (BMD) Analysis</b></h4></font></center>
+	<table class="table table-striped table-inverse" style="border: 2px solid steelblue;overflow:auto; border-radius: 25px; ">
+	<tr>
+	<td><b> BMC </td>
+	<td><b> BMD </td>
+	<td><b> T-Score </b></td>
+	</tr>
+	<tr>
+	<td>{{BMC}} </td>
+	<td>{{BMD}} </td>
+	<td>{{TScor}} </td>
+	</tr>
+	</table>
+	 <center><font color="steelblue"><h4><b>Anisotropy computation</b></h4></font></center>
+	<table class="table table-striped table-inverse" style="border: 2px solid steelblue;overflow:auto; border-radius: 25px; "> 
+	<tr>
+	<td><b> DA  </td>
+	<td><b> tDA </td>
+	</tr>
+	<tr>
+	<td>{{DA}} </td>
+	<td>{{tDA}}</td>
+	</tr>
+	</table>
+{% endif %}
+{%if var1==0 and var2==1 and var3==0 %}
+	<center><font color="steelblue"><h4><b>Density (BMD) Analysis</b></h4></font></center>
+	<table class="table table-striped table-inverse" style="border: 2px solid steelblue;overflow:auto; border-radius: 25px; ">
+	<tr>
+	<td><b> BMC </td>
+	<td><b> BMD </td>
+	<td><b> T-Score </b></td>
+	</tr>
+	<tr>
+	<td>{{BMC}} </td>
+	<td>{{BMD}} </td>
+	<td>{{TScor}} </td>
+	</tr>
+	</table>
+	
+	<td><b> Bone code</b> </td>
+	<td><b> CSA (mm<sup>2</sup>) </b></td>
+	<td><b> Xcent (mm) </b></td>
+	<td><b> Ycent </b></td>
+	<td><b> Density </b></td>
+	<td><b> Theta </b></td>
+	<td><b> Feret Min </b></td>
+	<td><b> Feret Max </b></td>
+	<td><b> Feret Angle </b></td>
+	<td><b> Peremiter </b></td>
+	<td><b> Mean Thick </b></td>
+	</tr>
+	<tr>
+	<td>{{BCODE}} </td>
+	<td>{{CSA}} </td>
+	<td>{{XCENT}}</td>
+	<td>{{YCENT}} </td>
+	<td>{{DENS}} </td>
+	<td>{{THETA}} </td>
+	<td>{{FMIN}} </td>
+	<td>{{FMAX}} </td>
+	<td>{{FANGLE}} </td>
+	<td>{{PERI}} </td>
+	<td>{{MEANTH}} </td>
+	</tr>
+	 
+{% endif %}
 {%if var1==1 and var2==1 and var3==1 %}
  <center><font color="steelblue"><h4><b>Density (BMD) Analysis</b></h4></font></center>
 <table class="table table-striped table-inverse" style="border: 2px solid steelblue;overflow:auto; border-radius: 25px; ">
@@ -230,7 +297,7 @@
 <td>{{DA}} </td>
 <td>{{tDA}}</td>
 </tr>
-</table
+</table>
 <!-- geometry -->
  
 <center>
