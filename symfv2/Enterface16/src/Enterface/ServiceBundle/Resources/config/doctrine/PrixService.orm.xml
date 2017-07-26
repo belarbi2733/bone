@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Enterface\ServiceBundle\Entity\PrixService" table="prix_service">
+    <indexes>
+      <index name="fk_type_service" columns="Id_type_service"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="idx_service" columns="Id_service,Id_type_service"/>
+    </unique-constraints>
+    <id name="idService" type="integer" column="Id_service"/>
+    <id name="idTypeService" type="integer" column="Id_type_service"/>
+    <field name="prix" type="integer" column="Prix" nullable="false"/>
+  </entity>
+</doctrine-mapping>

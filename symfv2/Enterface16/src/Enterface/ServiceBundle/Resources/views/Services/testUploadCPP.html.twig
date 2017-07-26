@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <form style="width: 500px;margin-left: auto; margin-right: auto;">
+            <fieldset>
+                <legend>
+                    {msg}
+                </legend>
+                
+                {% if works %}
+                    <div>
+                        <h2>Before :</h2>
+                        <img src="{{srcImg}}" alt="Smiley face" style="width:500px;height:500px ; border-style: outset;">
+                    </div>
+                    <div>
+                        <h2>After :</h2>
+                        <img src="{{destImg}}" alt="Smiley face" style="width:500px;height:500px; border-style: outset;">                    
+                    </div>
+                {% endif %}
+                
+            </fieldset>
+        </form>
+    </body>
+</html>

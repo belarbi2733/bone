@@ -1,0 +1,77 @@
+<html>
+	<head>
+		<title>Umons</title>
+		<link rel="icon" href="http://www.cpufb.be/wp-content/uploads/2016/02/umons.jpg" type="image/x-icon" />
+	</head>
+	<script type="text/javascript" src="tmpTestJsCss/scripts/jquery.min.js"></script>
+	<script type="text/javascript" src="tmpTestJsCss/scripts/jquery.form.js"></script>
+	<script type="text/javascript" >
+		$(document).ready(function() 
+		{ 
+				$('#photoimg').live('change', function()			
+				{ 
+					if(document.getElementById("e").checked == false && document.getElementById("d").checked == false && document.getElementById("c").checked == false && document.getElementById("a").checked == false && document.getElementById("b").checked == false )
+					{
+						alert('Il faut au moins choisir un algorithme');
+						return false;
+					}
+					else
+					{
+						$("#preview").html('');
+						$("#preview").html('<img src="tmpTestJsCss/scripts/loader.gif" alt="Uploading...." style="margin-left:auto; margin-right:auto"/>');
+						$("#imageform").ajaxForm(
+						{
+							target: '#preview'
+						}).submit();
+					}
+				});
+		}); 
+	</script>
+	<style>
+
+	body
+	{
+	font-family:arial;
+	background-image: url("http://www.w3schools.com/css/gradient_bg.png");
+    background-repeat: repeat-x;
+	}
+	.preview
+	{
+	width:200px;
+	border:solid 1px #dedede;
+	padding:10px;
+	}
+	#preview
+	{
+	color:#cc0000;
+	font-size:12px
+	}
+
+	</style>
+	<body>
+
+	<form id="imageform" action="{{ url('enterface_service_testUploadCPP') }}" method="post" enctype="multipart/form-data" style="width: 17em; margin-left: auto;margin-right: auto;">
+		<fieldset>
+			<legend>
+				Chosir un algorithme ?
+			</legend>
+			<input id="a" type="radio" name="algo" value="sift" />SIFT<br />
+			<input id="b" type="radio" name="algo" value="surf" />SURF<br />
+			<input id="c" type="radio" name="algo" value="histo" />Histogramme Couleur<br />
+			<input id="d" type="radio" name="algo" value="histo1" />Histogramme HSV<br />	
+			<input id="e" type="radio" name="algo" value="fourier" />Fourier<br />				
+		</fieldset>
+		<fieldset>
+			<legend>
+				Select image to upload:
+			</legend>
+			<input type="file" name="photoimg" id="photoimg">
+                        <input type="submit" value="OOOK">
+			
+		</fieldset>
+		<div id='preview'>
+		</div>
+	</form>
+	
+	</body>
+</html>

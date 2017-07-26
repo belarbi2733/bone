@@ -1,0 +1,39 @@
+    
+enterface_user_login:
+    path:     /login
+    defaults: { _controller: FOSUserBundle:Security:login }
+    
+enterface_user_registration:
+    path:     /register
+    defaults: { _controller: FOSUserBundle:Registration:register }
+enterface_teampage:
+    path:     /team
+    defaults: { _controller: EnterfaceUserBundle:User:team }
+
+enterface_user_logout:
+    path:     /logout
+    defaults: { _controller: FOSUserBundle:Registration:logout }
+
+enterface_user_delete:
+    path:     /delete/{id}
+    defaults: { _controller: EnterfaceUserBundle:User:delete }
+    requirements:
+        id: \d+
+
+enterface_user_buy:
+    path:     /buy
+    defaults: { _controller: EnterfaceUserBundle:User:buy }
+
+enterface_user_buycheck:
+    path:     /buycheck/{id}
+    defaults: { _controller: EnterfaceUserBundle:User:buycheck }
+    requirements:
+        id: \d+
+        
+enterface_user_profile:
+    path:     /profile
+    defaults: { _controller: EnterfaceUserBundle:User:profile }
+        
+enterface_user_profile:
+    path:     /profile
+    defaults: { _controller: EnterfaceUserBundle:User:profile }

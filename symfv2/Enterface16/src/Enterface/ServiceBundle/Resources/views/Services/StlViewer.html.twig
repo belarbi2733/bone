@@ -1,0 +1,221 @@
+ {% block head %}
+      <title>{% block title %}Medical Bone Process{% endblock %}</title>
+           <!-- Bootstrap Core CSS -->
+        <link href="{{asset('design/vendor/bootstrap3.3.7/css/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{asset('design/css/base.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('design/css/session.css')}}" rel="stylesheet" type="text/css"/>
+        
+
+ {%endblock%}
+
+{% block body %}
+    <style>
+
+    		body {
+				font-family: Monospace;
+				background-color: black;
+
+				overflow: hidden;
+			}
+
+			#info {
+				color: #fff;
+				position: absolute;
+				top: 10px;
+				width: 100%;
+				text-align: center;
+				z-index: 100;
+				display:block;
+
+			}
+
+			a { color: skyblue }
+			.button { background:#999; color:#eee; padding:0.2em 0.5em; cursor:pointer }
+			.highlight { background:orange; color:#fff; }
+
+			span {
+				display: inline-block;
+				width: 60px;
+				float: left;
+				text-align: center;
+			}
+			div{
+
+height:350px;
+width: 150%;
+color: red;
+
+			}
+    </style>
+        
+        <header>   
+        
+            <div class="container-fluid navbar-accueil" id="divNavbarAccueil">
+                <div class="row vertical-middle">                   
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-12 vertical-middle">                               
+                        <nav>
+                            <ul class="nav navbar-nav">    
+                                <li> <img src="{{asset('design/img/Medical/MOVACP.gif')}}"  class="img-accueil-header"/></li>
+                               
+                                
+                                   
+                                  
+                    
+                            </ul>
+                        </nav>
+                    </div>
+                </div> 
+            </div>
+        
+    </header>
+     {% block javascripts %}
+        <script src="{{asset('design/js/three.js') }}" ></script>
+        <script src="{{asset('design/js/STLLoader.js') }}"></script>
+        <script src="{{asset('design/js/Detector.js') }}"></script>
+        <script src="{{asset('design/js/stats.min.js') }}"></script>
+        {% endblock %} 
+       
+  <span style="top:0%;left: 25%;width: 50%;height: 100%; margin:.3%;text-align: center;font-size: 2em; position: absolute;color: navy;font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;text-shadow: 2px 2px #37A9DA;"> 3D-Stl Viewer (Enterface'17) </span>
+  <center>
+    <div ng-app="ngdicomviewer" ng-init="ishelp = false" style="top:0%;left: 0%;width: 100%;height: 100%;padding: 0px; position: absolute">
+    
+      <span style="top:0%;left: 25%;width: 50%;height: 100%; margin:.3%;text-align: center;font-size: 2em; position: absolute;color: white;font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;"> 3D-Stl Viewer (Enterface'17) </span>
+             <img src="{{asset('design/img/Medical/construction.jpg') }}"  alt="" />
+                 <script>                   
+			var container, stats;
+			var camera, cameraTarget, scene, renderer;
+
+			init();
+			animate();
+
+			function init() {
+
+		  //	document.write("<input type='file' id='fichier' name='stl'>")
+
+				container = document.createElement( 'div' );
+
+				document.body.appendChild( container );
+
+				camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 15 );
+				camera.position.set( 3, 0.15, 3 );
+
+				cameraTarget = new THREE.Vector3( 0, -0.25, 0 );
+
+				scene = new THREE.Scene();
+				scene.background = new THREE.Color( 0x645b );
+				scene.fog = new THREE.Fog( 0x72645b, 2, 15 );
+
+				var loader = new THREE.STLLoader();
+
+				//var ff={{asset('/var/www/symfv2/Enterface16/web/design/js/data/stfiledecemated.stl') }}; //ici le chemin de fichier stl !!
+
+				loader.load("design/js/data/stfiledecemated.stl", function ( geometry ) {
+
+					var material = new THREE.MeshPhongMaterial( { color: 0xff5533, specular: 0x111111, shininess: 200 } );
+					var mesh = new THREE.Mesh( geometry, material );
+
+					mesh.position.set( 0, - 0.25, 0.6 );
+					mesh.rotation.set( 0, - Math.PI / 2, 0 );
+					mesh.scale.set( 0.03, 0.03, 0.03 );
+
+					mesh.castShadow = true;
+					mesh.receiveShadow = true;
+
+					scene.add( mesh );
+
+				} );
+
+
+				addShadowedLight( 1, 1, 1, 0xffffff, 1.35 );
+				addShadowedLight( 0.5, 1, -1, 0xffaa00, 1 );
+				// renderer
+
+				renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+				renderer.gammaInput = true;
+				renderer.gammaOutput = true;
+
+				renderer.shadowMap.enabled = true;
+				renderer.shadowMap.renderReverseSided = false;
+
+				container.appendChild( renderer.domElement );
+
+				// stats
+
+
+
+				//
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function addShadowedLight( x, y, z, color, intensity ) {
+
+				var directionalLight = new THREE.DirectionalLight( color, intensity );
+				directionalLight.position.set( x, y, z );
+				scene.add( directionalLight );
+
+				directionalLight.castShadow = true;
+
+				var d = 1;
+				directionalLight.shadow.camera.left = -d;
+				directionalLight.shadow.camera.right = d;
+				directionalLight.shadow.camera.top = d;
+				directionalLight.shadow.camera.bottom = -d;
+
+				directionalLight.shadow.camera.near = 1;
+				directionalLight.shadow.camera.far = 4;
+
+				directionalLight.shadow.mapSize.width = 1024;
+				directionalLight.shadow.mapSize.height = 1024;
+
+				directionalLight.shadow.bias = -0.005;
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				render();
+				stats.update();
+
+			}
+
+			function render() {
+
+				var timer = Date.now() * 0.0004;
+
+				camera.position.x = Math.cos( timer ) * 3;
+				camera.position.z = Math.sin( timer ) * 3;
+
+				camera.lookAt( cameraTarget );
+
+				renderer.render( scene, camera );
+
+			}
+              </script>
+                            
+    
+ {% block footer %}
+    
+    <footer class="footer vertical-middle">
+        <div>
+          
+        </div> 
+    </footer>
+{% endblock footer %}
+     
+{% endblock %}

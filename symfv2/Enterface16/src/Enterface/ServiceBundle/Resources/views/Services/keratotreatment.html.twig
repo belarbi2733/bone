@@ -1,0 +1,258 @@
+{% extends '::base.html.twig' %} 
+{% block body %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../app_dev.php#services">eNTERFACE'16</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Article link</a>
+                    </li>
+                    <li>
+                        <a href="#">Help</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header"><br>Keratoconus Detection
+                    <small>Bitmap images</small>
+                </h1>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-8 col-xs-8">
+              <h3>Application Description</h3>
+              <p>
+              This application focuses on developing artificial intelligence tool to diagnose Keratoconus.
+This tool can help manufactures in improving their devices to assist experts and improves the Keratoconus recognition phase either automatically or by expert. Our Artificial intelligence algorithm finds Keratoconus by employing features of topographical map of eye.
+
+              </p>
+              <ul>
+                  <li>Upload the prior image of the cornea</li>
+                  <li>Upload the posterior image of the cornea</li>
+                  <li>Upload the axes of the cornea image</li>
+                  <li>Get the Keratoconus detection</li>
+              </ul>
+          </div>
+        
+            <div class="col-sm-5 col-xs-8">
+                <h3>Prior image</h3>
+                <img class="img-responsive portfolio-item" src="{{asset('tmpTestJsCss/uploads/antrior.bmp')}}" alt=""><br>
+                
+            </div>
+            <div class="col-sm-5 col-xs-8">
+                <h3>Posterior image</h3>
+                <img class="img-responsive portfolio-item" src="{{asset('tmpTestJsCss/uploads/posterior.bmp')}}" alt=""><br>
+                
+            </div>
+            <div class="col-sm-5 col-xs-8">
+                <h3>Axes image</h3>
+                <img class="img-responsive portfolio-item" src="{{asset('tmpTestJsCss/uploads/axes.bmp')}}" alt=""><br>
+                
+            </div>
+
+
+          <div class="col-sm-8 col-xs-8">
+            <h2>Result : </h2>
+                    
+                 <div class="col-sm-6 col-xs-6">
+                     
+        <font color='green' size='6'>Image 1 : </font>
+        <h4>3 mm :</h4>
+    <table class="table table-striped table-inverse">
+        <tr>
+            <td>Très chaud</td>
+            <td>{{img13mmTC}}</td>
+        </tr>
+          <tr>
+            <td>Moins Chaud</td>
+            <td>{{img13mmMC}}</td>
+        </tr>
+          <tr>
+            <td>Chaud</td>
+            <td>{{img13mmC}}</td>
+        </tr>
+          <tr>
+            <td>Normal</td>
+            <td>{{img13mmN}}</td>
+        </tr>
+          <tr>
+            <td>Froid</td>
+            <td>{{img13mmF}}</td>
+        </tr>
+          <tr>
+            <td>Très Froid</td>
+            <td>{{img13mmTF}}</td>
+        </tr>
+          <tr>
+            <td>Nombre de coleurs dans la zone</td>
+            <td>{{NBcolimg13}}</td>
+        </tr>
+        </table>
+          
+       <h4>5 mm</h4>
+<table class="table table-striped table-inverse">
+<tr>
+            <td>Très chaud</td>
+            <td>{{img15mmTC}}</td>
+        </tr>
+          <tr>
+            <td>Moins Chaud</td>
+            <td>{{img15mmMC}}</td>
+        </tr>
+          <tr>
+            <td>Chaud</td>
+            <td>{{img15mmC}}</td>
+        </tr>
+          <tr>
+            <td>Normal</td>
+            <td>{{img15mmN}}</td>
+        </tr>
+          <tr>
+            <td>Froid</td>
+            <td>{{img15mmF}}</td>
+        </tr>
+          <tr>
+            <td>Très Froid</td>
+            <td>{{img15mmTF}}</td>
+        </tr>   
+  <tr>
+            <td>Nombre de coleurs dans la zone</td>
+            <td>{{NBcolimg15}}</td>
+        </tr> 
+</table>
+</div>
+    <div class="col-sm-6 col-xs-6">
+        <font color='green' size='6'>Image 2 : </font>
+        <h4>3 mm :</h4>
+    <table class="table table-striped table-inverse">
+         <tr>
+            <td>Très chaud</td>
+            <td>{{img23mmTC}}</td>
+        </tr>
+          <tr>
+            <td>Moins Chaud</td>
+            <td>{{img23mmMC}}</td>
+        </tr>
+          <tr>
+            <td>Chaud</td>
+            <td>{{img23mmC}}</td>
+        </tr>
+          <tr>
+            <td>Normal</td>
+            <td>{{img23mmN}}</td>
+        </tr>
+          <tr>
+            <td>Froid</td>
+            <td>{{img23mmF}}</td>
+        </tr>
+          <tr>
+            <td>Très Froid</td>
+            <td>{{img23mmTF}}</td>
+        </tr>
+          <tr>
+            <td>Nombre de coleurs dans la zone</td>
+            <td>{{NBcolimg23}}</td>
+        </tr>
+        </table>
+          
+       <h4>5 mm</h4>
+<table class="table table-striped table-inverse">
+<tr>
+            <td>Très chaud</td>
+            <td>{{img25mmTC}}</td>
+        </tr>
+          <tr>
+            <td>Moins Chaud</td>
+            <td>{{img25mmMC}}</td>
+        </tr>
+          <tr>
+            <td>Chaud</td>
+            <td>{{img25mmC}}</td>
+        </tr>
+          <tr>
+            <td>Normal</td>
+            <td>{{img25mmN}}</td>
+        </tr>
+          <tr>
+            <td>Froid</td>
+            <td>{{img25mmF}}</td>
+        </tr>
+          <tr>
+            <td>Très Froid</td>
+            <td>{{img25mmTF}}</td>
+        </tr>   
+  <tr>
+            <td>Nombre de coleurs dans la zone</td>
+            <td>{{NBcolimg25}}</td>
+        </tr> 
+</table>                    
+   </div>
+<div class="col-sm-6 col-xs-6">
+         <br><br>
+         <table class="table table-bordered">
+            </tr>
+          <tr>
+            <td>Alignement de la coleur Bleu</td>
+            <td>{{alignementB}}</td>
+        </tr>   
+  <tr>
+            <td>Alignement de la coleur Rouge</td>
+            <td>{{alignementR}}</td>
+        </tr> 
+    </table>
+         <br>
+         <a href="{{asset('tmpTestJsCss/outputs/Kera/RESULTS.txt')}}" class="btn btn-premary btn-lg active" role="button" download="ResultsKera.txt">Download The results</a>
+  </div>
+      
+ 
+    
+  </div>
+
+        </div>
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Authors : </p>
+                </div>
+            </div>
+
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="{{asset('design/js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{asset('design/js/bootstrap.min.js') }}"></script>
+{% endblock %}

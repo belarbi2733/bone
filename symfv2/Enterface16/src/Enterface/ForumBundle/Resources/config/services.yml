@@ -1,0 +1,4 @@
+services:
+#    enterface_forum.example:
+#        class: Enterface\ForumBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

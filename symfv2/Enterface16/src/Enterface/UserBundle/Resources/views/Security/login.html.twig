@@ -1,0 +1,62 @@
+{% extends "EnterfaceUserBundle::layout.html.twig" %}
+
+
+{% block fos_user_content %}
+    {% if error %}
+        <div class="alert alert-danger">Wrong UserName or Password</div>
+    {% endif %}
+
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-lg-12">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}" required="required" placeholder="Email or Username" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-xs-12 col-lg-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input type="password" id="password" class="form-control" name="_password" required="required" placeholder="Password"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row center-left">
+                <div class="col-xs-12 col-lg-12">
+                    <div class="checkbox">
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on">
+                        <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+                    </div>
+                </div> 
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12  col-lg-12 text-pwd-register" style="text-align: right;">
+                    <a href="{{ path('fos_user_resetting_request') }}" class="btn-link" title="Click here to reset your password">Forgot password ?</a>&nbsp;&nbsp;
+                    <a href="{{ path('fos_user_registration_register') }}" class="btn-link" role="button" title="Click here to register">Register</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-12-6 login">
+                    <input type="submit" id="_submit" class="btn btn-primary btn-lg button_login" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+                </div>  
+            </div>  
+
+        </div>
+    </div>
+</form> 
+<br>
+
+
+
+{% endblock fos_user_content %}
