@@ -1048,9 +1048,30 @@ public function algotreatment1Action()
      if (ssh2_auth_password($connection, $ftp_user_name, $ftp_user_pass))
      {       
              /*$stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\PERSONALIZED_CLEO_V5A.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\BMDvalues1.txt Downloads\ftp\Phantom1.txt Downloads\ftp\parameters.txt');*/
-                 $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\PER_CLEO_V5_NoM_NoP.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\Input\BMDvalues1.txt Downloads\ftp\Input\Phantom1.txt Downloads\ftp\Input\parameters.txt');
-                 stream_set_blocking($stream2, true);
-                 stream_get_contents($stream2);
+                 if($var4==0 && $var5==0)
+                 {
+                   $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\PER_CLEO_V5_NoM_NoP.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\Input\BMDvalues1.txt Downloads\ftp\Input\Phantom1.txt Downloads\ftp\Input\parameters.txt');
+                   stream_set_blocking($stream2, true);
+                   stream_get_contents($stream2);
+                 }
+                 else if($var4==1 && $var5==0)
+                 {
+                   $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\PER_CLEO_V5_M_NoP.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\Input\BMDvalues1.txt Downloads\ftp\Input\Phantom1.txt Downloads\ftp\Input\parameters.txt');
+                   stream_set_blocking($stream2, true);
+                   stream_get_contents($stream2);
+                 }
+                 else if($var4==0 && $var5==1)
+                 {
+                   $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\PER_CLEO_V5_NoM_P.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\Input\BMDvalues1.txt Downloads\ftp\Input\Phantom1.txt Downloads\ftp\Input\parameters.txt');
+                   stream_set_blocking($stream2, true);
+                   stream_get_contents($stream2);
+                 }
+                 else if($var4==1 && $var5==1)
+                 {
+                   $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\PER_CLEO_V5_M_P.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\Input\BMDvalues1.txt Downloads\ftp\Input\Phantom1.txt Downloads\ftp\Input\parameters.txt');
+                   stream_set_blocking($stream2, true);
+                   stream_get_contents($stream2);
+                 }
                  $s1=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Results\BMD.txt C:\Users\mohamedamine_belarbi\Downloads\ftp\Results');
                  stream_set_blocking($s1, true);
                  stream_get_contents($s1);
