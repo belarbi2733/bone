@@ -146,7 +146,7 @@ Left ventricle segmentation and tracking in ultrasound images present necessary 
           {% endif %}
          <div class="col-sm-10 col-xs-24">
             <h3>Result of the Algorithm {{ algo}} with {{mode}}: </h3>
-			<h3> Time Execution : {{ time_exec }} </h3>
+			<h3> Time Execution : <font Color="red">{{ time_exec }} sec </font></h3>
 			
            <input type="hidden" name="cache" id="algo" value="{{ algo }}" >  
 		   <input type="hidden" name="cache" id="mode" value="{{ mode }}" > 		   
