@@ -1101,14 +1101,17 @@ public function algotreatment1Action()
      //$bmd4="$outputdir/Microarchitecture.tif";
      ftp_get($connect_it, $bmd1, "Results/BMD.txt", FTP_BINARY);
      ftp_get($connect_it, $bmd2, "Results/Input_values.txt", FTP_BINARY);
-     ftp_get($connect_it, $image1, "Results/Input_Vol.gif", FTP_BINARY);
+     ftp_get($connect_it, $image1, "Results/Thickness.gif", FTP_BINARY);
      //ftp_get($connect_it, $bmd3, "Results/CLEO_Results_Personalized.txt", FTP_BINARY);
      /*-------------------------------------------------------------------------------- */
      if($var1==1)
      {
        $image2="$outputdir/image2.gif";
+       $image3="$outputdir/image3.gif";
        $bmd3="$outputdir/Results1.txt";
        ftp_get($connect_it, $bmd3, "Results/CLEO_Results_Personalized.txt", FTP_BINARY);
+       ftp_get($connect_it, $image2, "Results/Separation.gif", FTP_BINARY);
+       ftp_get($connect_it, $image2, "Results/Input_Vol.gif", FTP_BINARY);
      }
      if($var2==1)
      {
