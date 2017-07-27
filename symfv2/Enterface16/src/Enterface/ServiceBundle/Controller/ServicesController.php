@@ -1068,9 +1068,21 @@ public function algotreatment1Action()
                  stream_set_blocking($s5, true);
                  stream_get_contents($s5);
                  
-                 $s56=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Results\Input_Values.txt C:\Users\mohamedamine_belarbi\Downloads\ftp\Results');
+                 $s6=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Results\Input_Values.txt C:\Users\mohamedamine_belarbi\Downloads\ftp\Results');
                  stream_set_blocking($s6, true);
                  stream_get_contents($s6);
+                 
+                 $s7=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Results\Input_Vol.gif C:\Users\mohamedamine_belarbi\Downloads\ftp\Results');
+                 stream_set_blocking($s7, true);
+                 stream_get_contents($s7);
+                 
+                 $s8=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Results\Separation.gif C:\Users\mohamedamine_belarbi\Downloads\ftp\Results');
+                 stream_set_blocking($s8, true);
+                 stream_get_contents($s8);
+                 
+                 $s9=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Results\Thickness.gif C:\Users\mohamedamine_belarbi\Downloads\ftp\Results');
+                 stream_set_blocking($s9, true);
+                 stream_get_contents($s9);
      }
      else
      {
