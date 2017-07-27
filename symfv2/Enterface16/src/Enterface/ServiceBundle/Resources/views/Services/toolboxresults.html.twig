@@ -144,7 +144,7 @@ Left ventricle segmentation and tracking in ultrasound images present necessary 
                 </form>
             </div>
           {% endif %}
-         <div class="col-sm-10 col-xs-24">
+         <div class="col-sm-10 col-xs-24" id="doss">
             <h3>Result of the Algorithm {{ algo}} with {{mode}}: </h3>
 			<h4> <font color="blue"><b>Execution time :</b></font>  <font Color="red"><b>{{ time_exec }} sec</b> </font></h4>
 			
@@ -156,7 +156,7 @@ Left ventricle segmentation and tracking in ultrasound images present necessary 
   <br>
   <center><a href="{{ path('enterface_download_result', { 'file' : 'test.jpg'}) }}?rnd={{ random() }}" class="btn btn-primary btn-lg active" role="button" download="test.jpg">Download The Image</a></center>
   </div>    
-  <div class="col-sm-6 col-xs-8" id="doss">
+  <div class="col-sm-6 col-xs-8" >
   <h3> Output File : </h3>
   <img style="width:460px; height:460px; -webkit-border-radius:5px;" class="img-responsive portfolio-item" src="{{ path('enterface_download_result', { 'file' : 'algo_resultat.jpg'}) }}?rnd={{ random() }}" >  
   <br>
