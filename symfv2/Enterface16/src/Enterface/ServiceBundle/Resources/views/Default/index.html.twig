@@ -28,6 +28,8 @@
 						var a=0;
 						var b=0;
 						var c=0;
+						var d=0;
+						var e=0;
 						if (document.getElementById('a').checked) 
 						{
 							a=1;
@@ -40,8 +42,15 @@
 						{
 							c=1;
 						} 
-						
-						window.location.href = "{{ path('enterface_service_cleoperso') }}?a=" + a+"&b="+b+"&c="+c; 
+						if (document.getElementById('c').checked) 
+						{
+							d=1;
+						} 
+						if (document.getElementById('c').checked) 
+						{
+							e=1;
+						} 
+						window.location.href = "{{ path('enterface_service_cleoperso') }}?a=" + a+"&b="+b+"&c="+c+"&d="+d+"&e="+e; 
 						
 					}
 		</script>
