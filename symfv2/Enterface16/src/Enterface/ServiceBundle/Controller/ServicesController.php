@@ -173,6 +173,7 @@ public function algotreatment1Action()
                   stream_set_blocking($stream, true);
                   stream_get_contents($stream);
                   ssh2_scp_recv($connection, '/home/test/results/algo_resultat.jpg', $target_dir.'/algo_resultat.jpg');
+                  ssh2_scp_recv($connection, '/home/test/results/time.txt', $target_dir.'/time.txt');
                   exec ("rm $target_file");
             } 
             else 
