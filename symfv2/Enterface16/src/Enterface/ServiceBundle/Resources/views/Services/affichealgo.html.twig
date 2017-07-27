@@ -1,5 +1,26 @@
-<h3> Output File : </h3>
+            <h3>Result of the Algorithm {{ algo}} with {{mode}}: </h3>
+			<h4> <font color="blue"><b>Execution time :</b></font>  <font Color="red"><b>{{ time_exec }} sec</b> </font></h4>
+			
+           <input type="hidden" name="cache" id="algo" value="{{ algo }}" >  
+		   <input type="hidden" name="cache" id="mode" value="{{ mode }}" > 		   
+  <div class="col-sm-6 col-xs-8">
+  <h3> Input File : </h3>
+  <img style="width:460px; height:460px; -webkit-border-radius:5px;" class="img-responsive portfolio-item" src="{{ path('enterface_download_result', { 'file' : 'test.jpg'}) }}?rnd={{ random() }}" >  
+  <br>
+  <center><a href="{{ path('enterface_download_result', { 'file' : 'test.jpg'}) }}?rnd={{ random() }}" class="btn btn-primary btn-lg active" role="button" download="test.jpg">Download The Image</a></center>
+  </div>    
+  <div class="col-sm-6 col-xs-8" id="doss">
+  <h3> Output File : </h3>
   <img style="width:460px; height:460px; -webkit-border-radius:5px;" class="img-responsive portfolio-item" src="{{ path('enterface_download_result', { 'file' : 'algo_resultat.jpg'}) }}?rnd={{ random() }}" >  
   <br>
   <center><a href="{{ path('enterface_download_result', { 'file' : 'algo_resultat.jpg'}) }}?rnd={{ random() }}" class="btn btn-primary btn-lg active" role="button" download="algo_resultat.jpg">Download The Image</a></center>
   <br>
+  </div class="col-sm-6 col-xs-8" id="doss">
+  
+  <div>
+  </div>
+    <br>
+    <br>
+<center><a href="{{ path('enterface_service_saveResults', { 'name': 'Toolbox' }) }}" class="btn btn-primary btn-lg"  role="button">Save your Results on MBP Server</a></center>
+
+</div>
