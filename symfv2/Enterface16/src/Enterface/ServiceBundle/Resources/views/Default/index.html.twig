@@ -51,12 +51,13 @@
 							e=1;
 						} 
 						 var data = {
-							a: a,
-							b: b,
-							c: c
-							d: d,
-							e: e
+							aa: a,
+							bb: b,
+							cc: c
+							dd: d,
+							ee: e
 						};
+						alert (data);
 						$.post("{{ path('enterface_service_cleoperso') }}", data);
 						//window.location.href = "{{ path('enterface_service_cleoperso') }}?a=" + a+"&b="+b+"&c="+c+"&d="+d+"&e="+e; 
 						
