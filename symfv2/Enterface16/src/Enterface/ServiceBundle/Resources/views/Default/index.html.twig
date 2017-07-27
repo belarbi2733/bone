@@ -50,7 +50,15 @@
 						{
 							e=1;
 						} 
-						window.location.href = "{{ path('enterface_service_cleoperso') }}?a=" + a+"&b="+b+"&c="+c+"&d="+d+"&e="+e; 
+						 var data = {
+							a: a,
+							b: b,
+							c: c
+							d: d,
+							e: e
+						};
+						$.post("{{ path('enterface_service_cleoperso') }}", data);
+						//window.location.href = "{{ path('enterface_service_cleoperso') }}?a=" + a+"&b="+b+"&c="+c+"&d="+d+"&e="+e; 
 						
 					}
 		</script>
