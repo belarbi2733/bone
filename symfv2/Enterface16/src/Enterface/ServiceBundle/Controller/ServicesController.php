@@ -293,7 +293,7 @@ public function algotreatment1Action()
         return $this->render('EnterfaceServiceBundle:Services:affichealgo.html.twig', array('works' => true));
     }
     
-public function TiffViewerAction() {
+    public function TiffViewerAction() {
              //Get current User and Check the access
         $user = $this->container->get('security.context')->getToken()->getUser();
         if (!is_object($user) || !$user instanceof UserInterface) {
@@ -343,7 +343,7 @@ public function TiffViewerAction() {
         
     }
 
-        public function mobilityAction() {
+    public function mobilityAction() {
         
         //Get current User and Check the access
         $user = $this->container->get('security.context')->getToken()->getUser();
@@ -360,7 +360,7 @@ public function TiffViewerAction() {
         }
     }
     
-        public function ClesAction() {
+    public function ClesAction() {
         
         //Get current User and Check the access
         $user = $this->container->get('security.context')->getToken()->getUser();
@@ -435,15 +435,15 @@ public function TiffViewerAction() {
        
         
         
-       exec("./VertebraAdcanced img1 $param1 $param2 $param3 $param4 $param5 $param6 $param7 $param8"); 
+         exec("./VertebraAdcanced img1 $param1 $param2 $param3 $param4 $param5 $param6 $param7 $param8"); 
         
         //Payement
-                $credit=$user->getCredit();
-                $credit=$credit-2;
-                $user->setCredit($credit);
-                $em=$this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
+        $credit=$user->getCredit();
+        $credit=$credit-2;
+        $user->setCredit($credit);
+        $em=$this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
                 
         return $this->render('EnterfaceServiceBundle:Services:showvertebraPersonalized.html.twig', array('works' => true));        
     }
@@ -458,16 +458,8 @@ public function TiffViewerAction() {
             
             $this->get('session')->getFlashBag()->add('info', 'Please buy credits'); 
             return $this->container->get('router')->generate('fos_user_profile_show');
-        }
-        
-        /*si la premier soumission du document */        
+        }      
         $nom_fichier = $_FILES['fichier']['tmp_name'];
-       
-        
-        /*sinon (au moment du refresh ! ) il faut recupérer le nom de la variable $nom_fichier !*/
-        /*.....*/
-        
-        
         //les valeur des parametres par défaut!!
         /*$param1= 5; // CLahe
         $param2= 2; //Mean shift value (SpatialRad) 
@@ -485,8 +477,6 @@ public function TiffViewerAction() {
         $param6=100; // ellipse high size
         $param7= 40; //ellipse low size
         $param8= 3; // polynome degree
-        
-        
         if(!is_dir('/var/www/symfv2/Enterface16/UserResults/')){
            mkdir('/var/www/symfv2/Enterface16/UserResults/');
         }
@@ -514,14 +504,7 @@ public function TiffViewerAction() {
         $myfile = fopen($target_dir ."/file_adv.txt", "w");
         fwrite($myfile, "3 2 5 4 24 100 40 3");
         fclose($myfile);
-         // changement du chemin           
-        //Il faut noter que l'executable accepte 8 parametres dans ce mode (advanced on aura acces que à 5 paramtrer les 3 autres resterons par defaut)          
-       
         exec("sudo docker_vertebrae_adv $outputdir",$output); 
-        
-        
-        
-        
         //Payement
         $credit=$user->getCredit();
         $credit=$credit-2;
@@ -1639,7 +1622,7 @@ public function TiffViewerAction() {
         $ftp_user_pass=$this->container->getParameter('windows_password');
         $ftp_host=$this->container->getParameter('windows_host');
         
-          $nom_fichier = $_FILES['fichier']['tmp_name'];
+        $nom_fichier = $_FILES['fichier']['tmp_name'];
           
         if(!is_dir('/var/www/symfv2/Enterface16/UserResults/')){
            mkdir('/var/www/symfv2/Enterface16/UserResults/');
@@ -1655,17 +1638,17 @@ public function TiffViewerAction() {
         }
         $outputdir='/var/www/symfv2/Enterface16/UserResults/'.$user->getId().'/Current/Results';
 
-          $target_dir = $outputdir;
-	  $target_file = $target_dir ."/2.mov";
-          $uploadOk = 1 ; // ??? ça fait quoi ?
+        $target_dir = $outputdir;
+        $target_file = $target_dir ."/2.mov";
+        $uploadOk = 1 ; // ??? ça fait quoi ?
     
-          if(move_uploaded_file($nom_fichier, $target_file ))
-          {
-                  $a=1;  // ??? ça fait quoi ?
-          }
+        if(move_uploaded_file($nom_fichier, $target_file ))
+        {
+                $a=1;  // ??? ça fait quoi ?
+        }
          // exec("sudo /usr/local/bin/docker_cardiotracking $target_dir");
         exec("sudo /usr/local/bin/cardiotracking $target_dir",$output);  
-	return new RedirectResponse($this->container->get('router')->generate('enterface_service_showtracking'));
+	      return new RedirectResponse($this->container->get('router')->generate('enterface_service_showtracking'));
     }
     public function showTrackingAction(){
          //Get current User and Check the access
