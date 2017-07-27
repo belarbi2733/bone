@@ -977,7 +977,8 @@ public function algotreatment1Action()
      $var1=$_POST['test1'];
      $var2=$_POST['test2'];
      $var3=$_POST['test3'];
-     
+     $var4=$_POST['test4'];
+     $var5=$_POST['test5'];
      $files = glob($target_dir.'/*'); // get all file names
      foreach($files as $file){ // iterate files
            if(is_file($file))
