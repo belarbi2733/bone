@@ -446,15 +446,7 @@ public function algotreatment1Action()
         if(move_uploaded_file($nom_fichier, $target_file )){
             $a=1;
         }
-        // changement du chemin           
-        //Il faut noter que l'executable accepte 8 parametres
-        
-        /*Verivifie les choix de l'utilisateur 'Checkbox'*/
-        
-       
-        
-        
-         exec("./VertebraAdcanced img1 $param1 $param2 $param3 $param4 $param5 $param6 $param7 $param8"); 
+        exec("./VertebraAdcanced img1 $param1 $param2 $param3 $param4 $param5 $param6 $param7 $param8"); 
         
         //Payement
         $credit=$user->getCredit();
@@ -1052,7 +1044,8 @@ public function algotreatment1Action()
      $connection = ssh2_connect($ftp_host, 22);
      if (ssh2_auth_password($connection, $ftp_user_name, $ftp_user_pass))
      {       
-             $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\PERSONALIZED_CLEO_V5A.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\BMDvalues1.txt Downloads\ftp\Phantom1.txt Downloads\ftp\parameters.txt');
+             /*$stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\PERSONALIZED_CLEO_V5A.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\BMDvalues1.txt Downloads\ftp\Phantom1.txt Downloads\ftp\parameters.txt');*/
+                 $stream2 = ssh2_exec($connection, 'cmd /C java -jar Downloads\ftp\PER_CLEO_V5_NoM_NoP.jar Downloads\ftp\dicom\fichier0.dcm Downloads\ftp\BMDvalues1.txt Downloads\ftp\Phantom1.txt Downloads\ftp\parameters.txt');
                  stream_set_blocking($stream2, true);
                  stream_get_contents($stream2);
                  $s1=ssh2_exec($connection, 'cmd /C move C:\Users\mohamedamine_belarbi\Results\BMD.txt C:\Users\mohamedamine_belarbi\Downloads\ftp\Results');
