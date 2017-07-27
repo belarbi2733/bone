@@ -660,7 +660,9 @@ public function algotreatment1Action()
           $test1=$_GET['a'];
           $test2=$_GET['b'];
           $test3=$_GET['c'];
-          return $this->render('EnterfaceServiceBundle:Services:cleoperso.html.twig', array('test1'=>$test1,'test2'=>$test2,'test3'=>$test3));
+          $test4=$_GET['d'];
+          $test5=$_GET['e'];
+          return $this->render('EnterfaceServiceBundle:Services:cleoperso.html.twig', array('test1'=>$test1,'test2'=>$test2,'test3'=>$test3,'test4'=>$test4,'test5'=>$test5));
         }
     }
     /* */
