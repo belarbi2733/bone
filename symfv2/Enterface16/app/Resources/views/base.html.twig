@@ -41,7 +41,6 @@
                                 <li><a href="#" id="lnkNews">News</a></li>
                                 <li><a href="#"id="lnkContact">Contact</a></li> 
                                 <li><a href="{{ path('workingforum_forum') }}" id="lnkForum">Forum</a></li>
-								<li><a href="https://toolbox.media-process.com/" id="lnkForum">Toolbox</a></li>
                                 <li> 
                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                         <a href="{{ path('fos_user_profile_show') }}"> {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} </a>
