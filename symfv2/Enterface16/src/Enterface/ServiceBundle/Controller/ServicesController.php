@@ -177,6 +177,7 @@ public function algotreatment1Action()
                   $time_req=$target_dir."/time.txt";
                   $time_res="/home/test/results/time.txt";
                   exec ("rm $image_req");
+                  exec ("rm $time_req");
                   ssh2_scp_recv($connection, $image_res, $image_req);
                   ssh2_scp_recv($connection, $time_res, $time_req);
                   exec ("rm $target_file");
