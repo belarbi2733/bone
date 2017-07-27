@@ -182,8 +182,10 @@ public function algotreatment1Action()
             
         }
         $mode=$_POST["mode"];
+        $myfile = fopen($target_dir ."/time.txt", "r");
+        $time_exec=fgets($myfile );
         //return new RedirectResponse($this->container->get('router')->generate('enterface_service_showtracking'));
-        return $this->render('EnterfaceServiceBundle:Services:toolboxresults.html.twig', array('works' => true,'algo'=>$algorithm,'type'=>$typealgo,'mode'=>$mode));
+        return $this->render('EnterfaceServiceBundle:Services:toolboxresults.html.twig', array('works' => true,'algo'=>$algorithm,'type'=>$typealgo,'mode'=>$mode,'time_exec'=>$time_exec));
     }
     public function algotreatment2Action()
     {
