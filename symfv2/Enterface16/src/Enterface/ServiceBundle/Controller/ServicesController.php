@@ -172,8 +172,10 @@ public function algotreatment1Action()
                   $stream = ssh2_exec($connection, 'docker_algo /home/test/results/');
                   stream_set_blocking($stream, true);
                   stream_get_contents($stream);
-                  ssh2_scp_recv($connection, '/home/test/results/algo_resultat.jpg', $target_dir.'/algo_resultat.jpg');
-                  ssh2_scp_recv($connection, '/home/test/results/time.txt', $target_dir.'/time.txt');
+                  $image_req=$target_dir."/algo_resultat.jpg";
+                  exec ("rm $image_req);
+                  ssh2_scp_recv($connection, "/home/test/results/algo_resultat.jpg", $image_req);
+                  ssh2_scp_recv($connection, "/home/test/results/time.txt", $target_dir."/time.txt");
                   exec ("rm $target_file");
             } 
             else 
