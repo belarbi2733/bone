@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>https://bone.media-process.com/</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>https://bone.media-process.com/forum/</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>https://bone.media-process.com/login</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>https://bone.media-process.com/forum/search</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>https://bone.media-process.com/forum/view/test-statique</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>https://bone.media-process.com/forum/view/cad-for-osteoporosis</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>https://bone.media-process.com/forum/view/cad-for-scoliosis</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>https://bone.media-process.com/forum/view/medical-algorithms-toolbox</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>https://bone.media-process.com/forum/view/sujet</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>https://bone.media-process.com/reset/request</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>https://bone.media-process.com/register/</loc>
+  <changefreq>always</changefreq>
+</url>
+</urlset>
