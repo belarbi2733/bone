@@ -313,10 +313,10 @@
                             <footer class="panel-footer">                           
                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
                                     <a href="{{ path('enterface_service_cleo') }}" style="width:240px"class="btn btn-success" role="button">Try for free</a>
-                                    <!-- <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a> -->
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a> 
                                 {%else%}
                                     <a href="{{ path('enterface_user_login') }}" style="width:240px"class="btn btn-success" role="button">Try for free</a>
-                                    <!-- <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Buy</a> -->
+                                    <!-- <!-- <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Buy</a> --> -->
                                 {%endif%}  
                             </footer>
                         </div>
