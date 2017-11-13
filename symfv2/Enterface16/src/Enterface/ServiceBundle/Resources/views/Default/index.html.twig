@@ -307,7 +307,7 @@
                                      
                                 </div>
                                 <h1>
-                                    <!-- {% if basicCleoPrice == 0%}Free{%else%}{{basicCleoPrice}}{%endif%}€<span class="subscript">/unit</span></h1> -->
+                                    {% if basicCleoPrice == 0%}Free{%else%}{{basicCleoPrice}}{%endif%}€<span class="subscript">/unit</span></h1>
                             </header> <!-- .cd-pricing-header -->
                             <br>
                             <footer class="panel-footer">                           
@@ -345,7 +345,7 @@
                                     </ul>
                                 </div>
                                 <h1>
-                                    <!-- {{basicClesPrice}}€<span class="subscript">/unit</span></h1> -->
+                                    {{basicClesPrice}}€<span class="subscript">/unit</span></h1>
                             </header> <!-- .cd-pricing-header -->
                             <br>
                             <footer class="panel-footer">                           
@@ -391,7 +391,7 @@
                             <footer class="panel-footer">                           
                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED")%}
                                     <a href="{{ path ('enterface_service_toolbox')}}" style="width:240px"class="btn btn-success" role="button">Try for free</a>
-                                    <!-- <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a> -->
+                                    <a href="{{ path('enterface_user_profile') }}" class="btn btn-success" role="button">Buy</a>
                                 {%else%}
                                     <a href="{{ path('enterface_user_login') }}" style="width:240px"class="btn btn-success" role="button">Try for free</a>
                                     <a href="{{ path('enterface_user_login') }}" class="btn btn-success" role="button">Buy</a>
@@ -460,7 +460,7 @@
                                     </ul>
                                 </div>
                                 <h1>
-                                    <!-- {% if advancedCleoPrice == 0%}Free{%else%}{{advancedCleoPrice}}{%endif%}€<span class="subscript">/unit</span></h1> -->
+                                    {% if advancedCleoPrice == 0%}Free{%else%}{{advancedCleoPrice}}{%endif%}€<span class="subscript">/unit</span></h1>
                             </header> <!-- .cd-pricing-header -->
                             <br>
                             <footer class="panel-footer">                           
@@ -495,7 +495,7 @@
                                     </ul>
                                 </div>
                                 <h1>
-                                    <!-- {{advancedClesPrice}}€<span class="subscript">/unit</span></h1> -->
+                                    {{advancedClesPrice}}€<span class="subscript">/unit</span></h1>
                             </header> <!-- .cd-pricing-header -->
                             <br>
                             <footer class="panel-footer">                           
@@ -533,7 +533,7 @@
                                     </ul>
                                 </div>
                                 <h1>
-                                    <!-- {% if advancedMedBoxPrice == 0%}Free{%else%}{{advancedMedBoxPrice}}{%endif%}<span class="subscript">/unit</span></h1> -->
+                                    {% if advancedMedBoxPrice == 0%}Free{%else%}{{advancedMedBoxPrice}}{%endif%}<span class="subscript">/unit</span></h1>
                             </header> <!-- .cd-pricing-header -->
                             <br>
                             <footer class="panel-footer">                           
