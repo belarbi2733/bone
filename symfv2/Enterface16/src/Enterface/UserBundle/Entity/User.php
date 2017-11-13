@@ -57,7 +57,7 @@ class User extends BaseUser implements \Yosimitso\WorkingForumBundle\Entity\User
     {
         parent::__construct();
         // your own logic
-        $credit=20;
+        $credit=50;
         $this->setCredit($credit);
     }
 
