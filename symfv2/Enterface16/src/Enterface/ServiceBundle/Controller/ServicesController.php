@@ -156,6 +156,8 @@ public function algotreatment1Action()
         if($_POST["mode"]=="CPU")
         {
             exec("sudo /usr/local/bin/docker_algo $target_dir");
+            
+            
         }
         else
         {
