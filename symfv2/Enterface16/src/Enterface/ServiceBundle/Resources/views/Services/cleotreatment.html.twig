@@ -197,6 +197,7 @@
 
  
 </div>
+	<div class="col-sm-4 col-xs-4 col-lg-4 col-md-4" style="border: 2px solid steelblue;overflow:auto;  border-radius: 25px;">
    <center>
            <br><br>
 				<a href="{{ path('enterface_download_result', { 'file' : 'Results.txt'}) }}" class="btn btn-success" download="Results.txt" role="button" style="width:300px;background-color: steelblue;">Download your Measures</a><br>
@@ -204,7 +205,8 @@
 				<a href="{{ path('enterface_service_saveResults', { 'name': 'Osteoporosis' }) }}" class="btn btn-success"  role="button" style="width:300px;background-color: steelblue;">Save your Results on MBP Server</a><br>
 				<br>
 				<center><a href="{{ path('enterface_download_result', { 'file' : 'Microarchitecture.tif'}) }}" class="btn btn-success" download="Microarchitecture.tif" role="button" style="width:300px;background-color: steelblue;" >Download 3D Microarchitecture Volume</a><br></center>
-			</center>        
+			</center>      
+	</div>
 {%endif%}
         </div>
         <hr>
